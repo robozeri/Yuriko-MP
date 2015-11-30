@@ -1,1 +1,6 @@
-Anthony Calabretta
+HEAD CONTRIBUTORS
+Anthony Calabretta (@AryToNeX)
+Manuel Ficara (@fycarman)
+
+OTHER CONTRIBUTORS
+--- write your name here w/ a commit :D
