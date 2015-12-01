@@ -12,3 +12,8 @@ Officially mantained from @AryToNeX and @fycarman.
 * IT IS CONSTANTLY DEVELOPED!
 
 # GET LATEST BUILD FROM DOWNLOADS SECTION
+
+## ---
+
+Codenames:
+0.13.x -> Yandere-Chan
