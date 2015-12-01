@@ -13,7 +13,6 @@ Officially mantained from @AryToNeX and @fycarman.
 
 # GET LATEST BUILD FROM DOWNLOADS SECTION
 
-## ---
+# Codenames:
 
-Codenames:
-0.13.x -> Yandere-Chan
+* 0.13.x -> Yandere-Chan
