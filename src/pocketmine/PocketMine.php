@@ -378,7 +378,7 @@ namespace pocketmine {
 	}
 
 	if(php_sapi_name() !== "cli"){
-		$logger->critical("You must run PocketMine-MP using the CLI.");
+		$logger->critical("You must run PMTF-Project using the command line!");
 		++$errors;
 	}
 
@@ -457,7 +457,8 @@ namespace pocketmine {
 	}
 
 	if(\Phar::running(true) === ""){
-		$logger->warning("Non-packaged PocketMine-MP installation detected, do not use on production.");
+		$logger->warning("Non-packaged PMTF-Project installation detected! Do not use it on servers! IT CAN REALLY BLOW UP THE ENTIRE SERVER!");
+		$logger->info("Don't call us if your server gets destroyed. We advised you!");
 	}
 
 	ThreadManager::init();
