@@ -24,6 +24,7 @@ namespace pocketmine\block;
 use pocketmine\inventory\AnvilInventory;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
+use pocketmine\level\sound\AnvilUseSound;
 use pocketmine\Player;
 
 class Anvil extends Fallable{
@@ -79,4 +80,18 @@ class Anvil extends Fallable{
 			return [];
 		}
 	}
+	
+	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
+ 		$faces = [
+ 			0 => 0,
+ 			1 => 1,
+ 			2 => 2,
+ 			3 => 3,
+ 		];
+ 		$this->meta = $faces[$player instanceof Player?$player->getDirection():0];
+ 		$this->getLevel()->setBlock($block, $this, true);
+                $this->getLevel()->addSound(new AnvilUseSound($this));
+ 		
+ 		return true;
+ 	}
 }
