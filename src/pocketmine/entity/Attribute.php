@@ -70,9 +70,11 @@ class Attribute{
             return $this->defaultValue;
         }
         public function setDefaultValue($defaultValue){
-            if($defaultValue > $this->getMaxValue() or $defaultValue < $this->getMinValue()){
-                throw new \InvalidArgumentException("Value $defaultValue exceeds the range!");
-            }
+            if($value > $this->getMaxValue()){
+				$value = $this->getMaxValue();
+			}elseif($value < $this->getMinValue()){
+				$value = $this->getMinValue();
+			}
             $this->defaultValue = $defaultValue;
             return $this;
         }
