@@ -650,6 +650,7 @@ abstract class Entity extends Location implements Metadatable{
 		}
 
 		if($amount <= 0){
+			$amount = 0;
 			if($this->isAlive()){
 				$this->kill();
 			}
