@@ -11,7 +11,8 @@ Officially mantained from @AryToNeX and @fycarman.
 * It has a few original implementations
 * IT IS CONSTANTLY DEVELOPED!
 
-# GET LATEST BUILD FROM DOWNLOADS SECTION
+# LATEST STABLE BUILD: [v1.6.1 PMTF v1.0-dev4 (click here)](https://bitbucket.org/AryToNeX/pmtf-project/downloads/PMTF-Project_1.6.1dev%20PMTF%20v1.0-dev4.phar)
+## If you want development builds, please see "Downloads" section.
 
 # Codenames:
 
