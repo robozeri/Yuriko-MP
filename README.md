@@ -16,3 +16,4 @@ Officially mantained from @AryToNeX and @fycarman.
 # Codenames:
 
 * 0.13.x -> Yandere-Chan
+* 0.14.x -> Senpai (Candidate)
