@@ -36,6 +36,7 @@ class Attribute{
         
         /** @var Player */
         protected $player;
+
 	public function __construct($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend, $player){
 		$this->id = (int) $id;
 		$this->name = (string) $name;
@@ -70,11 +71,9 @@ class Attribute{
             return $this->defaultValue;
         }
         public function setDefaultValue($defaultValue){
-            if($value > $this->getMaxValue()){
-				$value = $this->getMaxValue();
-			}elseif($value < $this->getMinValue()){
-				$value = $this->getMinValue();
-			}
+		if($defaultValue > $this->getMaxValue() or $defaultValue < $this->getMinValue()){
+			throw new \InvalidArgumentException("Value $defaultValue exceeds the range!");
+		}
             $this->defaultValue = $defaultValue;
             return $this;
         }
