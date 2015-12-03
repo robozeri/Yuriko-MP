@@ -2624,7 +2624,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 
 				switch($packet->event){
 					case 9: //Eating
-						$this->eatFoodInHand;
+						$this->eatFoodInHand();
 						break;
 				}
 				break;
