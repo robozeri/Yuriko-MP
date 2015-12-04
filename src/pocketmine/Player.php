@@ -1571,19 +1571,21 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 					++$this->inAirTicks;
 				}
 			}
-			
-		if($this->starvationTick >= 20) {
-            $ev = new EntityDamageEvent($this, EntityDamageEvent::CAUSE_CUSTOM, 1);
-            $this->attack(1, $ev);
-            $this->starvationTick = 0;
+		if($this->isSurvival() || $this->isAdventure()){
+			if($this->starvationTick >= 20) {
+				$ev = new EntityDamageEvent($this, EntityDamageEvent::CAUSE_CUSTOM, 1);
+				$this->attack(1, $ev);
+				$this->starvationTick = 0;
         }
         if($this->getFood() <= 0) {
             $this->starvationTick++;
         }
-        if($this->isSprinting()) {
-            $this->foodUsageTime += 300;
+		if($this->isSurvival() || $this->isAdventure()){
+			if($this->isSprinting()) {
+				$this->foodUsageTime += 300;
         } else {
             $this->foodUsageTime += 150;
+			}
         }
         if($this->foodUsageTime >= 100000) {
             $this->foodUsageTime -= 100000;
@@ -1612,6 +1614,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 		$this->timings->stopTiming();
 
 		return true;
+		}
 	}
 	
 		protected $eatCoolDown = 0;
