@@ -1,6 +1,6 @@
 # PMTF-Project
 
-Unofficial PocketMine fork. More advanced than most forks. We are more potent.
+Unofficial PocketMine fork. More advanced than most forks. We are much better.
 
 Officially mantained from @AryToNeX and @fycarman.
 
@@ -12,7 +12,7 @@ It is different from other forks because we are mostly concentrated in bug fixin
 
 ## Advantages
 
-In what this fork is more potent that PocketMine-MP and other forks?
+In what this fork is more powerful that PocketMine-MP and other forks?
 
 * Compatible with MC:PE 0.13.0 and above (we must try this with 0.14.0 :D )
 * It has many many fixes that official PocketMine-MP does not have.
