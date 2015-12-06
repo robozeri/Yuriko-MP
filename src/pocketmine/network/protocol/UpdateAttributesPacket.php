@@ -23,7 +23,6 @@ namespace pocketmine\network\protocol;
 
 #include <rules/DataPacket.h>
 
-
 use pocketmine\entity\Attribute;
 
 class UpdateAttributesPacket extends DataPacket{
@@ -42,11 +41,10 @@ class UpdateAttributesPacket extends DataPacket{
 		$this->putLong($this->entityId);
 		$this->putShort(count($this->entries));
 		foreach($this->entries as $attribute){
-			$this->putFloat($attribute->getMaxValue());
+			$this->putFloat($attribute->getMinValue());
 			$this->putFloat($attribute->getMaxValue());
 			$this->putFloat($attribute->getValue());
 			$this->putString($attribute->getName());
 		}
 	}
-
 }
