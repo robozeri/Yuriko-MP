@@ -260,16 +260,16 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	/** @var PermissibleBase */
 	private $perm = null;
 
-		protected $attribute;
+	protected $attribute;
 	
 
-		public function getAttribute(){
-			return $this->attribute;
+	public function getAttribute(){
+		return $this->attribute;
 	}
 	
 
-		public function setAttribute($attribute){
-			$this->attribute = $attribute;
+	public function setAttribute($attribute){
+		$this->attribute = $attribute;
 	}
 
 	public function getLeaveMessage(){
