@@ -1,12 +1,13 @@
-# PMTF-Project
+# Yuriko-MP
+## Formerly known as PMTF Project
 
 Unofficial PocketMine fork. More advanced than most forks. We are much better.
 
-Officially mantained from @AryToNeX and @fycarman.
+Officially mantained from @AryToNeX, @fycarman and @luca28pet.
 
-## What is PMTF Project?
+## What is Yuriko-MP?
 
-PMTF Project is *the most powerful and full-featured* PocketMine-MP fork that you can find on internet!
+Yuriko-MP is *the most powerful and full-featured* PocketMine-MP fork that you can find on internet!
 
 It is different from other forks because we are mostly concentrated in bug fixing and we want to implement fully working features which don't crash your server every 5 minutes.
 

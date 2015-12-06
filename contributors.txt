@@ -3,4 +3,5 @@ Anthony Calabretta (@AryToNeX)
 Manuel Ficara (@fycarman)
 
 OTHER CONTRIBUTORS
+Luca Petrucci (@luca28pet)
 --- write your name here w/ a commit :D

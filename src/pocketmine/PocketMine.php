@@ -72,7 +72,7 @@ namespace pocketmine {
 	use pocketmine\utils\Utils;
 	use pocketmine\wizard\Installer;
 
-	const VERSION = "1.6.1dev PMTF v1.0-dev5";
+	const VERSION = "1.6.1dev YMP v1.0-dev5";
 	const API_VERSION = "1.13.0";
 	const CODENAME = "ヤンデレちゃん Yandere-Chan";
 	const MINECRAFT_VERSION = "v0.13.x alpha";
@@ -378,7 +378,7 @@ namespace pocketmine {
 	}
 
 	if(php_sapi_name() !== "cli"){
-		$logger->critical("You must run PMTF-Project using the command line!");
+		$logger->critical("You must run Yuriko-MP using the command line!");
 		++$errors;
 	}
 
@@ -457,7 +457,7 @@ namespace pocketmine {
 	}
 
 	if(\Phar::running(true) === ""){
-		$logger->warning("Non-packaged PMTF-Project installation detected! Do not use it on servers! IT CAN REALLY BLOW UP THE ENTIRE SERVER!");
+		$logger->warning("Non-packaged Yuriko-MP installation detected! Do not use it on servers! IT CAN REALLY BLOW UP THE ENTIRE SERVER!");
 		$logger->info("Don't call us if your server gets destroyed. We advised you!");
 	}
 

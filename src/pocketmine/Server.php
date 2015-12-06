@@ -274,7 +274,7 @@ class Server{
 	 * @return string
 	 */
 	public function getName(){
-		return "PMTF-Project";
+		return "Yuriko-MP";
 	}
 
 	/**
