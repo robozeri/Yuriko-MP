@@ -467,11 +467,10 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	 * @return bool
 	 */
 	public function hasPermission($name){
-		if(is_null($this->perm)){
+		if($this->perm === null){
 			return false;
-		}else{
-			return $this->perm->hasPermission($name);
 		}
+		return $this->perm->hasPermission($name);
 	}
 
 	/**
