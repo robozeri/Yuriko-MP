@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____
@@ -17,7 +18,9 @@
  *
  *
 */
+
 namespace pocketmine\block;
+
 use pocketmine\entity\Entity;
 use pocketmine\event\block\BlockGrowEvent;
 use pocketmine\event\entity\EntityDamageByBlockEvent;
@@ -28,20 +31,26 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 use pocketmine\Server;
+
 class Cactus extends Transparent{
 	protected $id = self::CACTUS;
+
 	public function __construct($meta = 0){
 		$this->meta = $meta;
 	}
+
 	public function getHardness(){
 		return 0.4;
 	}
+
 	public function hasEntityCollision(){
 		return true;
 	}
+
 	public function getName(){
 		return "Cactus";
 	}
+
 	protected function recalculateBoundingBox(){
 		return new AxisAlignedBB(
 				$this->x + 0.0625,
@@ -52,10 +61,12 @@ class Cactus extends Transparent{
 				$this->z + 0.9375
 		);
 	}
+
 	public function onEntityCollide(Entity $entity){
 		$ev = new EntityDamageByBlockEvent($this, $entity, EntityDamageEvent::CAUSE_CONTACT, 1);
 		$entity->attack($ev->getFinalDamage(), $ev);
 	}
+
 	public function onUpdate($type){
 		if($type === Level::BLOCK_UPDATE_NORMAL){
 			$down = $this->getSide(0);
@@ -91,6 +102,7 @@ class Cactus extends Transparent{
 		}
 		return false;
 	}
+
 	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
 		$down = $this->getSide(0);
 		if($down->getId() === self::SAND or $down->getId() === self::CACTUS){
@@ -105,6 +117,7 @@ class Cactus extends Transparent{
 		}
 		return false;
 	}
+
 	public function getDrops(Item $item){
 		return [
 				[$this->id, 0, 1],

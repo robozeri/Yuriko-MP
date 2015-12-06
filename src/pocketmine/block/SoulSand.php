@@ -21,12 +21,10 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\item\Tool;
 use pocketmine\math\AxisAlignedBB;
 
 class SoulSand extends Solid{
-
 	protected $id = self::SOUL_SAND;
 
 	public function __construct(){
@@ -46,7 +44,6 @@ class SoulSand extends Solid{
 	}
 
 	protected function recalculateBoundingBox(){
-
 		return new AxisAlignedBB(
 			$this->x,
 			$this->y,
@@ -56,5 +53,4 @@ class SoulSand extends Solid{
 			$this->z + 1
 		);
 	}
-
 }

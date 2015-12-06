@@ -27,7 +27,6 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\Player;
 
 class Trapdoor extends Transparent{
-
 	protected $id = self::TRAPDOOR;
 
 	public function __construct($meta = 0){

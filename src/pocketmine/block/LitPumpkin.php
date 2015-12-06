@@ -26,7 +26,6 @@ use pocketmine\item\Tool;
 use pocketmine\Player;
 
 class LitPumpkin extends Solid{
-
 	protected $id = self::LIT_PUMPKIN;
 
 	public function getLightLevel(){

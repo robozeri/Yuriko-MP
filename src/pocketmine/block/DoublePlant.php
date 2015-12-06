@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\level\Level;
 
 class DoublePlant extends Flowable{
-
 	protected $id = self::DOUBLE_PLANT;
 
 	public function __construct($meta = 0){
@@ -66,5 +65,4 @@ class DoublePlant extends Flowable{
 
 		return [];
 	}
-
 }

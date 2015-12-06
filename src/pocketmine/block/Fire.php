@@ -31,7 +31,6 @@ use pocketmine\level\Level;
 use pocketmine\Server;
 
 class Fire extends Flowable{
-
 	protected $id = self::FIRE;
 
 	public function __construct($meta = 0){
@@ -96,5 +95,4 @@ class Fire extends Flowable{
 
 		return false;
 	}
-
 }

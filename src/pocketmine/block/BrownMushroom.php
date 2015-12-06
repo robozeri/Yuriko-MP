@@ -26,7 +26,6 @@ use pocketmine\level\Level;
 use pocketmine\Player;
 
 class BrownMushroom extends Flowable{
-
 	protected $id = self::BROWN_MUSHROOM;
 
 	public function __construct($meta = 0){
@@ -55,7 +54,7 @@ class BrownMushroom extends Flowable{
 
 	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
 		$down = $this->getSide(0);
-		if($down->isTransparent() === false){
+		if(!$down->isTransparent()){
 			$this->getLevel()->setBlock($block, $this, true, true);
 
 			return true;
@@ -67,5 +66,4 @@ class BrownMushroom extends Flowable{
 	public function getBoundingBox(){
 		return null;
 	}
-
 }

@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class WoodDoor extends Door{
-
 	protected $id = self::WOOD_DOOR_BLOCK;
 
 	public function __construct($meta = 0){

@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____
@@ -17,11 +18,14 @@
  *
  *
 */
+
 namespace pocketmine\block;
+
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\block\Block;
 use pocketmine\Player;
+
 class Quartz extends Solid{
 	const QUARTZ_NORMAL = 0;
 	const QUARTZ_CHISELED = 1;
@@ -29,6 +33,7 @@ class Quartz extends Solid{
 	const QUARTZ_PILLAR2 = 3;
 
 	protected $id = self::QUARTZ_BLOCK;
+
 	public function __construct($meta = 0){
 		$this->meta = $meta;
 	}
@@ -59,16 +64,17 @@ class Quartz extends Solid{
 		$this->getLevel()->setBlock($block, $this, true, true);
 		return true;
 	}
+
 	public function getToolType(){
 		return Tool::TYPE_PICKAXE;
 	}
+
 	public function getDrops(Item $item){
 		if($item->isPickaxe() >= Tool::TIER_WOODEN){
 			return [
 					[Item::QUARTZ_BLOCK, $this->meta & 0x03, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

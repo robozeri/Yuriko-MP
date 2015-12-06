@@ -21,11 +21,9 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\item\Tool;
 
 class StoneBrickStairs extends Stair{
-
 	protected $id = self::STONE_BRICK_STAIRS;
 
 	public function __construct($meta = 0){
@@ -43,5 +41,4 @@ class StoneBrickStairs extends Stair{
 	public function getName(){
 		return "Stone Brick Stairs";
 	}
-
 }

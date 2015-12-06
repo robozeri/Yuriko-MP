@@ -32,7 +32,6 @@ use pocketmine\Player;
 use pocketmine\utils\Random;
 
 class TNT extends Solid{
-
 	protected $id = self::TNT;
 
 	public function __construct(){

@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class LapisOre extends Solid{
-
 	protected $id = self::LAPIS_ORE;
 
 	public function __construct(){
@@ -49,9 +48,8 @@ class LapisOre extends Solid{
 			return [
 				[Item::DYE, 4, mt_rand(4, 8)],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 
 }

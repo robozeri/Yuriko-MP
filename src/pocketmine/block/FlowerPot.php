@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____  
@@ -17,25 +18,37 @@
  * 
  *
 */
+
 namespace pocketmine\block;
+
 use pocketmine\item\Item;
+use pocketmine\item\Tool;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
+use pocketmine\nbt\tag\Compound;
+use pocketmine\nbt\tag\Int;
+use pocketmine\nbt\tag\String;
 use pocketmine\Player;
+use pocketmine\tile\Tile;
+
 class FlowerPot extends Transparent{
 	protected $id = self::FLOWER_POT_BLOCK;
+
 	public function __construct(){
 	}
 	
 	public function getName(){
 		return "Flower Pot";
 	}
+
 	public function getToolType(){
 		return Tool::TYPE_PICKAXE;
 	}
+
 	public function getHardness(){
 		return 5;
 	}
+
 	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
 		$this->getLevel()->setBlock($block, $this, true, true);
 		$nbt = new Compound("", [new String("id", Tile::FLOWER_POT),new Int("id", $this->id),new Int("data", $this->data),new Int("x", $this->x),new Int("y", $this->y),new Int("z", $this->z)]);
@@ -44,123 +57,124 @@ class FlowerPot extends Transparent{
 		
 		return true;
 	}
+
 	public function onBreak(Item $item){
 		$this->getLevel()->setBlock($this, new Air(), true, true);
 		return true;
 	}
+
 	public function getDrops(Item $item){
 		return [[Item::FLOWER_POT,0,1],$this->getContents()];
 	}
+
 	public function getContents(){
 		$content = Item::AIR;
-		$contentdamage = 0;
+		$contentDamage = 0;
 		switch($this->getDamage()){
 			case 1:
 				$content = Item::ROSE;
+				break;
 			case 2:
 				$content = Item::DANDELION;
+				break;
 			case 3:
 				$content = Item::SAPLING;
+				break;
 			case 4:
 				$content = Item::SAPLING;
-				$contentdamage = 1;
+				$contentDamage = 1;
+				break;
 			case 5:
 				$content = Item::SAPLING;
-				$contentdamage = 2;
+				$contentDamage = 2;
+				break;
 			case 6:
 				$content = Item::SAPLING;
-				$contentdamage = 3;
+				$contentDamage = 3;
+				break;
 			case 7:
 				$content = Item::RED_MUSHROOM;
+				break;
 			case 8:
 				$content = Item::BROWN_MUSHROOM;
+				break;
 			case 9:
 				$content = Item::CACTUS;
+				break;
 			case 10:
 				$content = Item::DEAD_BUSH;
+				break;
 			case 11:
 				$content = Item::TALL_GRASS;
-				$contentdamage = 2;
+				$contentDamage = 2;
+				break;
 			case 12:
 				$content = Item::SAPLING;
-				$contentdamage = 4;
+				$contentDamage = 4;
+				break;
 			case 13:
-				{
-					$content = Item::SAPLING;
-					$contentdamage = 5;
-				}
+				$content = Item::SAPLING;
+				$contentDamage = 5;
+				break;
 			default:
 				$content = Item::AIR;
 		}
-		return Item::get($content, $contentdamage, 1);
+		return Item::get($content, $contentDamage, 1);
 	}
+
 	public function onActivate(Item $item, Player $player = null){
 		if($item->getId() === Item::SAPLING || $item->getId() === Item::BROWN_MUSHROOM || $item->getId() === Item::RED_MUSHROOM || $item->getId() === Item::ROSE || $item->getId() === Item::DEAD_BUSH || $item->getId() === Item::DANDELION || $item->getId() === Item::TALL_GRASS || $item->getId() === Item::CACTUS){
 			$item->useOn($this);
 			$meta = 0;
 			switch($item->getId()){
 				case ITEM::ROSE:
-					{
-						$meta = 1;
-					}
+					$meta = 1;
+					break;
 				case Item::DANDELION:
-					{
-						$meta = 2;
-					}
+					$meta = 2;
+					break;
 				case Item::RED_MUSHROOM:
-					{
-						$meta = 7;
-					}
+					$meta = 7;
+					break;
 				case Item::BROWN_MUSHROOM:
-					{
-						$meta = 8;
-					}
+					$meta = 8;
+					break;
 				case Item::CACTUS:
-					{
-						$meta = 9;
-					}
+					$meta = 9;
+					break;
 				case Item::DEAD_BUSH:
-					{
-						$meta = 10;
-					}
+					$meta = 10;
+					break;
 				case Item::SAPLING:
-					{
-						$species = $item->getDamage();
-						/*
-						 * GENERIC(0x00),
-						 * REDWOOD(0x01),
-						 * BIRCH(0x02),
-						 * JUNGLE(0x03),
-						 * ACACIA(0x04),
-						 * DARK_OAK(0x05),
-						 */
-						if($species == 0x00){
-							$meta = 3;
-						}
-						elseif($species == 0x01){
-							$meta = 4;
-						}
-						elseif($species == 0x02){
-							$meta = 5;
-						}
-						elseif($species == 0x03){
-							$meta = 6;
-						}
-						elseif($species == 0x04){
-							$meta = 12;
-						}
-						else{
-							$meta = 13;
-						}
+					$species = $item->getDamage();
+					/*
+					* GENERIC(0x00),
+					* REDWOOD(0x01),
+					* BIRCH(0x02),
+					* JUNGLE(0x03),
+					* ACACIA(0x04),
+					* DARK_OAK(0x05),
+					*/
+					if($species == 0x00){
+						$meta = 3;
+					}elseif($species == 0x01){
+						$meta = 4;
+					}elseif($species == 0x02){
+						$meta = 5;
+					}elseif($species == 0x03){
+						$meta = 6;
+					}elseif($species == 0x04){
+						$meta = 12;
+					}else{
+						$meta = 13;
 					}
+					break;
 				case Item::TALL_GRASS:
-					{
-						$species = $item->getDamage();
-						
-						if($species == 0x02){
-							$meta = 11;
-						}
+					$species = $item->getDamage();
+					if($species == 0x02){
+						$meta = 11;
 					}
+					break;
 			}
 			$this->setDamage($meta);
 			$this->getLevel()->setBlock($this, $this, true);

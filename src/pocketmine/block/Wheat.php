@@ -24,7 +24,6 @@ namespace pocketmine\block;
 use pocketmine\item\Item;
 
 class Wheat extends Crops{
-
 	protected $id = self::WHEAT_BLOCK;
 
 	public function __construct($meta = 0){

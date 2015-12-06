@@ -29,7 +29,6 @@ use pocketmine\math\Vector3;
 use pocketmine\Server;
 
 class Mycelium extends Solid{
-
 	protected $id = self::MYCELIUM;
 
 	public function __construct(){

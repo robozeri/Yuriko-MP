@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class MossStone extends Solid{
-
 	protected $id = self::MOSS_STONE;
 
 	public function __construct($meta = 0){
@@ -49,8 +48,7 @@ class MossStone extends Solid{
 			return [
 				[Item::MOSS_STONE, $this->meta, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

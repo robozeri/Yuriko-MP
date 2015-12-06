@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class SpruceWoodStairs extends Stair{
-
 	protected $id = self::SPRUCE_WOOD_STAIRS;
 
 	public function __construct($meta = 0){
@@ -42,7 +41,7 @@ class SpruceWoodStairs extends Stair{
 
 	public function getDrops(Item $item){
 		return [
-			[$this->id, 0, 1],
+			[Item::SPRUCE_WOOD_STAIRS, 0, 1],
 		];
 	}
 }

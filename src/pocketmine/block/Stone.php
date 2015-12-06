@@ -66,9 +66,8 @@ class Stone extends Solid{
 			return [
 				[$this->getDamage() === 0 ? Item::COBBLESTONE : Item::STONE, $this->getDamage(), 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 
 }

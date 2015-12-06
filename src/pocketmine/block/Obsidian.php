@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Obsidian extends Solid{
-
 	protected $id = self::OBSIDIAN;
 
 	public function __construct(){
@@ -49,8 +48,7 @@ class Obsidian extends Solid{
 			return [
 				[Item::OBSIDIAN, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

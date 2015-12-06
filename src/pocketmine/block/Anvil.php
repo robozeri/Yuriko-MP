@@ -28,7 +28,6 @@ use pocketmine\level\sound\AnvilUseSound;
 use pocketmine\Player;
 
 class Anvil extends Fallable{
-
 	protected $id = self::ANVIL;
 
 	public function isSolid(){

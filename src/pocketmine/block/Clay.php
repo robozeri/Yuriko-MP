@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Clay extends Solid{
-
 	protected $id = self::CLAY_BLOCK;
 
 	public function __construct(){

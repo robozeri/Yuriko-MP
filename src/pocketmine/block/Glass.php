@@ -24,7 +24,6 @@ namespace pocketmine\block;
 use pocketmine\item\Item;
 
 class Glass extends Transparent{
-
 	protected $id = self::GLASS;
 
 	public function __construct(){

@@ -29,7 +29,6 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\Player;
 
 class Ladder extends Transparent{
-
 	protected $id = self::LADDER;
 
 	public function __construct($meta = 0){

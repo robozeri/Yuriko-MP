@@ -21,11 +21,9 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\item\Tool;
 
 class Wool extends Solid{
-
 	protected $id = self::WOOL;
 
 	public function __construct($meta = 0){
@@ -61,5 +59,4 @@ class Wool extends Solid{
 		];
 		return $names[$this->meta & 0x0f];
 	}
-
 }

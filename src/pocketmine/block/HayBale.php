@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\Player;
 
 class HayBale extends Solid{
-
 	protected $id = self::HAY_BALE;
 
 	public function __construct($meta = 0){
@@ -61,5 +60,4 @@ class HayBale extends Solid{
 			[$this->id, 0, 1],
 		];
 	}
-
 }

@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Gravel extends Fallable{
-
 	protected $id = self::GRAVEL;
 
 	public function __construct(){
@@ -50,10 +49,8 @@ class Gravel extends Fallable{
 				[Item::FLINT, 0, 1],
 			];
 		}
-
 		return [
 			[Item::GRAVEL, 0, 1],
 		];
 	}
-
 }

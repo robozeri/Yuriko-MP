@@ -26,7 +26,6 @@ use pocketmine\item\Tool;
 use pocketmine\math\AxisAlignedBB;
 
 class Farmland extends Solid{
-
 	protected $id = self::FARMLAND;
 
 	public function __construct($meta = 0){

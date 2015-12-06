@@ -26,7 +26,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Cobweb extends Flowable{
-
 	protected $id = self::COBWEB;
 
 	public function __construct(){
@@ -54,7 +53,11 @@ class Cobweb extends Flowable{
 	}
 
 	public function getDrops(Item $item){
-		//TODO: correct drops
+		if($item->isSword()){
+			return [
+				[Item::STRING, 0, 1],
+			];
+		}
 		return [];
 	}
 }

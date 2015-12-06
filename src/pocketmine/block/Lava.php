@@ -31,7 +31,6 @@ use pocketmine\Player;
 use pocketmine\Server;
 
 class Lava extends Liquid{
-
 	protected $id = self::LAVA;
 
 	public function __construct($meta = 0){
@@ -68,5 +67,4 @@ class Lava extends Liquid{
 
 		return $ret;
 	}
-
 }

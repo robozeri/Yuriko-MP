@@ -34,7 +34,6 @@ use pocketmine\tile\Chest as TileChest;
 use pocketmine\tile\Tile;
 
 class Chest extends Transparent{
-
 	protected $id = self::CHEST;
 
 	public function __construct($meta = 0){

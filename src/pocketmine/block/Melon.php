@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Melon extends Transparent{
-
 	protected $id = self::MELON_BLOCK;
 
 	public function __construct(){

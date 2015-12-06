@@ -29,7 +29,6 @@ use pocketmine\Player;
 use pocketmine\Server;
 
 class Sugarcane extends Flowable{
-
 	protected $id = self::SUGARCANE_BLOCK;
 
 	public function __construct($meta = 0){

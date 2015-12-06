@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class IronBars extends Thin{
-
 	protected $id = self::IRON_BARS;
 
 	public function __construct(){
@@ -49,9 +48,8 @@ class IronBars extends Thin{
 			return [
 				[Item::IRON_BARS, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 
 }

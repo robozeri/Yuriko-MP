@@ -21,11 +21,9 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\item\Tool;
 
 class Snow extends Solid{
-
 	protected $id = self::SNOW_BLOCK;
 
 	public function __construct(){
@@ -43,5 +41,4 @@ class Snow extends Solid{
 	public function getName(){
 		return "Snow Block";
 	}
-
 }

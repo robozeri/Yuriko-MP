@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class PackedIce extends Solid{
-
 	protected $id = self::PACKED_ICE;
 
 	public function __construct(){

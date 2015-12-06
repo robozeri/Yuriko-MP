@@ -27,9 +27,7 @@ use pocketmine\level\Level;
 use pocketmine\math\AxisAlignedBB;
 use pocketmine\Player;
 
-
 class Cake extends Transparent{
-
 	protected $id = self::CAKE_BLOCK;
 
 	public function __construct($meta = 0){
@@ -104,9 +102,7 @@ class Cake extends Transparent{
 
 			return true;
 			}
-		
 		}
-	
+		return false;
 	}
-
 }

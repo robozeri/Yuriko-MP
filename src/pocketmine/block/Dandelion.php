@@ -26,7 +26,6 @@ use pocketmine\level\Level;
 use pocketmine\Player;
 
 class Dandelion extends Flowable{
-
 	protected $id = self::DANDELION;
 
 	public function __construct(){

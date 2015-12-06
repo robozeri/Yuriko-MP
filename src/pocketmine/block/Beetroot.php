@@ -24,7 +24,6 @@ namespace pocketmine\block;
 use pocketmine\item\Item;
 
 class Beetroot extends Crops{
-
 	protected $id = self::BEETROOT_BLOCK;
 
 	public function __construct($meta = 0){

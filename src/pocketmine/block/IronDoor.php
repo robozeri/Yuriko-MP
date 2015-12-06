@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class IronDoor extends Door{
-
 	protected $id = self::IRON_DOOR_BLOCK;
 
 	public function __construct($meta = 0){
@@ -49,8 +48,7 @@ class IronDoor extends Door{
 			return [
 				[Item::IRON_DOOR, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

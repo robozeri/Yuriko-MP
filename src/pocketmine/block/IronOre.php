@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class IronOre extends Solid{
-
 	protected $id = self::IRON_ORE;
 
 	public function __construct(){
@@ -49,8 +48,7 @@ class IronOre extends Solid{
 			return [
 				[Item::IRON_ORE, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

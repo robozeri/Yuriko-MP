@@ -27,7 +27,6 @@ use pocketmine\level\Level;
 use pocketmine\Server;
 
 class MelonStem extends Crops{
-
 	protected $id = self::MELON_STEM;
 
 	public function getName(){

@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Lapis extends Solid{
-
 	protected $id = self::LAPIS_BLOCK;
 
 	public function __construct(){
@@ -53,5 +52,4 @@ class Lapis extends Solid{
 			return [];
 		}
 	}
-
 }

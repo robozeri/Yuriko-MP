@@ -32,7 +32,6 @@ use pocketmine\Player;
 use pocketmine\tile\Tile;
 
 class EnchantingTable extends Transparent{
-
 	protected $id = self::ENCHANTING_TABLE;
 
 	public function __construct(){
@@ -101,8 +100,7 @@ class EnchantingTable extends Transparent{
 			return [
 				[$this->id, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

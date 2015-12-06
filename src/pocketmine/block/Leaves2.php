@@ -28,7 +28,6 @@ use pocketmine\Player;
 use pocketmine\Server;
 
 class Leaves2 extends Leaves{
-
 	protected $id = self::LEAVES2;
 
 	public function __construct($meta = 0){
@@ -141,15 +140,16 @@ class Leaves2 extends Leaves{
 	}
 
 	public function getDrops(Item $item){
-		$drops = [];
 		if($item->isShears()){
-			$drops[] = [Item::LEAVES2, $this->meta & 0x03, 1];
-		}else{
-			if(mt_rand(1, 20) === 1){ //Saplings
-				$drops[] = [Item::SAPLING, $this->meta & 0x03, 1];
-			}
+			return [
+				[Item::LEAVES2, $this->meta & 0x03, 1],
+			];
 		}
-
-		return $drops;
+		if(mt_rand(1, 20) === 1){ //Saplings
+			return[
+				[Item::SAPLING, $this->meta & 0x03, 1],
+			];
+		}
+		return [];
 	}
 }

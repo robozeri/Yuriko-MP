@@ -25,7 +25,6 @@ namespace pocketmine\block;
 use pocketmine\item\Tool;
 
 class SandstoneStairs extends Stair{
-
 	protected $id = self::SANDSTONE_STAIRS;
 
 	public function __construct($meta = 0){
@@ -43,5 +42,4 @@ class SandstoneStairs extends Stair{
 	public function getName(){
 		return "Sandstone Stairs";
 	}
-
 }

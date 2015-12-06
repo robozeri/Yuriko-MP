@@ -33,7 +33,6 @@ use pocketmine\tile\Furnace;
 use pocketmine\tile\Tile;
 
 class BurningFurnace extends Solid{
-
 	protected $id = self::BURNING_FURNACE;
 
 	public function __construct($meta = 0){
@@ -134,11 +133,11 @@ class BurningFurnace extends Solid{
 	}
 
 	public function getDrops(Item $item){
-		$drops = [];
 		if($item->isPickaxe() >= Tool::TIER_WOODEN){
-			$drops[] = [Item::FURNACE, 0, 1];
+			return[
+				[Item::FURNACE, 0, 1],
+			];
 		}
-
-		return $drops;
+		return [];
 	}
 }

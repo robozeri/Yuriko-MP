@@ -34,7 +34,6 @@ use pocketmine\nbt\tag\Int;
 use pocketmine\Player;
 
 abstract class Fallable extends Solid{
-
 	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
 		$ret = $this->getLevel()->setBlock($this, $this, true, true);
 

@@ -26,7 +26,6 @@ use pocketmine\item\Tool;
 use pocketmine\Player;
 
 class Pumpkin extends Solid{
-
 	protected $id = self::PUMPKIN;
 
 	public function __construct(){
@@ -53,5 +52,4 @@ class Pumpkin extends Solid{
 
 		return true;
 	}
-
 }

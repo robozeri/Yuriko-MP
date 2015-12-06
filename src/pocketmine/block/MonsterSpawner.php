@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class MonsterSpawner extends Solid{
-
 	protected $id = self::MONSTER_SPAWNER;
 
 	public function __construct($meta = 0){

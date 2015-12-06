@@ -27,7 +27,6 @@ use pocketmine\level\Level;
 use pocketmine\Server;
 
 class PumpkinStem extends Crops{
-
 	protected $id = self::PUMPKIN_STEM;
 
 	public function __construct($meta = 0){

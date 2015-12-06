@@ -27,7 +27,6 @@ use pocketmine\level\Level;
 use pocketmine\Player;
 
 class SnowLayer extends Flowable{
-
 	protected $id = self::SNOW_LAYER;
 
 	public function __construct($meta = 0){
@@ -88,8 +87,10 @@ class SnowLayer extends Flowable{
 	}
 
 	public function getDrops(Item $item){
-		if($item->isShovel() !== false){
-			return [[Item::SNOWBALL,0,$this->getDamage() + 1]];
+		if($item->isShovel()){
+			return [
+				[Item::SNOWBALL,0,$this->getDamage() + 1]
+			];
 		}
 		return [];
 	}

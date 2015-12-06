@@ -27,7 +27,6 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\Player;
 
 class Carpet extends Flowable{
-
 	protected $id = self::CARPET;
 
 	public function __construct($meta = 0){
@@ -98,5 +97,4 @@ class Carpet extends Flowable{
 
 		return false;
 	}
-
 }

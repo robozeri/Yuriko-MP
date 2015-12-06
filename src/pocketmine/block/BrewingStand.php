@@ -19,16 +19,15 @@
   *
  */
  
- namespace pocketmine\block;
+namespace pocketmine\block;
  
- use pocketmine\inventory\BrewingstandInventory;
+use pocketmine\inventory\BrewingstandInventory;
  use pocketmine\item\Item;
  use pocketmine\item\Tool;
  use pocketmine\Player;
  
- class BrewingStand extends Transparent{
- 
- 	protected $id = self::BREWING_STAND;
+class BrewingStand extends Transparent{
+	protected $id = self::BREWING_STAND;
  
  	public function __construct(){
  
@@ -60,13 +59,12 @@
 		return true;
 	}
 
-        public function getDrops(Item $item){
+	public function getDrops(Item $item){
 		if($item->isPickaxe() >= Tool::TIER_WOODEN){
 			return [
 				[$this->id, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

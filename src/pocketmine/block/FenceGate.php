@@ -28,7 +28,6 @@ use pocketmine\Player;
 use pocketmine\level\sound\DoorSound;
 
 class FenceGate extends Transparent{
-
 	protected $id = self::FENCE_GATE;
 
 	public function __construct($meta = 0){

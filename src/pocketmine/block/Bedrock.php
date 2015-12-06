@@ -24,7 +24,6 @@ namespace pocketmine\block;
 use pocketmine\item\Item;
 
 class Bedrock extends Solid{
-
 	protected $id = self::BEDROCK;
 
 	public function __construct(){
@@ -46,5 +45,4 @@ class Bedrock extends Solid{
 	public function isBreakable(Item $item){
 		return false;
 	}
-
 }

@@ -21,11 +21,9 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\math\AxisAlignedBB;
 
 abstract class Thin extends Transparent{
-
 	public function isSolid(){
 		return false;
 	}
@@ -78,5 +76,4 @@ abstract class Thin extends Transparent{
 	public function canConnect(Block $block){
 		return $block->isSolid() or $block->getId() === $this->getId() or $block->getId() === self::GLASS_PANE or $block->getId() === self::GLASS;
 	}
-
 }

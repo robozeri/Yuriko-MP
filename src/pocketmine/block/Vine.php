@@ -29,7 +29,6 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\Player;
 
 class Vine extends Transparent{
-
 	protected $id = self::VINE;
 
 	public function __construct($meta = 0){
@@ -157,11 +156,10 @@ class Vine extends Transparent{
 	public function getDrops(Item $item){
 		if($item->isShears()){
 			return [
-				[$this->id, 0, 1],
+				[Item::VINE, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 
 	public function getToolType(){

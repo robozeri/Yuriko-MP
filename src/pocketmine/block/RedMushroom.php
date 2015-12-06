@@ -26,7 +26,6 @@ use pocketmine\level\Level;
 use pocketmine\Player;
 
 class RedMushroom extends Flowable{
-
 	protected $id = self::RED_MUSHROOM;
 
 	public function __construct(){
@@ -36,7 +35,6 @@ class RedMushroom extends Flowable{
 	public function getName(){
 		return "Red Mushroom";
 	}
-
 
 	public function onUpdate($type){
 		if($type === Level::BLOCK_UPDATE_NORMAL){

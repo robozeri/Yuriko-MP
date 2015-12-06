@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Redstone extends Solid{
-
 	protected $id = self::REDSTONE_BLOCK;
 
 	public function __construct(){
@@ -49,8 +48,7 @@ class Redstone extends Solid{
 			return [
 				[Item::REDSTONE_BLOCK, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

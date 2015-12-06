@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class DoubleSlab extends Solid{
-
 	protected $id = self::DOUBLE_SLAB;
 
 	public function __construct($meta = 0){
@@ -59,9 +58,7 @@ class DoubleSlab extends Solid{
 			return [
 				[Item::SLAB, $this->meta & 0x07, 2],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
-
 }

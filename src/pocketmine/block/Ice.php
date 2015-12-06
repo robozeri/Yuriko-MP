@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____  
@@ -17,12 +18,14 @@
  * 
  *
 */
+
 namespace pocketmine\block;
+
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\level\Level;
+
 class Ice extends Transparent{
-	
 	protected $id = self::ICE;
 	
 	public function __construct(){

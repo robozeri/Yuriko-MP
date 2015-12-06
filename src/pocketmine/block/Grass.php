@@ -32,7 +32,6 @@ use pocketmine\Server;
 use pocketmine\utils\Random;
 
 class Grass extends Solid{
-
 	protected $id = self::GRASS;
 
 	public function __construct(){

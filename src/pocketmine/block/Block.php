@@ -39,7 +39,6 @@ use pocketmine\metadata\MetadataValue;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 
-
 class Block extends Position implements Metadatable{
 	const AIR = 0;
 	const STONE = 1;

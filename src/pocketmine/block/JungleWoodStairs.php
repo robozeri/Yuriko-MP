@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class JungleWoodStairs extends Stair{
-
 	protected $id = self::JUNGLE_WOOD_STAIRS;
 
 	public function __construct($meta = 0){

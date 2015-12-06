@@ -34,7 +34,6 @@ use pocketmine\tile\Chest as TileChest;
 use pocketmine\tile\Tile;
 
 class TrappedChest extends Transparent{
-
 	protected $id = self::CHEST;
 
 	public function __construct($meta = 0){
@@ -175,7 +174,7 @@ class TrappedChest extends Transparent{
 
 	public function getDrops(Item $item){
 		return [
-			[$this->id, 0, 1],
+			[Item::TRAPPED_CHEST, 0, 1],
 		];
 	}
 }

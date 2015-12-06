@@ -21,14 +21,12 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 
 abstract class Liquid extends Transparent{
-
 	/** @var Vector3 */
 	private $temporalVector = null;
 

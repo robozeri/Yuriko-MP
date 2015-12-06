@@ -59,9 +59,8 @@ class StoneBricks extends Solid{
 			return [
 				[Item::STONE_BRICKS, $this->meta & 0x03, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 
 }

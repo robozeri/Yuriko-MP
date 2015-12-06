@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Bricks extends Solid{
-
 	protected $id = self::BRICKS_BLOCK;
 
 	public function __construct(){
@@ -53,8 +52,7 @@ class Bricks extends Solid{
 			return [
 				[Item::BRICKS_BLOCK, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

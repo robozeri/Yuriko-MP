@@ -21,7 +21,6 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\item\Tool;
 
 class Planks extends Solid{
@@ -59,5 +58,4 @@ class Planks extends Solid{
 		];
 		return $names[$this->meta & 0x07];
 	}
-
 }

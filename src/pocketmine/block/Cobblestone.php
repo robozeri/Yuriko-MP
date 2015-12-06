@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Cobblestone extends Solid{
-
 	protected $id = self::COBBLESTONE;
 
 	public function __construct(){
@@ -49,8 +48,7 @@ class Cobblestone extends Solid{
 			return [
 				[Item::COBBLESTONE, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

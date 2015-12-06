@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class Diamond extends Solid{
-
 	protected $id = self::DIAMOND_BLOCK;
 
 	public function __construct(){
@@ -49,8 +48,7 @@ class Diamond extends Solid{
 			return [
 				[Item::DIAMOND_BLOCK, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

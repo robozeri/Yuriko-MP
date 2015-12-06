@@ -28,7 +28,6 @@ use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
 class Bed extends Transparent{
-
 	protected $id = self::BED_BLOCK;
 
 	public function __construct($meta = 0){
@@ -161,5 +160,4 @@ class Bed extends Transparent{
 			[Item::BED, 0, 1],
 		];
 	}
-
 }

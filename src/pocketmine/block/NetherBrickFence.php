@@ -24,7 +24,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class NetherBrickFence extends Transparent {
-
 	protected $id = self::NETHER_BRICK_FENCE;
 
 	public function __construct($meta = 0){
@@ -64,8 +63,7 @@ class NetherBrickFence extends Transparent {
 			return [
 				[$this->id, $this->meta, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}        
 }

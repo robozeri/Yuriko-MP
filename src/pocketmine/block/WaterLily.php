@@ -21,7 +21,6 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\item\Item;
 
 use pocketmine\level\Level;
@@ -30,7 +29,6 @@ use pocketmine\math\Vector3;
 use pocketmine\Player;
 
 class WaterLily extends Flowable{
-
 	protected $id = self::WATER_LILY;
 
 	public function __construct($meta = 0){
@@ -90,7 +88,7 @@ class WaterLily extends Flowable{
 
 	public function getDrops(Item $item){
 		return [
-			[$this->id, 0, 1]
+			[Item::WATER_LILY, 0, 1]
 		];
 	}
 }

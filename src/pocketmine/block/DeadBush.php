@@ -24,7 +24,6 @@ namespace pocketmine\block;
 use pocketmine\level\Level;
 
 class DeadBush extends Flowable{
-
 	protected $id = self::DEAD_BUSH;
 
 	public function __construct($meta = 0){
@@ -47,5 +46,4 @@ class DeadBush extends Flowable{
 
 		return false;
 	}
-
 }

@@ -26,7 +26,6 @@ use pocketmine\level\Level;
 use pocketmine\Player;
 
 class TallGrass extends Flowable{
-
 	protected $id = self::TALL_GRASS;
 
 	public function __construct($meta = 1){
@@ -75,8 +74,6 @@ class TallGrass extends Flowable{
 		if(mt_rand(0, 15) === 0){
 			return [Item::WHEAT_SEEDS, 0, 1];
 		}
-
 		return [];
 	}
-
 }

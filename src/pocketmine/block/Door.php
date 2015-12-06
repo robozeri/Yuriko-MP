@@ -30,7 +30,6 @@ use pocketmine\Player;
 
 
 abstract class Door extends Transparent{
-
 	public function canBeActivated(){
 		return true;
 	}

@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class EmeraldOre extends Solid{
-
 	protected $id = self::EMERALD_ORE;
 
 	public function __construct(){
@@ -49,8 +48,7 @@ class EmeraldOre extends Solid{
 			return [
 				[Item::EMERALD, 0, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

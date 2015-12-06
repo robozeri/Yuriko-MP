@@ -27,7 +27,6 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\Player;
 
 class WoodSlab extends Transparent{
-
 	protected $id = self::WOOD_SLAB;
 
 	public function __construct($meta = 0){
@@ -129,7 +128,7 @@ class WoodSlab extends Transparent{
 
 	public function getDrops(Item $item){
 		return [
-			[$this->id, $this->meta & 0x07, 1],
+			[Item::WOOD_SLAB, $this->meta & 0x07, 1],
 		];
 	}
 }

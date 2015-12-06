@@ -24,7 +24,6 @@ namespace pocketmine\block;
 use pocketmine\item\Item;
 
 class DoubleWoodSlab extends Solid{
-
 	protected $id = self::DOUBLE_WOOD_SLAB;
 
 	public function __construct($meta = 0){
@@ -58,5 +57,4 @@ class DoubleWoodSlab extends Solid{
 			[Item::WOOD_SLAB, $this->meta & 0x07, 2],
 		];
 	}
-
 }

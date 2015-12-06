@@ -21,11 +21,9 @@
 
 namespace pocketmine\block;
 
-
 use pocketmine\item\Item;
 
 class GlassPane extends Thin{
-
 	protected $id = self::GLASS_PANE;
 
 	public function __construct(){

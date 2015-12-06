@@ -26,7 +26,6 @@ use pocketmine\level\Level;
 use pocketmine\Player;
 
 class Torch extends Flowable{
-
 	protected $id = self::TORCH;
 
 	public function __construct($meta = 0){
@@ -93,7 +92,7 @@ class Torch extends Flowable{
 
 	public function getDrops(Item $item){
 		return [
-			[$this->id, 0, 1],
+			[Item::TORCH, 0, 1],
 		];
 	}
 }

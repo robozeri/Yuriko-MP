@@ -27,7 +27,6 @@ use pocketmine\level\Level;
 use pocketmine\Player;
 
 class SignPost extends Transparent{
-
 	protected $id = self::SIGN_POST;
 
 	public function __construct($meta = 0){

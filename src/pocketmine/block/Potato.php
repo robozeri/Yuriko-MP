@@ -24,7 +24,6 @@ namespace pocketmine\block;
 use pocketmine\item\Item;
 
 class Potato extends Crops{
-
 	protected $id = self::POTATO_BLOCK;
 
 	public function __construct($meta = 0){
@@ -36,13 +35,13 @@ class Potato extends Crops{
 	}
 
 	public function getDrops(Item $item){
-		$drops = [];
 		if($this->meta >= 0x07){
-			$drops[] = [Item::POTATO, 0, mt_rand(1, 4)];
-		}else{
-			$drops[] = [Item::POTATO, 0, 1];
+			return [
+				[Item::POTATO, 0, mt_rand(1, 4)],
+			];
 		}
-
-		return $drops;
+		return [
+			[Item::POTATO, 0, 1],
+		];
 	}
 }

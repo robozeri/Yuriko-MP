@@ -26,7 +26,6 @@ use pocketmine\item\Tool;
 use pocketmine\level\Level;
 
 class RedstoneOre extends Solid{
-
 	protected $id = self::REDSTONE_ORE;
 
 	public function __construct(){
@@ -62,8 +61,7 @@ class RedstoneOre extends Solid{
 			return [
 				[Item::REDSTONE_DUST, 0, mt_rand(4, 5)],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 }

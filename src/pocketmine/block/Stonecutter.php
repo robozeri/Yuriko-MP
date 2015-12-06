@@ -25,9 +25,10 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\Player;
 
-//TODO: check orientation
+/**
+ * @deprecated
+ */
 class Stonecutter extends Solid{
-
 	protected $id = self::STONECUTTER;
 
 	public function __construct($meta = 0){
