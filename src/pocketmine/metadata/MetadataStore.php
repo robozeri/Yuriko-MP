@@ -77,7 +77,7 @@ abstract class MetadataStore{
 	}
 
 	/**
-	 * Tests to see if a metadata attribute has been set on an object.
+	 * Tests to see if a metadata attributeManager has been set on an object.
 	 *
 	 * @param mixed  $subject
 	 * @param string $metadataKey

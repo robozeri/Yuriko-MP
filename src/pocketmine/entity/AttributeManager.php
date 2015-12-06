@@ -30,22 +30,27 @@ class AttributeManager{
     const MAX_HUNGER = 1;
     const EXPERIENCE = 2;
     const EXPERIENCE_LEVEL = 3;
+
     /** @var Attribute[] */
     protected $attributes = [];
     /** @var Player */
     protected $player;
+
     public function __construct($player){
         $this->player = $player;
     }
+
     public function init(){
         self::addAttribute(self::MAX_HEALTH, "generic.health", 0, 20, 20, true);
         self::addAttribute(self::MAX_HUNGER, "player.hunger", 0, 20, 20, true);
         self::addAttribute(self::EXPERIENCE, "player.experience", 0, 1, 0, true);
         self::addAttribute(self::EXPERIENCE_LEVEL, "player.level", 0, 24791, 0, true);
     }
+
     public function getPlayer() {
         return $this->getPlayer();
     }
+
     /**
      * @param int    $id
      * @param string $name
@@ -61,6 +66,7 @@ class AttributeManager{
         }
         return $this->attributes[(int) $id] = new Attribute($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend, $this->player);
     }
+
     /**
      * @param $id
      * @return null|Attribute
@@ -68,6 +74,7 @@ class AttributeManager{
     public function getAttribute($id){
         return isset($this->attributes[$id]) ? clone $this->attributes[$id] : null;
     }
+
     /**
      * @param $name
      * @return null|Attribute
@@ -80,13 +87,16 @@ class AttributeManager{
         }
         return null;
     }
-    public function sendAll() {
-        foreach($this->attributes as $attribute) {
-            $attribute->send();
-        }
+
+    public function sendAll(){
+        $pk = new UpdateAttributesPacket();
+        $pk->entityId = 0;
+        $pk->entries = $this->attributes;
+        $this->player->dataPacket($pk);
     }
-    public function resetAll() {
-        foreach($this->attributes as $attribute) {
+
+    public function resetAll(){
+        foreach($this->attributes as $attribute){
             $attribute->setValue($attribute->getDefaultValue());
         }
     }
