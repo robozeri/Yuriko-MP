@@ -3354,23 +3354,23 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 		if(!$this->isCreative() or !$this->isSpectator()){
             if($amount <= 6 && !($this->getFood() <= 6)) {
                 $this->setDataProperty(self::DATA_FLAG_SPRINTING, self::DATA_TYPE_BYTE, false);
-            }elseif($amount > 6 && !($this->getFood() > 6)) {
-                $this->setDataProperty(self::DATA_FLAG_SPRINTING, self::DATA_TYPE_BYTE, true);
-				}
-            }
-            $this->food = $amount;
-			if($amount < 0) $amount = 0;
-			if($amount > 20) $amount = 20;
-            $this->getAttributeManager()->getAttribute(AttributeManager::MAX_HUNGER)->setValue($amount);
-        }
-		
-		public function getFood(){
-			return $this->food;
+			}elseif($amount > 6 && !($this->getFood() > 6)) {
+				$this->setDataProperty(self::DATA_FLAG_SPRINTING, self::DATA_TYPE_BYTE, true);
+			}
 		}
+		$this->food = $amount;
+		if($amount < 0) $amount = 0;
+		if($amount > 20) $amount = 20;
+		$this->getAttributeManager()->getAttribute(AttributeManager::MAX_HUNGER)->setValue($amount);
+	}
 		
-		public function subtractFood($amount){
-			if(!$this->isCreative() or !$this->isSpectator()){
-            if($this->getFood()-$amount <= 6 && !($this->getFood() <= 6)) {
+	public function getFood(){
+		return $this->food;
+	}
+		
+	public function subtractFood($amount){
+		if(!$this->isCreative() or !$this->isSpectator()){
+			if($this->getFood()-$amount <= 6 && !($this->getFood() <= 6)) {
                 $this->setDataProperty(self::DATA_FLAG_SPRINTING, self::DATA_TYPE_BYTE, false);
                 /*$this->removeEffect(Effect::SLOWNESS);*/
             }elseif($this->getFood()-$amount < 6 && !($this->getFood() > 6)) {
@@ -3383,10 +3383,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				}
             }
 
-            if($this->food - $amount < 0) return;
-            $this->setFood($this->getFood() - $amount);
-        }
-
+		if($this->food - $amount < 0) return;
+		$this->setFood($this->getFood() - $amount);
+	}
 
 	public function attack($damage, EntityDamageEvent $source){
 		if(!$this->isAlive()){
