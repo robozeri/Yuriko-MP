@@ -1700,10 +1700,10 @@ class Server{
 			$this->autoSaveTicks = (int) $this->getProperty("ticks-per.autosave", 6000);
 		}
 
-		if(\Phar::running(true) !== ""){ //Server running on Phar
+		/*if(\Phar::running(true) !== ""){ //Server running on Phar
 			$signature = \Phar::MD5;
 			$this->scheduler->scheduleAsyncTask(new CheckSessionTask($signature));
-		}
+		}*/
 
 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
 
