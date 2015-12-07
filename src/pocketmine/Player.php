@@ -1929,29 +1929,14 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				$this->iusername = strtolower($this->username);
 
 				if(count($this->server->getOnlinePlayers()) >= $this->server->getMaxPlayers() and $this->kick("disconnectionScreen.serverFull", false)){
-
-
-
-
-
-
-
-
-
 					break;
 				}
 
 				if($packet->protocol1 < ProtocolInfo::CURRENT_PROTOCOL){
-
 					$message = "disconnectionScreen.outdatedClient";
 
 					$pk = new PlayStatusPacket();
 					$pk->status = PlayStatusPacket::LOGIN_FAILED_CLIENT;
-
-
-
-
-
 
 					$this->directDataPacket($pk);
 
@@ -1990,11 +1975,6 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 
 					break;
 				}
-
-
-
-
-
 
 				$this->setSkin($packet->skin, $packet->slim);
 
