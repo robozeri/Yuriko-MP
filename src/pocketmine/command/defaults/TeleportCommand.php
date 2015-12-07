@@ -89,6 +89,8 @@ class TeleportCommand extends VanillaCommand{
 					$level = $sender->getServer()->getLevelByName(substr($args[1], 2));
 					if($level !== null){
 						$target = $level->getSafeSpawn();
+					}else{
+						$target = null;
 					}
 				}else{
 					$target = $sender->getServer()->getPlayer($args[1]);
