@@ -30,4 +30,8 @@ class IronSword extends Tool{
 	public function isSword(){
 		return Tool::TIER_IRON;
 	}
+
+	public function getDamageTable(){
+		return 6;
+	}
 }

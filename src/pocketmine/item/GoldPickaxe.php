@@ -30,4 +30,8 @@ class GoldPickaxe extends Tool{
 	public function isPickaxe(){
 		return Tool::TIER_GOLD;
 	}
+
+	public function getDamageTable(){
+		return 2;
+	}
 }

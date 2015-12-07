@@ -30,4 +30,8 @@ class WoodenSword extends Tool{
 	public function isSword(){
 		return Tool::TIER_WOODEN;
 	}
+
+	public function getDamageTable(){
+		return 4;
+	}
 }

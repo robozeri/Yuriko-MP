@@ -30,4 +30,8 @@ class DiamondSword extends Tool{
 	public function isSword(){
 		return Tool::TIER_DIAMOND;
 	}
+
+	public function getDamageTable(){
+		return 7;
+	}
 }

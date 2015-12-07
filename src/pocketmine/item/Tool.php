@@ -23,7 +23,6 @@ namespace pocketmine\item;
 
 use pocketmine\block\Block;
 use pocketmine\entity\Entity;
-use pocketmine\nbt\tag\Byte;
 
 abstract class Tool extends Item{
 	const TIER_WOODEN = 1;
@@ -120,6 +119,10 @@ abstract class Tool extends Item{
 	public function isUnbreakable(){
 		$tag = $this->getNamedTagEntry("Unbreakable");
 		return $tag !== null and $tag->getValue() > 0;
+	}
+
+	public function getDamageTable(){
+		return 1;
 	}
 
 	public function isPickaxe(){

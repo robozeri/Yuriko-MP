@@ -30,4 +30,8 @@ class IronAxe extends Tool{
 	public function isAxe(){
 		return Tool::TIER_IRON;
 	}
+
+	public function getDamageTable(){
+		return 5;
+	}
 }

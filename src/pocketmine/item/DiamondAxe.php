@@ -30,4 +30,8 @@ class DiamondAxe extends Tool{
 	public function isAxe(){
 		return Tool::TIER_DIAMOND;
 	}
+
+	public function getDamageTable(){
+		return 6;
+	}
 }
