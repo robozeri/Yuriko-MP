@@ -1595,10 +1595,11 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				}
 			}
 
+		}
 		$this->checkTeleportPosition();
 
 		$this->timings->stopTiming();
-		}
+
 		return true;
 	}
 	
