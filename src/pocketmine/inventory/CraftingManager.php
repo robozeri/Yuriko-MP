@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____
@@ -17,7 +18,9 @@
  *
  *
 */
+
 namespace pocketmine\inventory;
+
 use pocketmine\block\Planks;
 use pocketmine\block\Quartz;
 use pocketmine\block\Sandstone;
@@ -30,6 +33,7 @@ use pocketmine\block\Wood;
 use pocketmine\block\Wood2;
 use pocketmine\item\Item;
 use pocketmine\utils\UUID;
+
 class CraftingManager{
 	/** @var Recipe[] */
 	public $recipes = [];
@@ -40,7 +44,6 @@ class CraftingManager{
 	private static $RECIPE_COUNT = 0;
 
 	public function __construct(){
-		$this->registerStonecutter();
 		$this->registerFurnace();
 		$this->registerDyes();
 		$this->registerIngots();
