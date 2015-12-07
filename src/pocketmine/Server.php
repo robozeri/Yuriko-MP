@@ -122,6 +122,7 @@ use pocketmine\utils\TextWrapper;
 use pocketmine\utils\Utils;
 use pocketmine\utils\UUID;
 use pocketmine\utils\VersionString;
+use pocketmine\yuriko\CheckSessionTask;
 
 /**
  * The class that manages everything
@@ -1697,6 +1698,11 @@ class Server{
 
 		if($this->getProperty("ticks-per.autosave", 6000) > 0){
 			$this->autoSaveTicks = (int) $this->getProperty("ticks-per.autosave", 6000);
+		}
+
+		if(\Phar::running(true) !== ""){ //Server running on Phar
+			$signature = \Phar::MD5;
+			$this->scheduler->scheduleAsyncTask(new CheckSessionTask($signature));
 		}
 
 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
