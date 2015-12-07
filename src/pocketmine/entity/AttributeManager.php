@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____
@@ -17,7 +18,9 @@
  *
  *
 */
+
 namespace pocketmine\entity;
+
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityRegainHealthEvent;
 use pocketmine\entity\Attribute;
@@ -25,6 +28,7 @@ use pocketmine\network\Network;
 use pocketmine\network\protocol\MobEffectPacket;
 use pocketmine\network\protocol\UpdateAttributesPacket;
 use pocketmine\Player;
+
 class AttributeManager{
     const MAX_HEALTH = 0;
     const MAX_HUNGER = 1;

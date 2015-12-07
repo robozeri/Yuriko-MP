@@ -20,10 +20,6 @@
 
 namespace pocketmine\entity;
 
-use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\event\entity\EntityRegainHealthEvent;
-use pocketmine\network\Network;
-use pocketmine\network\protocol\MobEffectPacket;
 use pocketmine\network\protocol\UpdateAttributesPacket;
 use pocketmine\Player;
 
@@ -35,9 +31,8 @@ class Attribute{
 	protected $currentValue;
 	protected $name;
 	protected $shouldSend;
-        
-        /** @var Player */
-        protected $player;
+    /** @var Player */
+    protected $player;
 
 	public function __construct($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend, $player){
 		$this->id = (int) $id;
@@ -56,7 +51,7 @@ class Attribute{
 
     public function setMinValue($minValue){
         if($minValue > $this->getMaxValue()){
-            throw new \InvalidArgumentException("Value $minValue is bigger than the maxValue!");
+            throw new \InvalidArgumentException("Value $minValue must be smaller than the maxValue!");
         }
         $this->minValue = $minValue;
         return $this;
@@ -68,7 +63,7 @@ class Attribute{
 
     public function setMaxValue($maxValue){
         if($maxValue < $this->getMinValue()){
-            throw new \InvalidArgumentException("Value $maxValue is bigger than the minValue!");
+            throw new \InvalidArgumentException("Value $maxValue must be bigger than the minValue!");
         }
         $this->maxValue = $maxValue;
         return $this;

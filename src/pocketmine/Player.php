@@ -147,7 +147,6 @@ use raklib\Binary;
  */
 
 class Player extends Human implements CommandSender, InventoryHolder, ChunkLoader, IPlayer{
-
 	const SURVIVAL = 0;
 	const CREATIVE = 1;
 	const ADVENTURE = 2;
@@ -3364,7 +3363,12 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 			$this->getAttributeManager()->getAttribute(AttributeManager::MAX_HEALTH)->setValue($amount);
 		}
 	}
-	
+
+	public function setMaxHealth($amount){
+		parent::setMaxHealth($amount);
+		$this->getAttributeManager()->getAttribute(AttributeManager::MAX_HEALTH)->setMaxValue($amount);
+	}
+
 	public function setFood($amount){
 		if(!$this->isCreative() or !$this->isSpectator()){
             if($amount <= 6 && !($this->getFood() <= 6)) {
