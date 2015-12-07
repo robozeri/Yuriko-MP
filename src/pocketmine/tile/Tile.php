@@ -38,7 +38,6 @@ abstract class Tile extends Position{
 	const SIGN = "Sign";
 	const CHEST = "Chest";
 	const FURNACE = "Furnace";
-	const FLOWER_POT = "FlowerPot";
 	const MOB_SPAWNER = "MobSpawner";
 	const SKULL = "Skull";
 	const BREWING_STAND = "Cauldron";

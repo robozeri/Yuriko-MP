@@ -2171,9 +2171,8 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 							]),
 						]);
 
-						$f = 1.5;
 						$snowball = Entity::createEntity("Snowball", $this->chunk, $nbt, $this);
-						$snowball->setMotion($snowball->getMotion()->multiply($f));
+						$snowball->setMotion($this->getDirectionVector()->multiply(1.5));
 						if($this->isSurvival()){
 							$item->setCount($item->getCount() - 1);
 							$this->inventory->setItemInHand($item->getCount() > 0 ? $item : Item::get(Item::AIR));

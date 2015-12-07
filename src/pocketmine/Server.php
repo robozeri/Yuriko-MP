@@ -108,7 +108,6 @@ use pocketmine\tile\EnchantTable;
 use pocketmine\tile\Furnace;
 use pocketmine\tile\Sign;
 use pocketmine\tile\Tile;
-use pocketmine\tile\FlowerPot;
 use pocketmine\updater\AutoUpdater;
 use pocketmine\utils\Binary;
 use pocketmine\utils\Config;
@@ -2589,7 +2588,6 @@ class Server{
 		Tile::registerTile(Furnace::class);
 		Tile::registerTile(Sign::class);
 		Tile::registerTile(EnchantTable::class);
-		Tile::registerTile(FlowerPot::class);
 	}
 
 }
