@@ -33,6 +33,7 @@ use pocketmine\nbt\tag\String;
 use pocketmine\Player;
 
 class SpawnEgg extends Item{
+
 	public function __construct($meta = 0, $count = 1){
 		parent::__construct(self::SPAWN_EGG, $meta, $count, "Spawn Egg");
 	}

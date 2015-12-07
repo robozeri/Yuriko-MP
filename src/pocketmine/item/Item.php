@@ -42,7 +42,6 @@ use pocketmine\nbt\tag\Compound;
 use pocketmine\nbt\NBT;
 
 class Item{
-
 	private static $cachedParser = null;
 
 	/**
