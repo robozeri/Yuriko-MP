@@ -70,7 +70,7 @@ class Cactus extends Transparent{
 	public function onUpdate($type){
 		if($type === Level::BLOCK_UPDATE_NORMAL){
 			$down = $this->getSide(0);
-			if($down->getId() !== self::SAND and $down->getId() !== self::CACTUS){
+			if($down->getId() !== Item::SAND and $down->getId() !== Item::CACTUS){
 				$this->getLevel()->useBreakOn($this);
 			}else{
 				for($side = 2; $side <= 5; ++$side){
@@ -81,7 +81,7 @@ class Cactus extends Transparent{
 				}
 			}
 		}elseif($type === Level::BLOCK_UPDATE_RANDOM){
-			if($this->getSide(0)->getId() !== self::CACTUS){
+			if($this->getSide(0)->getId() !== Item::CACTUS){
 				if($this->meta == 0x0F){
 					for($y = 1; $y < 3; ++$y){
 						$b = $this->getLevel()->getBlock(new Vector3($this->x, $this->y + $y, $this->z));
@@ -120,7 +120,7 @@ class Cactus extends Transparent{
 
 	public function getDrops(Item $item){
 		return [
-				[$this->id, 0, 1],
+				[Item::CACTUS, 0, 1],
 		];
 	}
 }

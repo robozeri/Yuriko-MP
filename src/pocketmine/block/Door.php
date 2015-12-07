@@ -28,8 +28,8 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-
 abstract class Door extends Transparent{
+
 	public function canBeActivated(){
 		return true;
 	}

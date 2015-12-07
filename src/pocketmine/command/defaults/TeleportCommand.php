@@ -62,9 +62,16 @@ class TeleportCommand extends VanillaCommand{
 				return true;
 			}
 			if(count($args) === 1){
-				$target = $sender->getServer()->getPlayer($args[0]);
+				if($args[0]{0} === "w" and $args[0]{1} === ":"){
+					$level = $sender->getServer()->getLevelByName(substr($args[0], 2));
+					if($level !== null){
+						$target = $level->getSafeSpawn();
+					}
+				}else{
+					$target = $sender->getServer()->getPlayer($args[0]);
+				}
 				if($target === null){
-					$sender->sendMessage(TextFormat::RED . "Can't find player " . $args[0]);
+					$sender->sendMessage(TextFormat::RED . "Can't find ".$args[0]{0} === "w" and $args[0]{1} === ":" ? "world " : "player" . $args[0]);
 
 					return true;
 				}
@@ -78,9 +85,16 @@ class TeleportCommand extends VanillaCommand{
 			}
 			if(count($args) === 2){
 				$origin = $target;
-				$target = $sender->getServer()->getPlayer($args[1]);
+				if($args[1]{0} === "w" and $args[1]{1} === ":"){
+					$level = $sender->getServer()->getLevelByName(substr($args[1], 2));
+					if($level !== null){
+						$target = $level->getSafeSpawn();
+					}
+				}else{
+					$target = $sender->getServer()->getPlayer($args[1]);
+				}
 				if($target === null){
-					$sender->sendMessage(TextFormat::RED . "Can't find player " . $args[1]);
+					$sender->sendMessage(TextFormat::RED . "Can't find ".$args[1]{0} === "w" and $args[1]{1} === ":" ? "world " : "player" . $args[1]);
 
 					return true;
 				}
