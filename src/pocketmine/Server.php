@@ -1600,7 +1600,7 @@ class Server{
 		//$this->logger->info($this->getLanguage()->translateString("pocketmine.server.license", [$this->getName()]));
 		$this->logger->info("§aYuriko-MP§e is an unofficial PM build brought to you by §b@AryToNeX§e, §b@Fycarman§e and §b@luca28pet§e!");
 		$this->logger->info("§eIf you find any bug please contact us!");
-		$this->logger->info("§bEnjoy PMTF Project!§d ^.^");
+		$this->logger->info("§bEnjoy Yuriko-MP!§d ^.^");
 
 		Timings::init();
 
