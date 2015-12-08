@@ -60,12 +60,12 @@ class Redstone extends Solid implements RedPowerSource{
 	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
 		for($s = 0; $s <= 6; $s++){
 			$sideBlock = $this->getSide($s);
-			if($sideBlock instanceof RedPowerConductor){
+			if($sideBlock instanceof RedPowerConsumer){
 				$sideBlock->setReceiving($this);
 				$sideBlock->onSignal($this->getPower() - 1);
-					if($sideBlock instanceof RedPowerConductor){
-						$sideBlock->setPower($this->getPower() - 1);
-					}
+				if($sideBlock instanceof RedPowerConductor){
+					$sideBlock->setPower($this->getPower() - 1);
+				}
 			}
 		}
 		return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
@@ -74,10 +74,13 @@ class Redstone extends Solid implements RedPowerSource{
 	public function onBreak(Item $item){
 		for($s = 0; $s <= 6; $s++){
 			$sideBlock = $this->getSide($s);
-			if($sideBlock instanceof RedPowerConductor){
+			if($sideBlock instanceof RedPowerConsumer){
 				if(count($sideBlock->getReceiving()) === 1){
 					$sideBlock->removeReceiving($this);
-					$sideBlock->setPower(0);
+					$sideBlock->onSignal(0);
+					if($sideBlock instanceof RedPowerConductor){
+						$sideBlock->setPower(0);
+					}
 				}
 			}
 		}

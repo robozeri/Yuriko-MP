@@ -317,13 +317,25 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 		}
 	}
 
-	public function onSignal($on){
-		if($on === true){
-			if(!in_array($this->getFullDamage(), [3, 11, 0, 8, 1, 9, 2, 10])){ //Not open
-				Server::getInstance()->getLogger()->debug("Opening door");
+	public function removeReceiving(Block $block){
+		if(($key = array_search($block, $this->signals)) !== false){
+			unset($this->signals[$key]);
+		}
+	}
+
+	public function onSignal($power){
+		if($power > 0){
+			if(!in_array($this->getFullDamage(), [3, 11, 0, 8, 1, 9, 2, 10])){ //Not open TODO: Find a better way to detect if a door is open
+				$this->meta ^= 0x04;
+				$this->getLevel()->setBlock($this, $this, true);
+				$this->level->addSound(new DoorSound($this));
 			}
 		}else{
-
+			if(in_array($this->getFullDamage(), [3, 11, 0, 8, 1, 9, 2, 10])){ //Open
+				$this->meta ^= 0x04;
+				$this->getLevel()->setBlock($this, $this, true);
+				$this->level->addSound(new DoorSound($this));
+			}
 		}
 	}
 }
