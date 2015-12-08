@@ -23,8 +23,9 @@ namespace pocketmine\block;
 
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
+use pocketmine\Player;
 
-class Redstone extends Solid{
+class Redstone extends Solid implements RedPowerSource{
 	protected $id = self::REDSTONE_BLOCK;
 
 	public function __construct(){
@@ -50,5 +51,58 @@ class Redstone extends Solid{
 			];
 		}
 		return [];
+	}
+
+	public function getPower(){
+		return 15;
+	}
+
+	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
+		for($s = 0; $s <= 6; $s++){
+			$sideBlock = $this->getSide($s);
+			if($sideBlock instanceof RedPowerConductor){
+				$sideBlock->setReceiving($this);
+				$sideBlock->onSignal($this->getPower() - 1);
+					if($sideBlock instanceof RedPowerConductor){
+						$sideBlock->setPower($this->getPower() - 1);
+					}
+			}
+		}
+		return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
+	}
+
+	public function onBreak(Item $item){
+		for($s = 0; $s <= 6; $s++){
+			$sideBlock = $this->getSide($s);
+			if($sideBlock instanceof RedPowerConductor){
+				if(count($sideBlock->getReceiving()) === 1){
+					$sideBlock->removeReceiving($this);
+					$sideBlock->setPower(0);
+				}
+			}
+		}
+		return parent::onBreak($item);
+	}
+
+
+	//TODO when redstone will get more advanced
+	public function onSignal($on){
+
+	}
+
+	public function isReceiving(){
+		return false;
+	}
+
+	public function getReceiving(){
+		return [];
+	}
+
+	public function removeReceiving(Block $block){
+
+	}
+
+	public function setReceiving(Block $block){
+
 	}
 }
