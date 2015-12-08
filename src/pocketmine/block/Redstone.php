@@ -69,7 +69,9 @@ class Redstone extends Solid implements RedPowerSource{
 					}
 				}
 			}
+			return Level::BLOCK_UPDATE_NORMAL;
 		}
+		return false;
 	}
 
 	//TODO when redstone will get more advanced

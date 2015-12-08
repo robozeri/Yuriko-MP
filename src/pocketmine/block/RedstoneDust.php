@@ -46,7 +46,9 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
                 }
             }
             $this->level->setBlock($this, $this);
+            return Level::BLOCK_UPDATE_NORMAL;
         }
+        return false;
     }
 
     public function isActivated(){

@@ -226,6 +226,7 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 				if(!$stillPowered){
 					$this->setActivated(false);
 				}
+				return Level::BLOCK_UPDATE_NORMAL;
 			}
 		}
 
