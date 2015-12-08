@@ -40,7 +40,7 @@ We are working in:
 * PHP7 support! (Not now, but later.)
 * Many other features!
 
-# LATEST STABLE BUILD: [v1.6.1 PMTF v1.0-dev4 (click here)](https://bitbucket.org/AryToNeX/pmtf-project/downloads/PMTF-Project_1.6.1dev%20PMTF%20v1.0-dev4.phar)
+# LATEST STABLE BUILD: No stable build for now, sorry
 ## If you want development builds, please see "Downloads" section.
 
 # Codenames:
