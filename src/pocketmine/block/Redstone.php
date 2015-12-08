@@ -23,10 +23,11 @@ namespace pocketmine\block;
 
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
-use pocketmine\Player;
+use pocketmine\level\Level;
 
 class Redstone extends Solid implements RedPowerSource{
 	protected $id = self::REDSTONE_BLOCK;
+	private $activated = false;
 
 	public function __construct(){
 
@@ -57,55 +58,26 @@ class Redstone extends Solid implements RedPowerSource{
 		return 15;
 	}
 
-	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
-		for($s = 0; $s <= 6; $s++){
-			$sideBlock = $this->getSide($s);
-			if($sideBlock instanceof RedPowerConsumer){
-				$sideBlock->setReceiving($this);
-				$sideBlock->onSignal($this->getPower() - 1);
-				if($sideBlock instanceof RedPowerConductor){
-					$sideBlock->setPower($this->getPower() - 1);
-				}
-			}
-		}
-		return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
-	}
-
-	public function onBreak(Item $item){
-		for($s = 0; $s <= 6; $s++){
-			$sideBlock = $this->getSide($s);
-			if($sideBlock instanceof RedPowerConsumer){
-				if(count($sideBlock->getReceiving()) === 1){
-					$sideBlock->removeReceiving($this);
-					$sideBlock->onSignal(0);
+	public function onUpdate($type){
+		if($type === Level::BLOCK_UPDATE_NORMAL){
+			for($s = 0; $s <= 6; $s++){
+				$sideBlock = $this->getSide($s);
+				if($sideBlock instanceof RedPowerConsumer){
+					$sideBlock->setActivated(true);
 					if($sideBlock instanceof RedPowerConductor){
-						$sideBlock->setPower(0);
+						$sideBlock->setPower($this->getPower() - 1);
 					}
 				}
 			}
 		}
-		return parent::onBreak($item);
 	}
-
 
 	//TODO when redstone will get more advanced
-	public function onSignal($on){
-
+	public function isActivated(){
+		return $this->activated === true;
 	}
 
-	public function isReceiving(){
-		return false;
-	}
-
-	public function getReceiving(){
-		return [];
-	}
-
-	public function removeReceiving(Block $block){
-
-	}
-
-	public function setReceiving(Block $block){
-
+	public function setActivated($bool){
+		$this->activated = $bool;
 	}
 }

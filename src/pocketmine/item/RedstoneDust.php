@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Luca Petrucci
- * Date: 08/12/2015
- * Time: 12:41
- */
 
 namespace pocketmine\item;
 

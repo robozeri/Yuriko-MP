@@ -1,19 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Luca Petrucci
- * Date: 08/12/2015
- * Time: 12:45
- */
 
 namespace pocketmine\block;
 
-use pocketmine\item\Item;
-use pocketmine\Player;
+use pocketmine\level\Level;
 
 class RedstoneDust extends Flowable implements RedPowerConductor{
     protected $id = self::REDSTONE_DUST;
-    protected $signals = [];
+    protected $activated = false;
 
     public function __construct(){
 
@@ -27,82 +20,39 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
         $this->meta = $power;
     }
 
-    public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
-        for($s = 0; $s <= 6; $s++){
-            $sideBlock = $this->getSide($s);
-            if($sideBlock instanceof RedPowerConsumer){
-                $sideBlock->setReceiving($this);
-                $sideBlock->onSignal($this->getPower() - 1);
-                if($sideBlock instanceof RedPowerConductor and $sideBlock->getPower() < $this->getPower()){
-                    $sideBlock->setPower($this->getPower() - 1);
-                }
+    public function onUpdate($type){
+        if($type === Level::BLOCK_UPDATE_NORMAL){
+            $powered = false;
+            for($s = 0; $s <= 6; $s++){
+                $powered = ($this->getSide($s) instanceof RedPowerSource);
             }
-        }
-        return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
-    }
-
-    public function onBreak(Item $item){
-        for($s = 0; $s <= 6; $s++){
-            $sideBlock = $this->getSide($s);
-            if($sideBlock instanceof RedPowerConsumer){
-                if(count($sideBlock->getReceiving()) === 1){
-                    $sideBlock->removeReceiving($this);
-                    $sideBlock->onSignal(0);
-                    if($sideBlock instanceof RedPowerConductor){
-                        $sideBlock->setPower(0);
-                    }
-                }
+            if(!$powered){
+                $this->setPower(0);
+                $this->setActivated(false);
+                $this->level->updateAround($this);
             }
-        }
-        return parent::onBreak($item);
-    }
 
-    public function isReceiving(){
-        return count($this->signals);
-    }
-
-    public function getReceiving(){
-        return $this->signals;
-    }
-
-    public function setReceiving(Block $block){
-        if(!in_array($block, $this->signals)){
-            $this->signals[] = $block;
-        }
-    }
-
-    public function removeReceiving(Block $block){
-        if(($key = array_search($block, $this->signals)) !== false){
-            unset($this->signals[$key]);
-        }
-    }
-
-    public function onSignal($power){
-        if($power > 0){
             for($s = 0; $s <= 6; $s++){
                 $sideBlock = $this->getSide($s);
-                if($sideBlock instanceof RedPowerConsumer){
-                    $sideBlock->setReceiving($this);
-                    $sideBlock->onSignal($this->getPower());
-                    if($sideBlock instanceof RedPowerConductor and $sideBlock->getPower() < $this->getPower()){
+                if($sideBlock instanceof RedPowerConductor and $powered){
+                    if($sideBlock->getPower() <= $this->getPower()){
                         $sideBlock->setPower($this->getPower() - 1);
                     }
-                }
-            }
-        }else{
-            for($s = 0; $s <= 6; $s++){
-                $sideBlock = $this->getSide($s);
-                if($sideBlock instanceof RedPowerConsumer){
-                    if(count($sideBlock->getReceiving()) === 1){
-                        $sideBlock->removeReceiving($this);
-                        $sideBlock->onSignal(0);
-                        if($sideBlock instanceof RedPowerConductor){
-                            $sideBlock->setPower(0);
-                        }
+                }elseif($sideBlock instanceof RedPowerConsumer){
+                    if($powered and !$sideBlock->isActivated()){
+                        $sideBlock->setActivated(true);
                     }
                 }
             }
         }
+    }
+
+    public function isActivated(){
+        return $this->activated === true;
+    }
+
+    public function setActivated($bool){
+        $this->activated = $bool;
     }
 
 }

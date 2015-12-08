@@ -30,7 +30,7 @@ use pocketmine\Player;
 use pocketmine\Server;
 
 abstract class Door extends Transparent implements RedPowerConsumer{
-	protected $signals = [];
+	protected $activated = false;
 
 	public function canBeActivated(){
 		return true;
@@ -214,6 +214,19 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 
 				return Level::BLOCK_UPDATE_NORMAL;
 			}
+			if($this->isActivated()){
+				$stillPowered = false;
+				for($s = 1; $s <= 6; $s++){
+					$sideBlock = $this->getSide($s);
+					if($sideBlock instanceof RedPowerSource or ($sideBlock instanceof RedPowerConductor and $sideBlock->getPower() > 0)){
+						$stillPowered = true;
+						break;
+					}
+				}
+				if(!$stillPowered){
+					$this->setActivated(false);
+				}
+			}
 		}
 
 		return false;
@@ -243,14 +256,6 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 			$this->setDamage($player->getDirection() & 0x03);
 			$this->getLevel()->setBlock($block, $this, true, true); //Bottom
 			$this->getLevel()->setBlock($blockUp, $b = Block::get($this->getId(), $metaUp), true); //Top
-
-			for($s = 0; $s <= 6; $s++){
-				$sideBlock = $this->getSide($s);
-				if($sideBlock instanceof RedPowerSource){
-					$this->setReceiving($sideBlock);
-					$this->onSignal($sideBlock->getPower() - 1);
-				}
-			}
 			return true;
 		}
 
@@ -303,28 +308,13 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 		return true;
 	}
 
-	public function isReceiving(){
-		return count($this->signals);
+	public function isActivated(){
+		return $this->activated === true;
 	}
 
-	public function getReceiving(){
-		return $this->signals;
-	}
-
-	public function setReceiving(Block $block){
-		if(!in_array($block, $this->signals)){
-			$this->signals[] = $block;
-		}
-	}
-
-	public function removeReceiving(Block $block){
-		if(($key = array_search($block, $this->signals)) !== false){
-			unset($this->signals[$key]);
-		}
-	}
-
-	public function onSignal($power){
-		if($power > 0){
+	public function setActivated($bool){
+		$this->activated = $bool;
+		if($bool){
 			if(!in_array($this->getFullDamage(), [3, 11, 0, 8, 1, 9, 2, 10])){ //Not open TODO: Find a better way to detect if a door is open
 				$this->meta ^= 0x04;
 				$this->getLevel()->setBlock($this, $this, true);
