@@ -28,7 +28,7 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
             for($s = 0; $s <= 6; $s++){
                 $sideBlock = $this->getSide($s);
                 if($sideBlock instanceof RedPowerSource and $sideBlock->getPower() >= $this->getPower()){
-                    $powered = $sideBlock->getPower();
+                    $powered = $sideBlock->getPower() - 1;
                 }
             }
 
@@ -37,27 +37,17 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
                 if(!$this->isActivated()){
                     $this->setActivated(true);
                 }
-                for($s = 0; $s <= 6; $s++){
-                    $sideBlock = $this->getSide($s);
-                    if($sideBlock instanceof RedPowerConductor){
-                        if($sideBlock->getPower() <= $this->getPower() and $this->getPower() > 1){
-                            $sideBlock->setPower($this->getPower() - 1);
-                        }
-                    }elseif($sideBlock instanceof RedPowerConsumer and !($sideBlock instanceof RedPowerSource)){
-                        if(!$sideBlock->isActivated()){
-                            $sideBlock->setActivated(true);
-                        }
-                    }
-                }
             }else{
                 $this->setPower(0);
                 if($this->isActivated()){
                     $this->setActivated(false);
                 }
             }
-
-            $this->level->setBlock($this, $this, true, false); //TODO: find a way to update block around without generating a death loop
+            $this->level->scheduleUpdate($this, 10);
             return Level::BLOCK_UPDATE_NORMAL;
+        }elseif($type === Level::BLOCK_UPDATE_SCHEDULED){
+            $this->level->setBlock($this, $this, true, true);
+            return Level::BLOCK_UPDATE_SCHEDULED;
         }
         return false;
     }
