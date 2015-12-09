@@ -27,12 +27,12 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
             $powered = false;
             for($s = 0; $s <= 6; $s++){
                 $sideBlock = $this->getSide($s);
-                if($sideBlock instanceof RedPowerSource and $sideBlock->getPower() >= $this->getPower()){
+                if($sideBlock instanceof RedPowerSource and $sideBlock->getPower() > $this->getPower()){
                     $powered = $sideBlock->getPower() - 1;
                 }
             }
 
-            if($powered){ //Is receiving power (> 0)
+            if($powered > 0){ //Is receiving power (> 0)
                 $this->setPower($powered);
                 if(!$this->isActivated()){
                     $this->setActivated(true);
@@ -43,7 +43,7 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
                     $this->setActivated(false);
                 }
             }
-            $this->level->scheduleUpdate($this, 10);
+            $this->level->scheduleUpdate($this, 5);
             return Level::BLOCK_UPDATE_NORMAL;
         }elseif($type === Level::BLOCK_UPDATE_SCHEDULED){
             $this->level->setBlock($this, $this, true, true);
@@ -62,6 +62,7 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
 
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
         if($face === 1 and !$this->getSide(0)->isTransparent()){ //Up
+            $this->onUpdate(Level::BLOCK_UPDATE_NORMAL);
             return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
         }
         return false;

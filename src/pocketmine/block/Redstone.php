@@ -74,16 +74,6 @@ class Redstone extends Solid implements RedPowerSource{
 		return false;
 	}
 
-	public function onBreak(Item $item){
-		for($s = 0; $s <= 6; $s++){
-			$sideBlock = $this->getSide($s);
-			if($sideBlock instanceof RedPowerConductor){
-				$sideBlock->setPower($this->getPower() - 1);
-			}
-		}
-		return parent::onBreak($item);
-	}
-
 	//TODO when redstone will get more advanced
 	public function isActivated(){
 		return $this->activated === true;
