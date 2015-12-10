@@ -43,7 +43,7 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
                     $this->setActivated(false);
                 }
             }
-            $this->level->scheduleUpdate($this, 5);
+            $this->level->scheduleUpdate($this, 1);
             return Level::BLOCK_UPDATE_NORMAL;
         }elseif($type === Level::BLOCK_UPDATE_SCHEDULED){
             $this->level->setBlock($this, $this, true, true);

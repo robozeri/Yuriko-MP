@@ -217,7 +217,7 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 				$stillPowered = false;
 				for($s = 1; $s <= 6; $s++){
 					$sideBlock = $this->getSide($s);
-					if($sideBlock instanceof RedPowerSource or ($sideBlock instanceof RedPowerConductor and $sideBlock->getPower() > 0)){
+					if($sideBlock instanceof RedPowerSource and $sideBlock->getPower() > 0){
 						$stillPowered = true;
 						break;
 					}
