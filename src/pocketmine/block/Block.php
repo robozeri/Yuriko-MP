@@ -987,4 +987,35 @@ class Block extends Position implements Metadatable{
 			$this->getLevel()->getBlockMetadata()->removeMetadata($this, $metadataKey, $plugin);
 		}
 	}
+
+	/**
+	 * @return int 0-15
+	 */
+	public function getRedstoneInput(){
+		$power = 0;
+		for($s = 0; $s <= 5; $s++){
+			$sideBlock = $this->getSide($s);
+			$o = $sideBlock->getRedstoneOutput();
+			if($o > $this->getRedstoneOutput()){
+				$power += $o;
+			}
+			if($s === 0 or $s === 1){
+				for($t = 2; $t <= 5; $t++){
+					$o = $sideBlock->getSide($t)->getRedstoneOutput();
+					if($o > $this->getRedstoneOutput()){
+						$power += $o;
+					}
+				}
+
+			}
+		}
+		return $power > 15 ? 15 : $power;
+	}
+
+	/**
+	 * @return int 0-15
+	 */
+	public function getRedstoneOutput(){
+		return 0;
+	}
 }

@@ -14,34 +14,22 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
         $this->meta = $meta;
     }
 
-    public function getPower(){
-        return $this->meta;
-    }
-
-    public function setPower($power){
+    public function setRedstoneOutput($power){
         $this->meta = $power;
     }
 
     public function onUpdate($type){
         if($type === Level::BLOCK_UPDATE_NORMAL){
-            $powered = false;
-            for($s = 0; $s <= 6; $s++){
-                $sideBlock = $this->getSide($s);
-                if($sideBlock instanceof RedPowerSource and $sideBlock->getPower() > $this->getPower()){
-                    $powered = $sideBlock->getPower() - 1;
-                }
-            }
-
-            if($powered > 0){ //Is receiving power (> 0)
-                $this->setPower($powered);
+            if(($p = $this->getRedstoneInput()) > 0){ //Is receiving power (> 0)
                 if(!$this->isActivated()){
                     $this->setActivated(true);
                 }
+                $this->setRedstoneOutput($p - 1);
             }else{
-                $this->setPower(0);
                 if($this->isActivated()){
                     $this->setActivated(false);
                 }
+                $this->setRedstoneOutput(0);
             }
             $this->level->scheduleUpdate($this, 1);
             return Level::BLOCK_UPDATE_NORMAL;
@@ -50,6 +38,10 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
             return Level::BLOCK_UPDATE_SCHEDULED;
         }
         return false;
+    }
+
+    public function getRedstoneOutput(){
+        return $this->meta;
     }
 
     public function isActivated(){
@@ -67,5 +59,4 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
         }
         return false;
     }
-
 }

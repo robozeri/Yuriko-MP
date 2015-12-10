@@ -23,7 +23,6 @@ namespace pocketmine\block;
 
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
-use pocketmine\level\Level;
 
 class Redstone extends Solid implements RedPowerSource{
 	protected $id = self::REDSTONE_BLOCK;
@@ -54,24 +53,8 @@ class Redstone extends Solid implements RedPowerSource{
 		return [];
 	}
 
-	public function getPower(){
+	public function getRedstoneOutput(){
 		return 15;
-	}
-
-	public function onUpdate($type){
-		if($type === Level::BLOCK_UPDATE_NORMAL){
-			for($s = 0; $s <= 6; $s++){
-				$sideBlock = $this->getSide($s);
-				if($sideBlock instanceof RedPowerConsumer){
-					$sideBlock->setActivated(true);
-					if($sideBlock instanceof RedPowerConductor){
-						$sideBlock->setPower($this->getPower() - 1);
-					}
-				}
-			}
-			return Level::BLOCK_UPDATE_NORMAL;
-		}
-		return false;
 	}
 
 	//TODO when redstone will get more advanced

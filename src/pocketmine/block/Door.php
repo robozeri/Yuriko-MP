@@ -30,6 +30,7 @@ use pocketmine\Player;
 
 abstract class Door extends Transparent implements RedPowerConsumer{
 	protected $activated = false;
+	protected $isOpen = false;
 
 	public function canBeActivated(){
 		return true;
@@ -213,26 +214,10 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 
 				return Level::BLOCK_UPDATE_NORMAL;
 			}
-			if($this->isActivated()){
-				$stillPowered = false;
-				for($s = 1; $s <= 6; $s++){
-					$sideBlock = $this->getSide($s);
-					if($sideBlock instanceof RedPowerSource and $sideBlock->getPower() > 0){
-						$stillPowered = true;
-						break;
-					}
-				}
-				if(!$stillPowered){
-					$this->setActivated(false);
-				}
-			}else{
-				for($s = 1; $s <= 6; $s++){
-					$sideBlock = $this->getSide($s);
-					if($sideBlock instanceof RedPowerSource and $sideBlock->getPower() > 0){
-						$this->setActivated(true);
-						break;
-					}
-				}
+			if(!$this->isOpen and !$this->isActivated() and $this->getRedstoneInput() > 0){
+				$this->setActivated(true);
+			}elseif($this->isOpen and $this->isActivated() and $this->getRedstoneInput() === 0){
+				$this->setActivated(false);
 			}
 			return Level::BLOCK_UPDATE_NORMAL;
 		}
@@ -299,6 +284,7 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 				}
 
 				$this->level->addSound(new DoorSound($this));
+				$this->isOpen = !$this->isOpen;
 				return true;
 			}
 
@@ -311,6 +297,7 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 				unset($players[$player->getLoaderId()]);
 			}
 			$this->level->addSound(new DoorSound($this));
+			$this->isOpen = !$this->isOpen;
 		}
 
 		return true;
@@ -322,18 +309,18 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 
 	public function setActivated($bool){
 		$this->activated = $bool;
-		if($bool){
-			if(!in_array($this->getFullDamage(), [3, 11, 0, 8, 1, 9, 2, 10])){ //Not open TODO: Find a better way to detect if a door is open
-				$this->meta ^= 0x04;
-				$this->getLevel()->setBlock($this, $this, true);
+
+		if(($this->getDamage() & 0x08) === 0x08){ //Top
+			$down = $this->getSide(0);
+			if($down->getId() === $this->getId()){
+				$meta = $down->getDamage() ^ 0x04;
+				$this->getLevel()->setBlock($down, Block::get($this->getId(), $meta), true);
 				$this->level->addSound(new DoorSound($this));
 			}
 		}else{
-			if(in_array($this->getFullDamage(), [3, 11, 0, 8, 1, 9, 2, 10])){ //Open
-				$this->meta ^= 0x04;
-				$this->getLevel()->setBlock($this, $this, true);
-				$this->level->addSound(new DoorSound($this));
-			}
+			$this->meta ^= 0x04;
+			$this->getLevel()->setBlock($this, $this, true);
+			$this->level->addSound(new DoorSound($this));
 		}
 	}
 }
