@@ -236,7 +236,8 @@ class Block extends Position implements Metadatable{
 	const DARK_OAK_WOOD_STAIRS = 164;
 	const DARK_OAK_WOODEN_STAIRS = 164;
 
-	const IRON_TRAPDOOR = 140;
+
+	const IRON_TRAPDOOR = 167;
 	const HAY_BALE = 170;
 	const CARPET = 171;
 	const HARDENED_CLAY = 172;
