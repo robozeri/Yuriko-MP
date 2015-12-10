@@ -34,10 +34,29 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
             $this->level->scheduleUpdate($this, 1);
             return Level::BLOCK_UPDATE_NORMAL;
         }elseif($type === Level::BLOCK_UPDATE_SCHEDULED){
-            $this->level->setBlock($this, $this, true, true);
+            $this->level->setBlock($this, $this, true, true, true);
             return Level::BLOCK_UPDATE_SCHEDULED;
         }
         return false;
+    }
+
+    public function getRedstoneInput(){
+        $power = 0;
+        for($s = 0; $s <= 5; $s++){
+            $sideBlock = $this->getSide($s);
+            if(($o = $sideBlock->getRedstoneOutput()) > $this->getRedstoneOutput()){
+                $power += $o;
+            }
+            if($s === 0 or $s === 1){
+                for($t = 2; $t <= 5; $t++){
+                    $stepBlock = $sideBlock->getSide($t);
+                    if($stepBlock->getId() === $this->id and ($o = $sideBlock->getSide($t)->getRedstoneOutput()) > $this->getRedstoneOutput()){
+                        $power += $o;
+                    }
+                }
+            }
+        }
+        return $power > 15 ? 15 : $power;
     }
 
     public function getRedstoneOutput(){

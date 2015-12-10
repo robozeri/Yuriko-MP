@@ -21,9 +21,33 @@
 
 namespace pocketmine\block;
 
+use pocketmine\level\Level;
+
 abstract class Solid extends Block{
-	
+	protected $redstoneOutput = 0;
+
 	public function isSolid(){
 		return true;
+	}
+
+	/*public function onUpdate($type){
+		if($type === Level::BLOCK_UPDATE_NORMAL){
+			if($this->getSide(0)->getId() === self::REDSTONE_TORCH){
+				$this->setRedstoneOutput(15);
+			}elseif($this->hasRedstoneOutput()){
+				$this->setRedstoneOutput(0);
+			}
+			return Level::BLOCK_UPDATE_NORMAL;
+		}
+		return false;
+	}*/
+
+	public function setRedstoneOutput($o){
+		$this->redstoneOutput = (int) $o;
+		$this->level->updateAround($this);
+	}
+
+	public function getRedstoneOutput(){
+		return $this->redstoneOutput;
 	}
 }
