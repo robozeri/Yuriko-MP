@@ -25,40 +25,40 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
                 return Level::BLOCK_UPDATE_NORMAL;
             }
         }elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-            if(($p = $this->getRedstoneInput()) > 0){ //Is receiving power (> 0)
-                if(!$this->isActivated()){
-                    $this->setActivated(true);
-                }
-                $this->setRedstoneOutput($p - 1);
-            }else{
-                if($this->isActivated()){
-                    $this->setActivated(false);
-                }
-                $this->setRedstoneOutput(0);
+            $curInput = $this->getRedstoneInput();
+
+            $prevOutput = $this->getRedstoneOutput();
+            $curOutput = max(0, $curInput - 1);
+
+            $update = ($prevOutput !== $curOutput);
+
+            if($update){
+                $this->setRedstoneOutput($curOutput);
+                $this->level->setBlock($this, $this, true, true, true);
+
+                return Level::BLOCK_UPDATE_REDSTONE;
             }
-            $this->level->setBlock($this, $this, true, true, true);
-            return Level::BLOCK_UPDATE_REDSTONE;
         }
         return false;
     }
 
     public function getRedstoneInput(){
-        $power = 0;
+        $power = [0];
         for($s = 0; $s <= 5; $s++){
             $sideBlock = $this->getSide($s);
             if(($o = $sideBlock->getRedstoneOutput()) > $this->getRedstoneOutput()){
-                $power += $o;
+                $power[] = $o;
             }
             if($s === 0 or $s === 1){
                 for($t = 2; $t <= 5; $t++){
                     $stepBlock = $sideBlock->getSide($t);
                     if($stepBlock->getId() === $this->id and ($o = $sideBlock->getSide($t)->getRedstoneOutput()) > $this->getRedstoneOutput()){
-                        $power += $o;
+                        $power[] = $o;
                     }
                 }
             }
         }
-        return $power > 15 ? 15 : $power;
+        return max($power);
     }
 
     public function getRedstoneOutput(){
@@ -75,6 +75,7 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
 
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
         if($face === 1 and !$this->getSide(0)->isTransparent()){ //Up
+            $this->onUpdate(Level::BLOCK_UPDATE_REDSTONE);
             return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
         }
         return false;

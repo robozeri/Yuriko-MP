@@ -1004,13 +1004,13 @@ class Block extends Position implements Metadatable{
 	 * @return int 0-15 - standard redstone input from neighbour blocks
 	 */
 	public function getRedstoneInput(){
-		$power = 0;
+		$power = [0];
 		for($s = 0; $s <= 5; $s++){
 			if(($o = $this->getSide($s)->getRedstoneOutput()) > $this->getRedstoneOutput()){
-				$power += $o;
+				$power[] = $o;
 			}
 		}
-		return $power > 15 ? 15 : $power;
+		return max($power);
 	}
 
 	/**
