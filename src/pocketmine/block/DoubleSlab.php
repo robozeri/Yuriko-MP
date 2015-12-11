@@ -22,8 +22,9 @@
 namespace pocketmine\block;
 
 use pocketmine\item\Item;
+use pocketmine\item\Tool;
 
-class DoubleWoodSlab extends Solid{
+class DoubleSlab extends Solid{
 	protected $id = self::DOUBLE_WOOD_SLAB;
 
 	public function __construct($meta = 0){
@@ -49,17 +50,16 @@ class DoubleWoodSlab extends Solid{
 			6 => "",
 			7 => ""
 		];
-		return "Double " . $names[$this->meta & 0x07] . " Wooden Slab";
+		return "Double " . $names[$this->meta & 0x07] . " Slab";
 	}
 
 	public function getDrops(Item $item){
-		return [
-			[Item::WOOD_SLAB, $this->meta & 0x07, 2],
-		];
-	}
+		if($item->isPickaxe() >= 1){
+			return [
+				[Item::SLAB, $this->meta & 0x07, 2],
+ 			];
+ 		}
+		return [];
+ 	}
 
-	public function isBreakable(Item $item){
-		$this->getLevel()->setBlock($this, new Air(), true, true);
-		return true;
-	}
 }

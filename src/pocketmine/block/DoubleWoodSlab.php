@@ -22,6 +22,7 @@
 namespace pocketmine\block;
 
 use pocketmine\item\Item;
+use pocketmine\item\Tool;
 
 class DoubleWoodSlab extends Solid{
 	protected $id = self::DOUBLE_WOOD_SLAB;
@@ -56,9 +57,5 @@ class DoubleWoodSlab extends Solid{
 		return [
 			[Item::WOOD_SLAB, $this->meta & 0x07, 2],
 		];
-	}
-	
-	public function isBreakable(Item $item){
-		return true;
 	}
 }
