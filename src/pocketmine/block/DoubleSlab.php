@@ -25,7 +25,8 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class DoubleSlab extends Solid{
-	protected $id = self::DOUBLE_WOOD_SLAB;
+
+	protected $id = self::DOUBLE_SLAB;
 
 	public function __construct($meta = 0){
 		$this->meta = $meta;
@@ -36,18 +37,18 @@ class DoubleSlab extends Solid{
 	}
 
 	public function getToolType(){
-		return Tool::TYPE_AXE;
+		return Tool::TYPE_PICKAXE;
 	}
 
 	public function getName(){
 		static $names = [
-			0 => "Oak",
-			1 => "Spruce",
-			2 => "Birch",
-			3 => "Jungle",
-			4 => "Acacia",
-			5 => "Dark Oak",
-			6 => "",
+			0 => "Stone",
+			1 => "Quartz",
+			2 => "Cobblestone",
+			3 => "Sandstone",
+			4 => "Bricks",
+			5 => "Stone Bricks",
+			6 => "Red Sandstone",
 			7 => ""
 		];
 		return "Double " . $names[$this->meta & 0x07] . " Slab";
