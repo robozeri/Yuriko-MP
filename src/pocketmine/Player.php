@@ -1666,6 +1666,14 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 					$this->addEffect(Effect::getEffect(Effect::HUNGER)->setAmplifier(2)->setDuration(15 * 20));
 					//$this->addEffect(Effect::getEffect(Effect::NAUSEA)->setAmplifier(1)->setDuration(15 * 20));
 					$this->addEffect(Effect::getEffect(Effect::POISON)->setAmplifier(3)->setDuration(60 * 20));
+				}elseif($slot->getId() === Item::GOLDEN_APPLE and $slot->getDamage() === 0){
+					$this->addEffect(Effect::getEffect(Effect::ABSORPTION)->setDuration(120 * 20));
+					$this->addEffect(Effect::getEffect(Effect::REGENERATION)->setDuration(5 * 20)->setAmplifier(2));
+				}elseif($slot->getId() === Item::GOLDEN_APPLE and $slot->getDamage() === 1){
+					$this->addEffect(Effect::getEffect(Effect::ABSORPTION)->setDuration(120 * 20));
+					$this->addEffect(Effect::getEffect(Effect::REGENERATION)->setDuration(30 * 20)->setAmplifier(5));
+					$this->addEffect(Effect::getEffect(Effect::FIRE_RESISTANCE)->setDuration(300 * 20));
+					$this->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTANCE)->setDuration(300 * 20));
 				}
 			}
 		}
