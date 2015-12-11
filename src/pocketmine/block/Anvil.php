@@ -89,7 +89,6 @@ class Anvil extends Fallable{
  		];
  		$this->meta = $faces[$player instanceof Player?$player->getDirection():0];
  		$this->getLevel()->setBlock($block, $this, true);
-                $this->getLevel()->addSound(new AnvilUseSound($this));
  		
  		return true;
  	}

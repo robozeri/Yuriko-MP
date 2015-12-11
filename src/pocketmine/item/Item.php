@@ -782,6 +782,8 @@ class Item{
 		self::addCreativeItem(Item::get(Item::PUMPKIN, 0));
 		self::addCreativeItem(Item::get(Item::LIT_PUMPKIN, 0));
 		self::addCreativeItem(Item::get(Item::COBWEB, 0));
+		self::addCreativeItem(Item::get(Item::GOLDEN_APPLE, 0));
+		self::addCreativeItem(Item::get(Item::GOLDEN_APPLE, 1));
 		self::addCreativeItem(Item::get(Item::HAY_BALE, 0));
 		self::addCreativeItem(Item::get(Item::TALL_GRASS, 1));
 		self::addCreativeItem(Item::get(Item::TALL_GRASS, 2));
@@ -976,7 +978,6 @@ class Item{
 		self::addCreativeItem(Item::get(Item::BEETROOT_SEEDS, 0));
 		self::addCreativeItem(Item::get(Item::EGG, 0));
 		self::addCreativeItem(Item::get(Item::APPLE, 0));
-		self::addCreativeItem(Item::get(Item::GOLDEN_APPLE, 0));
 		// TODO: Golden apple enchanted
 		self::addCreativeItem(Item::get(Item::RAW_FISH, 0));
 		self::addCreativeItem(Item::get(Item::RAW_FISH, 1)); // TODO: Raw salmon
