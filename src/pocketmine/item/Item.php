@@ -170,6 +170,10 @@ class Item{
 	const GLOWING_REDSTONE_ORE = 74;
 	const LIT_REDSTONE_ORE = 74;
 
+	const UNLIT_REDSTONE_TORCH = 75;
+	const LIT_REDSTONE_TORCH = 76;
+	const REDSTONE_TORCH = 76;
+
 	const SNOW = 78;
 	const SNOW_LAYER = 78;
 	const ICE = 79;
@@ -932,7 +936,7 @@ class Item{
 		self::addCreativeItem(Item::get(Item::GOLD_BOOTS, 0));
 		// TODO: Lever
 		// TODO: Redstone lamp
-		// TODO: Redstone torch
+		self::addCreativeItem(Item::get(Item::REDSTONE_TORCH, 0));
 		// TODO: Wood pressure plate
 		// TODO: Stone pressure plate
 		// TODO: Weighted pressure plate light

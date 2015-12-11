@@ -19,14 +19,12 @@
  *
 */
 
-
 namespace pocketmine\block;
 
 use pocketmine\item\Item;
 use pocketmine\Player;
 
-class LitRedstoneTorch extends Flowable{ //implements Redstone
-
+class LitRedstoneTorch extends Flowable{
     protected $id = self::LIT_REDSTONE_TORCH;
 
     public function __construct($meta = 0){
@@ -43,6 +41,7 @@ class LitRedstoneTorch extends Flowable{ //implements Redstone
 
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
         $below = $this->getSide(0);
+
         if($target->isTransparent() === false and $face !== 0){
             $faces = [
                 1 => 5,
@@ -53,12 +52,15 @@ class LitRedstoneTorch extends Flowable{ //implements Redstone
             ];
             $this->meta = $faces[$face];
             $this->getLevel()->setBlock($block, $this, true, true);
+
             return true;
-        }elseif($below->isTransparent() === false){
+        }elseif($below->isTransparent() === false or $below->getId() === self::FENCE or $below->getId() === self::COBBLE_WALL){
             $this->meta = 0;
             $this->getLevel()->setBlock($block, $this, true, true);
+
             return true;
         }
+
         return false;
     }
 
@@ -66,5 +68,9 @@ class LitRedstoneTorch extends Flowable{ //implements Redstone
         return [
             [$this->id, 0, 1],
         ];
+    }
+
+    public function getRedstoneOutput(){
+        return 15;
     }
 }

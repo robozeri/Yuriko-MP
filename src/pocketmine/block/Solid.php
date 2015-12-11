@@ -30,17 +30,20 @@ abstract class Solid extends Block{
 		return true;
 	}
 
-	/*public function onUpdate($type){
+	public function onUpdate($type){
 		if($type === Level::BLOCK_UPDATE_NORMAL){
-			if($this->getSide(0)->getId() === self::REDSTONE_TORCH){
+			if($this->getSide(0)->getId() === self::LIT_REDSTONE_TORCH){
 				$this->setRedstoneOutput(15);
 			}elseif($this->hasRedstoneOutput()){
 				$this->setRedstoneOutput(0);
 			}
+			if($this->getSide(1)->getId() === self::LIT_REDSTONE_TORCH and $this->hasRedstoneOutput()){
+				$this->level->setBlock($this->getSide(1), new UnlitRedstoneTorch(), true);
+			}
 			return Level::BLOCK_UPDATE_NORMAL;
 		}
 		return false;
-	}*/
+	}
 
 	public function setRedstoneOutput($o){
 		$this->redstoneOutput = (int) $o;
