@@ -56,7 +56,7 @@ class SnowLayer extends Flowable{
 				if($down->getId() === $this->getId() && $down->getDamage() <= 7) {
 					if ($down->getDamage() === 7) {
 						$this->getLevel()->setBlock($down, new Snow(), true);
-					} else
+					} else{
 						$down->setDamage($down->getDamage() + 1);
 					$this->getLevel()->setBlock($down, $down, true);
 				}
@@ -64,10 +64,12 @@ class SnowLayer extends Flowable{
 				return true;
 
 			}else {
-			$this->getLevel()->setBlock($block, $this, true);
+					$this->getLevel()->setBlock($block, $this, true);
 
-			return true;
+					return true;
+			}
 		}
+		return false;
 	}
 
 	public function onUpdate($type){
