@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class DarkOakDoor extends Door{
-
     protected $id = self::DARK_OAK_DOOR_BLOCK;
 
     public function __construct($meta = 0){
@@ -34,10 +33,6 @@ class DarkOakDoor extends Door{
 
     public function getName(){
         return "Dark Oak Door Block";
-    }
-
-    public function canBeActivated(){
-        return true;
     }
 
     public function getHardness(){
@@ -50,7 +45,7 @@ class DarkOakDoor extends Door{
 
     public function getDrops(Item $item){
         return [
-            [Item::DARK_OAK_DOOR, 0, 1],
+            [Item::DARK_OAK_DOOR_BLOCK, 0, 1],
         ];
     }
 }

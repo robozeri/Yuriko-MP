@@ -26,8 +26,28 @@ use pocketmine\block\Block;
 class WoodenDoor extends Item{
 
 	public function __construct($meta = 0, $count = 1){
-		$this->block = Block::get(Item::WOODEN_DOOR_BLOCK);
-		parent::__construct(self::WOODEN_DOOR, 0, $count, "Wooden Door");
+		parent::__construct(self::WOODEN_DOOR, $meta, $count, "Wooden Door");
+		switch($meta){
+			case 1:
+				$this->block = Block::get(Block::SPRUCE_DOOR_BLOCK);
+				break;
+			case 2:
+				$this->block = Block::get(Block::BIRCH_DOOR_BLOCK);
+				break;
+			case 3:
+				$this->block = Block::get(Block::JUNGLE_DOOR_BLOCK);
+				break;
+			case 4:
+				$this->block = Block::get(Block::ACACIA_DOOR_BLOCK);
+				break;
+			case 5:
+				$this->block = Block::get(Block::DARK_OAK_DOOR_BLOCK);
+				break;
+			case 0:
+			default:
+				$this->block = Block::get(Block::DARK_OAK_DOOR_BLOCK);
+				break;
+		}
 	}
 
 	public function getMaxStackSize(){

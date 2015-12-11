@@ -24,7 +24,7 @@ namespace pocketmine\item;
 class Redstone extends Item{
 
 	public function __construct($meta = 0, $count = 1){
-		parent::__construct(self::REDSTONE, $meta, $count, "Redstone");
+		parent::__construct(self::REDSTONE_BLOCK, $meta, $count, "Redstone");
 	}
 }
 

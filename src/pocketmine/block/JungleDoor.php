@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class JungleDoor extends Door{
-
     protected $id = self::JUNGLE_DOOR_BLOCK;
 
     public function __construct($meta = 0){
@@ -34,10 +33,6 @@ class JungleDoor extends Door{
 
     public function getName(){
         return "Jungle Door Block";
-    }
-
-    public function canBeActivated(){
-        return true;
     }
 
     public function getHardness(){
@@ -50,7 +45,7 @@ class JungleDoor extends Door{
 
     public function getDrops(Item $item){
         return [
-            [Item::JUNGLE_DOOR, 0, 1],
+            [Item::JUNGLE_DOOR_BLOCK, 0, 1],
         ];
     }
 }
