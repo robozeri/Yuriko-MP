@@ -137,6 +137,9 @@ class Block extends Position implements Metadatable{
 	const REDSTONE_ORE = 73;
 	const GLOWING_REDSTONE_ORE = 74;
 	const LIT_REDSTONE_ORE = 74;
+	const UNLIT_REDSTONE_TORCH = 75;
+	const LIT_REDSTONE_TORCH = 76;
+	const REDSTONE_TORCH = 76;
 
 	const SNOW = 78;
 	const SNOW_LAYER = 78;
@@ -382,6 +385,8 @@ class Block extends Position implements Metadatable{
 
 			self::$list[self::COBBLESTONE_STAIRS] = CobblestoneStairs::class;
 			self::$list[self::WALL_SIGN] = WallSign::class;
+			self::$list[self::UNLIT_REDSTONE_TORCH] = UnlitRedstoneTorch::class;
+			self::$list[self::LIT_REDSTONE_TORCH] = LitRedstoneTorch::class;
 
 			self::$list[self::IRON_DOOR_BLOCK] = IronDoor::class;
 			self::$list[self::REDSTONE_ORE] = RedstoneOre::class;
