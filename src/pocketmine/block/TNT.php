@@ -23,6 +23,7 @@ namespace pocketmine\block;
 
 use pocketmine\entity\Entity;
 use pocketmine\item\Item;
+use pocketmine\level\Level;
 use pocketmine\nbt\tag\Byte;
 use pocketmine\nbt\tag\Compound;
 use pocketmine\nbt\tag\Double;
@@ -48,6 +49,37 @@ class TNT extends Solid{
 
 	public function canBeActivated(){
 		return true;
+	}
+
+	public function onUpdate($type){
+		if($type === Level::BLOCK_UPDATE_NORMAL){
+			if($this->getRedstoneInput() > 0){
+				$this->getLevel()->setBlock($this, new Air(), true);
+
+				$mot = (new Random())->nextSignedFloat() * M_PI * 2;
+				$tnt = Entity::createEntity("PrimedTNT", $this->getLevel()->getChunk($this->x >> 4, $this->z >> 4), new Compound("", [
+					"Pos" => new Enum("Pos", [
+						new Double("", $this->x + 0.5),
+						new Double("", $this->y),
+						new Double("", $this->z + 0.5)
+					]),
+					"Motion" => new Enum("Motion", [
+						new Double("", -sin($mot) * 0.02),
+						new Double("", 0.2),
+						new Double("", -cos($mot) * 0.02)
+					]),
+					"Rotation" => new Enum("Rotation", [
+						new Float("", 0),
+						new Float("", 0)
+					]),
+					"Fuse" => new Byte("Fuse", 80)
+				]));
+
+				$tnt->spawnToAll();
+				return Level::BLOCK_UPDATE_NORMAL;
+			}
+		}
+		return false;
 	}
 
 	public function onActivate(Item $item, Player $player = null){
