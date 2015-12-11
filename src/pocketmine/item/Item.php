@@ -155,7 +155,7 @@ class Item{
 	const LIT_FURNACE = 62;
 	const SIGN_POST = 63;
 	const DOOR_BLOCK = 64;
-	const WOODEN_DOOR_BLOCK = 64;
+	const OAK_DOOR_BLOCK = 64;
 	const WOOD_DOOR_BLOCK = 64;
 	const LADDER = 65;
 	const RAIL = 66;
@@ -286,6 +286,12 @@ class Item{
 	const FENCE_GATE_JUNGLE = 185;
 	const FENCE_GATE_DARK_OAK = 186;
 	const FENCE_GATE_ACACIA = 187;
+
+	const SPRUCE_DOOR_BLOCK = 193;
+	const BIRCH_DOOR_BLOCK = 194;
+	const JUNGLE_DOOR_BLOCK = 195;
+	const ACACIA_DOOR_BLOCK = 196;
+	const DARK_OAK_DOOR_BLOCK = 197;
 
 	const GRASS_PATH = 198;
 
@@ -507,6 +513,12 @@ class Item{
 			self::$list[self::IRON_HOE] = IronHoe::class;
 			self::$list[self::DIAMOND_HOE] = DiamondHoe::class;
 			self::$list[self::GOLD_HOE] = GoldHoe::class;
+			self::$list[self::OAK_DOOR_BLOCK] = OakDoor::class;
+			self::$list[self::SPRUCE_DOOR_BLOCK] = SpruceDoor::class;
+			self::$list[self::ACACIA_DOOR_BLOCK] = AcaciaDoor::class;
+			self::$list[self::BIRCH_DOOR_BLOCK] = BirchDoor::class;
+			self::$list[self::DARK_OAK_DOOR_BLOCK] = DarkOakDoor::class;
+			self::$list[self::JUNGLE_DOOR_BLOCK] = JungleDoor::class;
 			self::$list[self::WHEAT_SEEDS] = WheatSeeds::class;
 			self::$list[self::WHEAT] = Wheat::class;
 			self::$list[self::BREAD] = Bread::class;
