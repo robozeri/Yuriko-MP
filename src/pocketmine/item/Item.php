@@ -107,6 +107,9 @@ class Item{
 
 	const BED_BLOCK = 26;
 
+	const POWERED_RAIL = 27;
+	const DETECTOR_RAIL = 28;
+
 
 	const COBWEB = 30;
 	const TALL_GRASS = 31;
@@ -155,6 +158,7 @@ class Item{
 	const WOODEN_DOOR_BLOCK = 64;
 	const WOOD_DOOR_BLOCK = 64;
 	const LADDER = 65;
+	const RAIL = 66;
 
 	const COBBLE_STAIRS = 67;
 	const COBBLESTONE_STAIRS = 67;
