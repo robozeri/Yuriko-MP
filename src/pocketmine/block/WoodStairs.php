@@ -25,7 +25,6 @@ use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
 class WoodStairs extends Stair{
-
 	protected $id = self::WOOD_STAIRS;
 
 	public function __construct($meta = 0){
@@ -38,11 +37,6 @@ class WoodStairs extends Stair{
 
 	public function getToolType(){
 		return Tool::TYPE_AXE;
-	}
-
-	public function isBreakable(Item $item){
-		$this->getLevel()->setBlock($this, new Air(), true, true);
-		return true;
 	}
 
 	public function getDrops(Item $item){
