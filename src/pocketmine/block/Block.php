@@ -75,6 +75,8 @@ class Block extends Position implements Metadatable{
 	const SANDSTONE = 24;
 
 	const BED_BLOCK = 26;
+	const POWERED_RAIL = 27;
+	const DETECTOR_RAIL = 28;
 
 
 	const COBWEB = 30;
@@ -124,6 +126,7 @@ class Block extends Position implements Metadatable{
 	const WOODEN_DOOR_BLOCK = 64;
 	const WOOD_DOOR_BLOCK = 64;
 	const LADDER = 65;
+	const RAIL = 66;
 
 	const COBBLE_STAIRS = 67;
 	const COBBLESTONE_STAIRS = 67;
@@ -340,6 +343,8 @@ class Block extends Position implements Metadatable{
 			self::$list[self::LAPIS_BLOCK] = Lapis::class;
 			self::$list[self::SANDSTONE] = Sandstone::class;
 			self::$list[self::BED_BLOCK] = Bed::class;
+			self::$list[self::POWERED_RAIL] = PoweredRail::class;
+			self::$list[self::DETECTOR_RAIL] = DetectorRail::class;
 			self::$list[self::COBWEB] = Cobweb::class;
 			self::$list[self::TALL_GRASS] = TallGrass::class;
 			self::$list[self::DEAD_BUSH] = DeadBush::class;
@@ -373,6 +378,7 @@ class Block extends Position implements Metadatable{
 			self::$list[self::SIGN_POST] = SignPost::class;
 			self::$list[self::WOOD_DOOR_BLOCK] = WoodDoor::class;
 			self::$list[self::LADDER] = Ladder::class;
+			self::$list[self::RAIL] = Rail::class;
 
 			self::$list[self::COBBLESTONE_STAIRS] = CobblestoneStairs::class;
 			self::$list[self::WALL_SIGN] = WallSign::class;
@@ -990,13 +996,24 @@ class Block extends Position implements Metadatable{
 	}
 
 	/**
-	 * @return int 0-15 - standard redstone input from neighbour blocks
+	 * @return int 0-15
 	 */
 	public function getRedstoneInput(){
 		$power = 0;
 		for($s = 0; $s <= 5; $s++){
-			if(($o = $this->getSide($s)->getRedstoneOutput()) > $this->getRedstoneOutput()){
+			$sideBlock = $this->getSide($s);
+			$o = $sideBlock->getRedstoneOutput();
+			if($o > $this->getRedstoneOutput()){
 				$power += $o;
+			}
+			if($s === 0 or $s === 1){
+				for($t = 2; $t <= 5; $t++){
+					$o = $sideBlock->getSide($t)->getRedstoneOutput();
+					if($o > $this->getRedstoneOutput()){
+						$power += $o;
+					}
+				}
+
 			}
 		}
 		return $power > 15 ? 15 : $power;
@@ -1007,9 +1024,5 @@ class Block extends Position implements Metadatable{
 	 */
 	public function getRedstoneOutput(){
 		return 0;
-	}
-
-	public function hasRedstoneOutput(){
-		return $this->hasRedstoneOutput() > 0;
 	}
 }
