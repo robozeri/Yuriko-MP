@@ -78,4 +78,11 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
         }
         return false;
     }
+
+    public function getDrops(Item $item)
+    {
+        return [
+            [Item::REDSTONE_DUST, 0, 1],
+        ];
+    }
 }
