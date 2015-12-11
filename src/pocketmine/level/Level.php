@@ -1028,72 +1028,86 @@ class Level implements ChunkManager, Metadatable{
 		$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y - 1, $pos->z))));
 		if(!$ev->isCancelled()){
 			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 		}
 
 		$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y + 1, $pos->z))));
 		if(!$ev->isCancelled()){
 			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 		}
 
 		$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x - 1, $pos->y, $pos->z))));
 		if(!$ev->isCancelled()){
 			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 		}
 
 		$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x + 1, $pos->y, $pos->z))));
 		if(!$ev->isCancelled()){
 			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 		}
 
 		$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y, $pos->z - 1))));
 		if(!$ev->isCancelled()){
 			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 		}
 
 		$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y, $pos->z + 1))));
 		if(!$ev->isCancelled()){
 			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+			$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 		}
 
 		if($extended){
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x - 1, $pos->y + 1, $pos->z))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x + 1, $pos->y + 1, $pos->z))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y + 1, $pos->z - 1))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y + 1, $pos->z + 1))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x - 1, $pos->y - 1, $pos->z))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x + 1, $pos->y - 1, $pos->z))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y - 1, $pos->z - 1))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 
 			$this->server->getPluginManager()->callEvent($ev = new BlockUpdateEvent($this->getBlock($this->temporalVector->setComponents($pos->x, $pos->y - 1, $pos->z + 1))));
 			if(!$ev->isCancelled()){
 				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+				$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 			}
 		}
 	}
@@ -1445,7 +1459,7 @@ class Level implements ChunkManager, Metadatable{
 	 * @param Block   $block
 	 * @param bool    $direct @deprecated
 	 * @param bool    $update
-	 * @parm bool     $extended
+	 * @param bool     $extended
 	 *
 	 * @return bool Whether the block has been updated or not
 	 */
