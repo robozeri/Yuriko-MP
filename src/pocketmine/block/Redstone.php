@@ -24,7 +24,7 @@ namespace pocketmine\block;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 
-class Redstone extends Solid implements RedPowerSource{
+class Redstone extends Solid{
 	protected $id = self::REDSTONE_BLOCK;
 	private $activated = false;
 
@@ -55,14 +55,5 @@ class Redstone extends Solid implements RedPowerSource{
 
 	public function getRedstoneOutput(){
 		return 15;
-	}
-
-	//TODO when redstone will get more advanced
-	public function isActivated(){
-		return $this->activated === true;
-	}
-
-	public function setActivated($bool){
-		$this->activated = $bool;
 	}
 }

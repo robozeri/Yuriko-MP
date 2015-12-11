@@ -22,6 +22,7 @@
 namespace pocketmine\block;
 
 use pocketmine\item\Item;
+use pocketmine\level\Level;
 use pocketmine\Player;
 
 class LitRedstoneTorch extends Flowable{
@@ -37,6 +38,41 @@ class LitRedstoneTorch extends Flowable{
 
     public function getName(){
         return "Redstone Torch";
+    }
+
+    public function onUpdate($type){
+        if($type === Level::BLOCK_UPDATE_NORMAL){
+            $below = $this->getSide(0);
+            $side = $this->getDamage();
+            $faces = [
+                1 => 4,
+                2 => 5,
+                3 => 2,
+                4 => 3,
+                5 => 0,
+                6 => 0,
+                0 => 0,
+            ];
+
+            if($this->getSide($faces[$side])->isTransparent() === true and !($side === 0 and ($below->getId() === self::FENCE or $below->getId() === self::COBBLE_WALL))){
+                $this->getLevel()->useBreakOn($this);
+
+                return Level::BLOCK_UPDATE_NORMAL;
+            }
+        }elseif($type === Level::BLOCK_UPDATE_REDSTONE){
+            if($this->getSide(0)->hasRedstoneOutput() and $this->meta === 0){
+                $this->level->setBlock($this, new UnlitRedstoneTorch(), true);
+                return Level::BLOCK_UPDATE_REDSTONE;
+            }
+            $sideUp = $this->getSide(1);
+            if($sideUp->isSolid()){
+                /** @var Solid $sideUp */
+                $sideUp->setRedstoneOutput(15);
+                $this->getSide(1, 2)->onUpdate(Level::BLOCK_UPDATE_REDSTONE);
+            }
+        }
+
+        return false;
     }
 
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){

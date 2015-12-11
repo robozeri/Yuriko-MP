@@ -6,7 +6,7 @@ use pocketmine\item\Item;
 use pocketmine\level\Level;
 use pocketmine\Player;
 
-class RedstoneDust extends Flowable implements RedPowerConductor{
+class RedstoneDust extends Flowable{
     protected $id = self::REDSTONE_DUST;
     protected $activated = false;
 
@@ -25,14 +25,11 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
                 return Level::BLOCK_UPDATE_NORMAL;
             }
         }elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-            $curInput = $this->getRedstoneInput();
 
             $prevOutput = $this->getRedstoneOutput();
-            $curOutput = max(0, $curInput - 1);
+            $curOutput = ($i = $this->getRedstoneInput()) > 0 ? ($i - 1) : 0;
 
-            $update = ($prevOutput !== $curOutput);
-
-            if($update){
+            if($curOutput !== $prevOutput){
                 $this->setRedstoneOutput($curOutput);
                 $this->level->setBlock($this, $this, true, true, true);
 
@@ -58,19 +55,11 @@ class RedstoneDust extends Flowable implements RedPowerConductor{
                 }
             }
         }
-        return max($power);
+        return min(15, max($power));
     }
 
     public function getRedstoneOutput(){
         return $this->meta;
-    }
-
-    public function isActivated(){
-        return $this->activated === true;
-    }
-
-    public function setActivated($bool){
-        $this->activated = $bool;
     }
 
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){

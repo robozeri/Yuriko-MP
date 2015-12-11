@@ -1502,6 +1502,7 @@ class Level implements ChunkManager, Metadatable{
 						$entity->scheduleUpdate();
 					}
 					$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_NORMAL);
+					$ev->getBlock()->onUpdate(self::BLOCK_UPDATE_REDSTONE);
 				}
 
 				$this->updateAround($pos, $extended);

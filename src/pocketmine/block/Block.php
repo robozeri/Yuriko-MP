@@ -1010,7 +1010,7 @@ class Block extends Position implements Metadatable{
 				$power[] = $o;
 			}
 		}
-		return max($power);
+		return min(15, max($power));
 	}
 
 	/**

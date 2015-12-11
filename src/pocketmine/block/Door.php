@@ -214,12 +214,13 @@ abstract class Door extends Transparent implements RedPowerConsumer{
 
 				return Level::BLOCK_UPDATE_NORMAL;
 			}
+		}elseif($type === Level::BLOCK_UPDATE_REDSTONE){
 			if(!$this->isOpen and !$this->isActivated() and $this->getRedstoneInput() > 0){
 				$this->setActivated(true);
 			}elseif($this->isOpen and $this->isActivated() and $this->getRedstoneInput() === 0){
 				$this->setActivated(false);
 			}
-			return Level::BLOCK_UPDATE_NORMAL;
+			return Level::BLOCK_UPDATE_REDSTONE;
 		}
 
 		return false;
