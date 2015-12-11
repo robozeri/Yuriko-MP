@@ -55,7 +55,7 @@ class SnowLayer extends Flowable{
 		if($down->isSolid()){
 				if($down->getId() === $this->getId() && $down->getDamage() <= 7) {
 					if ($down->getDamage() === 7) {
-						$this->getLevel()->setBlock($down, new Snow(), true);
+						$this->getLevel()->setBlock($down, $this, true);
 					} else{
 						$down->setDamage($down->getDamage() + 1);
 					$this->getLevel()->setBlock($down, $down, true);
