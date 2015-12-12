@@ -553,7 +553,7 @@ class Item{
 			self::$list[self::IRON_DOOR] = IronDoor::class;
 			self::$list[self::REDSTONE_DUST] = RedstoneDust::class;
 			self::$list[self::SNOWBALL] = Snowball::class;
-			//self::$list[self::BOAT] = Boat::class;
+			self::$list[self::OAK_BOAT] = OakBoat::class;
 			self::$list[self::LEATHER] = Leather::class;
 			self::$list[self::BRICK] = Brick::class;
 			self::$list[self::CLAY] = Clay::class;
