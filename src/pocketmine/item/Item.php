@@ -512,7 +512,6 @@ class Item{
 			self::$list[self::IRON_HOE] = IronHoe::class;
 			self::$list[self::DIAMOND_HOE] = DiamondHoe::class;
 			self::$list[self::GOLD_HOE] = GoldHoe::class;
-			self::$list[self::REDSTONE_LAMP] = RedstoneLamp::class;
 			self::$list[self::OAK_DOOR_BLOCK] = OakDoor::class;
 			self::$list[self::SPRUCE_DOOR_BLOCK] = SpruceDoor::class;
 			self::$list[self::ACACIA_DOOR_BLOCK] = AcaciaDoor::class;
@@ -874,7 +873,6 @@ class Item{
 		self::addCreativeItem(Item::get(Item::CLOCK, 0));
 		self::addCreativeItem(Item::get(Item::COMPASS, 0));
 		self::addCreativeItem(Item::get(Item::MINECART, 0));
-		self::addCreativeItem(Item::get(Item::REDSTONE_LAMP, 0));
 		// TODO: Oak boat
 		// TODO: Spruce boat
 		// TODO: Birch boat
@@ -950,7 +948,7 @@ class Item{
 		self::addCreativeItem(Item::get(Item::GOLD_LEGGINGS, 0));
 		self::addCreativeItem(Item::get(Item::GOLD_BOOTS, 0));
 		// TODO: Lever
-		// TODO: Redstone lamp
+		self::addCreativeItem(Item::get(Item::REDSTONE_LAMP, 0));
 		self::addCreativeItem(Item::get(Item::REDSTONE_TORCH, 0));
 		// TODO: Wood pressure plate
 		// TODO: Stone pressure plate
