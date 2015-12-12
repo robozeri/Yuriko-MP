@@ -137,9 +137,8 @@ class Slab extends Transparent{
 			return [
 				[$this->id, $this->meta & 0x07, 1],
 			];
-		}else{
-			return [];
 		}
+		return [];
 	}
 
 	public function getToolType(){

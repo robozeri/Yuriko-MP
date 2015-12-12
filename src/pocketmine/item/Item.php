@@ -125,9 +125,7 @@ class Item{
 	const GOLD_BLOCK = 41;
 	const IRON_BLOCK = 42;
 	const DOUBLE_SLAB = 43;
-	const DOUBLE_SLABS = 43;
 	const SLAB = 44;
-	const SLABS = 44;
 	const BRICKS = 45;
 	const BRICKS_BLOCK = 45;
 	const TNT = 46;
@@ -684,18 +682,12 @@ class Item{
 		self::addCreativeItem(Item::get(Item::NETHER_BRICKS_STAIRS, 0));
 		self::addCreativeItem(Item::get(Item::QUARTZ_STAIRS, 0));
 		self::addCreativeItem(Item::get(Item::SLAB, 0));
-		self::addCreativeItem(Item::get(Item::SLAB, 1));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 0));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 1));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 2));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 3));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 4));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 5));
-		self::addCreativeItem(Item::get(Item::SLAB, 3));
-		self::addCreativeItem(Item::get(Item::SLAB, 4));
-		self::addCreativeItem(Item::get(Item::SLAB, 5));
-		self::addCreativeItem(Item::get(Item::SLAB, 6));
-		self::addCreativeItem(Item::get(Item::SLAB, 7));
 		self::addCreativeItem(Item::get(Item::QUARTZ_BLOCK, 0));
 		self::addCreativeItem(Item::get(Item::QUARTZ_BLOCK, 1));
 		self::addCreativeItem(Item::get(Item::QUARTZ_BLOCK, 2));
