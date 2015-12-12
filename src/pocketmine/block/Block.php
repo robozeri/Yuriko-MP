@@ -195,6 +195,8 @@ class Block extends Position implements Metadatable{
 	const END_PORTAL_FRAME = 120;
 	const END_STONE = 121;
 
+	const UNLIT_REDSTONE_LAMP = 122;
+	const LIT_REDSTONE_LAMP = 123;
 	const SANDSTONE_STAIRS = 128;
 	const EMERALD_ORE = 129;
 
@@ -441,6 +443,8 @@ class Block extends Position implements Metadatable{
 			self::$list[self::BREWING_STAND] = BrewingStand::class;
 			self::$list[self::END_PORTAL_FRAME] = EndPortalFrame::class;
 			self::$list[self::END_STONE] = EndStone::class;
+			self::$list[self::LIT_REDSTONE_LAMP] = LitRedstoneLamp::class;
+			self::$list[self::UNLIT_REDSTONE_LAMP] = UnlitRedstoneLamp::class;
 			self::$list[self::SANDSTONE_STAIRS] = SandstoneStairs::class;
 			self::$list[self::EMERALD_ORE] = EmeraldOre::class;
 
