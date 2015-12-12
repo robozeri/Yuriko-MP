@@ -22,6 +22,7 @@
 namespace pocketmine\block;
 
 use pocketmine\item\Item;
+use pocketmine\item\RedstoneTorch;
 use pocketmine\level\Level;
 use pocketmine\Player;
 
@@ -55,12 +56,12 @@ class LitRedstoneTorch extends Flowable{
             ];
 
             if($this->getSide($faces[$side])->isTransparent() === true and !($side === 0 and ($below->getId() === self::FENCE or $below->getId() === self::COBBLE_WALL))){
-                $this->getLevel()->useBreakOn($this);
+                $this->level->useBreakOn($this);
 
                 return Level::BLOCK_UPDATE_NORMAL;
             }
         }elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-            if($this->getSide(0)->hasRedstoneOutput() and $this->meta === 0){
+            if($this->getSide(0)->hasRedstoneOutput() and ($this->meta === 0 or $this->meta === 5 or $this->meta === 6)){
                 $this->level->setBlock($this, new UnlitRedstoneTorch(), true);
                 return Level::BLOCK_UPDATE_REDSTONE;
             }
