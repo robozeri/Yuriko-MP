@@ -21,19 +21,24 @@
 
 namespace pocketmine\block;
 
-use pocketmine\item\Tool;
 use pocketmine\item\Item;
+use pocketmine\level\Level;
 
 class UnlitRedstoneLamp extends Solid{
-
     protected $id = self::UNLIT_REDSTONE_LAMP;
 
     public function __construct($meta = 0){
         $this->meta = $meta;
     }
 
-    public function getToolType(){
-        return Tool::TYPE_PICKAXE;
+    public function onUpdate($type){
+        if($type === Level::BLOCK_UPDATE_REDSTONE){
+            if($this->getRedstoneInput() > 0){
+                $this->level->setBlock($this, new LitRedstoneLamp(), true);
+            }
+            return Level::BLOCK_UPDATE_REDSTONE;
+        }
+        return false;
     }
 
     public function getName(){
@@ -44,13 +49,9 @@ class UnlitRedstoneLamp extends Solid{
         return 0.3;
     }
 
-    public function getLightLevel(){
-        return 0;
-    }
-
     public function getDrops(Item $item){
-        $drops = [];
-        $drops[] = [Item::REDSTONE_LAMP, 0, 1];
-        return $drops;
+        return [
+            [Item::REDSTONE_LAMP, 0, 1]
+        ];
     }
 }
