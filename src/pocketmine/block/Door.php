@@ -28,7 +28,7 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-abstract class Door extends Transparent implements RedPowerConsumer{
+abstract class Door extends Transparent{
 	protected $activated = false;
 	protected $isOpen = false;
 

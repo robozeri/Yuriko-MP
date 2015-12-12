@@ -30,6 +30,7 @@ use pocketmine\block\Block;
 use pocketmine\command\CommandSender;
 use pocketmine\entity\Arrow;
 use pocketmine\entity\AttributeManager;
+use pocketmine\entity\Boat;
 use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
 use pocketmine\entity\Human;
@@ -121,6 +122,7 @@ use pocketmine\network\protocol\Info as ProtocolInfo;
 use pocketmine\network\protocol\PlayerActionPacket;
 use pocketmine\network\protocol\PlayStatusPacket;
 use pocketmine\network\protocol\RespawnPacket;
+use pocketmine\network\protocol\SetEntityLinkPacket;
 use pocketmine\network\protocol\SetPlayerGameTypePacket;
 use pocketmine\network\protocol\TextPacket;
 
@@ -262,6 +264,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	protected $eatCoolDown = 0;
 	protected $food = 20;
 	protected $foodDepletion = 0;
+
+	//Riding
+	protected $riding = null;
 	
 
 	public function getAttributeManager(){
@@ -2026,6 +2031,15 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 					$this->forceMovement = null;
 				}
 
+				if($this->riding !== null){
+					$boat = $this->level->getEntity($this->riding);
+					if($boat instanceof Boat){
+						$boat->x = $packet->x;
+						$boat->y = $packet->y;
+						$boat->z = $packet->z;
+					}
+				}
+
 				break;
 			case ProtocolInfo::MOB_EQUIPMENT_PACKET:
 				if($this->spawned === false or !$this->isAlive()){
@@ -2480,6 +2494,38 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 						$this->kick("Attempting to attack an invalid entity");
 						$this->server->getLogger()->warning($this->getServer()->getLanguage()->translateString("pocketmine.player.invalidEntity", [$this->getName()]));
 						break;
+					}elseif($target instanceof Boat){
+						if($packet->action === 1){
+							$pk = new SetEntityLinkPacket();
+							$pk->from = $target->getId();
+							$pk->to = $this->id;
+							$pk->type = 2;
+
+							$this->getServer()->broadcastPacket($this->level->getPlayers(), $pk);
+							$pk = new SetEntityLinkPacket();
+							$pk->from = $target->getId();
+							$pk->to = 0;
+							$pk->type = 2;
+							$this->dataPacket($pk);
+
+							$this->riding = $packet->target;
+						}elseif($packet->action === 3){
+							$pk = new SetEntityLinkPacket();
+							$pk->from = $target->getId();
+							$pk->to = $this->id;
+							$pk->type = 3;
+
+							$this->getServer()->broadcastPacket($this->level->getPlayers(), $pk);
+							$pk = new SetEntityLinkPacket();
+							$pk->from = $target->getId();
+							$pk->to = 0;
+							$pk->type = 3;
+							$this->dataPacket($pk);
+
+							if($this->riding !== null){
+								$this->riding = null;
+							}
+						}
 					}
 
 					$item = $this->inventory->getItemInHand();
@@ -2529,8 +2575,6 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 						}
 					}
 				}
-
-
 				break;
 			case ProtocolInfo::ANIMATE_PACKET:
 				if($this->spawned === false or !$this->isAlive()){

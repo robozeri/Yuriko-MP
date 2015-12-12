@@ -386,7 +386,7 @@ class Item{
 	const IRON_DOOR = 330;
 	const REDSTONE_DUST = 331;
 	const SNOWBALL = 332;
-
+	const OAK_BOAT = 333;
 	const LEATHER = 334;
 
 	const BRICK = 336;
@@ -554,6 +554,7 @@ class Item{
 			self::$list[self::IRON_DOOR] = IronDoor::class;
 			self::$list[self::REDSTONE_DUST] = RedstoneDust::class;
 			self::$list[self::SNOWBALL] = Snowball::class;
+			//self::$list[self::BOAT] = Boat::class;
 			self::$list[self::LEATHER] = Leather::class;
 			self::$list[self::BRICK] = Brick::class;
 			self::$list[self::CLAY] = Clay::class;

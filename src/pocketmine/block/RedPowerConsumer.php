@@ -1,7 +1,9 @@
 <?php
 
 namespace pocketmine\block;
-
+/**
+ * @deprecated
+ */
 interface RedPowerConsumer{
 
     public function isActivated();
