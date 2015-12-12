@@ -63,9 +63,12 @@ class TeleportCommand extends VanillaCommand{
 			}
 			if(count($args) === 1){
 				if($args[0]{0} === "w" and $args[0]{1} === ":"){
-					$level = $sender->getServer()->getLevelByName(substr($args[0], 2));
-					if($level !== null){
-						$target = $level->getSafeSpawn();
+					$levelName = substr($args[0], 2);
+					if($sender->getServer()->isLevelGenerated($levelName)){
+						$level = $sender->getServer()->getLevelByName($levelName);
+						if($level !== null){
+							$target = $level->getSafeSpawn();
+						}
 					}
 				}else{
 					$target = $sender->getServer()->getPlayer($args[0]);
@@ -86,9 +89,14 @@ class TeleportCommand extends VanillaCommand{
 			if(count($args) === 2){
 				$origin = $target;
 				if($args[1]{0} === "w" and $args[1]{1} === ":"){
-					$level = $sender->getServer()->getLevelByName(substr($args[1], 2));
-					if($level !== null){
-						$target = $level->getSafeSpawn();
+					$levelName = substr($args[1], 2);
+					if($sender->getServer()->isLevelGenerated($levelName)){
+						$level = $sender->getServer()->getLevelByName($levelName);
+						if($level !== null){
+							$target = $level->getSafeSpawn();
+						}else{
+							$target = null;
+						}
 					}else{
 						$target = null;
 					}
