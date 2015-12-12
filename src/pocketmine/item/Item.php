@@ -688,6 +688,12 @@ class Item{
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 3));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 4));
 		self::addCreativeItem(Item::get(Item::WOODEN_SLAB, 5));
+		self::addCreativeItem(Item::get(Item::SLAB, 1));
+		self::addCreativeItem(Item::get(Item::SLAB, 3));
+		self::addCreativeItem(Item::get(Item::SLAB, 4));
+		self::addCreativeItem(Item::get(Item::SLAB, 5));
+		self::addCreativeItem(Item::get(Item::SLAB, 6));
+		self::addCreativeItem(Item::get(Item::SLAB, 7));
 		self::addCreativeItem(Item::get(Item::QUARTZ_BLOCK, 0));
 		self::addCreativeItem(Item::get(Item::QUARTZ_BLOCK, 1));
 		self::addCreativeItem(Item::get(Item::QUARTZ_BLOCK, 2));
