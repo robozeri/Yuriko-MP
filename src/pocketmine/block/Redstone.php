@@ -26,7 +26,6 @@ use pocketmine\item\Tool;
 
 class Redstone extends Solid{
 	protected $id = self::REDSTONE_BLOCK;
-	private $activated = false;
 
 	public function __construct(){
 

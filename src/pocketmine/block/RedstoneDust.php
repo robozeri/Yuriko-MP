@@ -8,14 +8,9 @@ use pocketmine\Player;
 
 class RedstoneDust extends Flowable{
     protected $id = self::REDSTONE_DUST;
-    protected $activated = false;
 
     public function __construct($meta = 0){
         $this->meta = $meta;
-    }
-
-    public function setRedstoneOutput($power){
-        $this->meta = $power;
     }
 
     public function onUpdate($type){
@@ -27,11 +22,12 @@ class RedstoneDust extends Flowable{
         }elseif($type === Level::BLOCK_UPDATE_REDSTONE){
 
             $prevOutput = $this->getRedstoneOutput();
-            $curOutput = ($i = $this->getRedstoneInput()) > 0 ? ($i - 1) : 0;
+            $curOutput = max(0, $this->getRedstoneInput() - 1);
 
             if($curOutput !== $prevOutput){
                 $this->setRedstoneOutput($curOutput);
-                $this->level->setBlock($this, $this, true, true, true);
+                $this->level->setBlock($this, $this, true, false);
+                $this->level->updateAround($this, true);
 
                 return Level::BLOCK_UPDATE_REDSTONE;
             }
@@ -49,7 +45,7 @@ class RedstoneDust extends Flowable{
             if($s === 0 or $s === 1){
                 for($t = 2; $t <= 5; $t++){
                     $stepBlock = $sideBlock->getSide($t);
-                    if($stepBlock->getId() === $this->id and ($o = $sideBlock->getSide($t)->getRedstoneOutput()) > $this->getRedstoneOutput()){
+                    if($stepBlock->getId() === $this->id and ($o = $stepBlock->getRedstoneOutput()) > $this->getRedstoneOutput()){
                         $power[] = $o;
                     }
                 }
@@ -62,16 +58,18 @@ class RedstoneDust extends Flowable{
         return $this->meta;
     }
 
+    public function setRedstoneOutput($power){
+        $this->meta = $power;
+    }
+
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
         if($face === 1 and !$this->getSide(0)->isTransparent()){ //Up
-            $this->onUpdate(Level::BLOCK_UPDATE_REDSTONE);
             return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
         }
         return false;
     }
 
-    public function getDrops(Item $item)
-    {
+    public function getDrops(Item $item){
         return [
             [Item::REDSTONE_DUST, 0, 1],
         ];

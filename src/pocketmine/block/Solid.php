@@ -29,8 +29,10 @@ abstract class Solid extends Block{
 	}
 
 	public function setRedstoneOutput($o){
-		$this->redstoneOutput = (int) $o;
-		$this->level->updateAround($this);
+		if($this->redstoneOutput !== $o){
+			$this->redstoneOutput = $o;
+			$this->level->updateAround($this);
+		}
 	}
 
 	public function getRedstoneOutput(){

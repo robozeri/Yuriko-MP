@@ -68,7 +68,7 @@ class LitRedstoneTorch extends Flowable{
             if($sideUp->isSolid()){
                 /** @var Solid $sideUp */
                 $sideUp->setRedstoneOutput(15);
-                $this->getSide(1, 2)->onUpdate(Level::BLOCK_UPDATE_REDSTONE);
+                return Level::BLOCK_UPDATE_REDSTONE;
             }
         }
 
