@@ -21,9 +21,8 @@
 
 namespace pocketmine\entity;
 
-
 use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\item\Item;
+use pocketmine\item\Item as ItemItem;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\network\protocol\EntityEventPacket;
 use pocketmine\Player;
@@ -66,13 +65,13 @@ class Boat extends Entity{
         parent::kill();
 
         foreach($this->getDrops() as $i){
-            $this->getLevel()->dropItem($this, Item::get($i[0], $i[1], $i[2]));
+            $this->getLevel()->dropItem($this, ItemItem::get($i[0], $i[1], $i[2]));
         }
     }
 
     public function getDrops(){
         return [
-            [Item::OAK_BOAT, 0, 1],
+            [ItemItem::OAK_BOAT, 0, 1],
         ];
     }
 
