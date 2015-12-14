@@ -29,8 +29,8 @@ use pocketmine\math\Vector3;
 use pocketmine\Player;
 
 abstract class Door extends Transparent{
-	protected $activated = false;
 	protected $isOpen = false;
+	protected $isPowered = false;
 
 	public function canBeActivated(){
 		return true;
@@ -215,10 +215,13 @@ abstract class Door extends Transparent{
 				return Level::BLOCK_UPDATE_NORMAL;
 			}
 		}elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-			if(!$this->isOpen and !$this->isActivated() and $this->getRedstoneInput() > 0){
-				$this->setActivated(true);
-			}elseif($this->isOpen and $this->isActivated() and $this->getRedstoneInput() === 0){
-				$this->setActivated(false);
+			$input = $this->getRedstoneInput();
+			if(!$this->isOpen and !$this->isPowered and $input > 0){
+				$this->switchOpen();
+				$this->isPowered = true;
+			}elseif($this->isOpen and $this->isPowered and $input === 0){
+				$this->switchOpen();
+				$this->isPowered = false;
 			}
 			return Level::BLOCK_UPDATE_REDSTONE;
 		}
@@ -304,13 +307,7 @@ abstract class Door extends Transparent{
 		return true;
 	}
 
-	public function isActivated(){
-		return $this->activated === true;
-	}
-
-	public function setActivated($bool){
-		$this->activated = $bool;
-
+	public function switchOpen(){
 		if(($this->getDamage() & 0x08) === 0x08){ //Top
 			$down = $this->getSide(0);
 			if($down->getId() === $this->getId()){
@@ -323,5 +320,6 @@ abstract class Door extends Transparent{
 			$this->getLevel()->setBlock($this, $this, true);
 			$this->level->addSound(new DoorSound($this));
 		}
+		$this->isOpen = !$this->isOpen;
 	}
 }
