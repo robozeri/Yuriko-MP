@@ -51,11 +51,12 @@ class ExperienceOrb extends Entity{
 		$hasUpdate = parent::onUpdate($currentTick);
 		$collector = null;
 
-		foreach($this->getLevel()->getPlayers() as $p){
-			if(!$this->collected){
-				if($this->distance($p) < 7){  //6 or less
+		if(!$this->collected){
+			foreach($this->level->getPlayers() as $p){
+				if($this->distanceSquared($p) <= 36){ //6 or less
 					$collector = $p;
 					$this->collected = true;
+					break;
 				}
 			}
 		}
@@ -66,7 +67,7 @@ class ExperienceOrb extends Entity{
 		}
 		
 		if($collector !== null){
-		    $collector->giveExp($this->getAmount());
+		    $collector->giveExp($this->getAmount()); //TODO
         }
 
 		$this->timings->stopTiming();
@@ -75,13 +76,13 @@ class ExperienceOrb extends Entity{
 	}
 
 	public function spawnTo(Player $player) {
-		$pk = new SpawnExperienceOrbPacket();
+		$pk = new SpawnExperienceOrbPacket(); //TODO
 		$pk->eid = $this->getId();
 		$pk->x = $this->x;
 		$pk->y = $this->y;
 		$pk->z = $this->z;
 		$pk->count = $this->getAmount();
-		$player->dataPacket($pk->setChannel(Network::CHANNEL_ENTITY_SPAWNING));
+		$player->dataPacket($pk);
 		parent::spawnTo($player);
 	}
 

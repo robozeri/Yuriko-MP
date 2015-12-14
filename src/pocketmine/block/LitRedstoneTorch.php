@@ -22,7 +22,6 @@
 namespace pocketmine\block;
 
 use pocketmine\item\Item;
-use pocketmine\item\RedstoneTorch;
 use pocketmine\level\Level;
 use pocketmine\Player;
 
