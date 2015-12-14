@@ -267,6 +267,10 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	//Riding
 	protected $riding = null;
 	
+	//experience
+	protected $exp;
+	protected $expLv;
+	
 
 	public function getAttributeManager(){
 		return $this->attributeManager;
@@ -3684,6 +3688,101 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 		$batch->encode();
 		$batch->isEncoded = true;
 		return $batch;
+	}
+		/**
+	 * @param $amount
+	 */
+	public function setExpLevels($amount){
+		if($amount < 0)
+			return;
+		$this->exp = $amount;
+		$this->getAttributeManager()->getAttribute(AttributeManager::EXPERIENCE_LEVEL)->setValue($amount);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getExpLevels(){
+		return $this->expLv;
+	}
+
+	/**
+	 * @param $amount
+	 */
+	public function giveExpLevels($amount){
+		if($amount > 0)
+			$this->setExpLevels($this->expLv + $amount);
+	}
+
+	/**
+	 * @param $amount
+	 */
+	public function removeExpLevels($amount){
+		if($this->expLv - $amount > 0){
+			$this->setExpLevels($this->expLv - $amount);
+		}else{
+			$this->setExpLevels(0);
+		}
+	}
+
+	/**
+	 * @param $amount
+	 * @return bool
+	 */
+	public function setExp($amount){
+		$needed = ($this->expLv + 1) * (7 + $this->expLv);
+		if(($this->expLv + 1) * (7 + $this->expLv) < $amount){
+			$leftovers = $amount - $needed;
+			$this->setExp($leftovers);
+			$this->giveExpLevels(1);
+			return true;
+		}
+		elseif(($this->expLv + 1) * (7 + $this->expLv) === $amount){
+			$this->exp = 0;
+			$this->getAttributeManager()->getAttribute(AttributeManager::EXPERIENCE)->setValue(0);
+			$this->giveExpLevels(1);
+			return true;
+		}
+		elseif(($this->expLv + 1) * (7 + $this->expLv) < $amount + $this->exp){
+			$leftovers = ($amount + $this->exp) - $needed;
+			$this->setExp($leftovers);
+			$this->giveExpLevels(1);
+			return true;
+		}
+		elseif(($this->expLv + 1) * (7 + $this->expLv) === $amount + $this->exp){
+			$this->exp = 0;
+			$this->getAttributeManager()->getAttribute(AttributeManager::EXPERIENCE)->setValue(0);
+			$this->giveExpLevels(1);
+			return true;
+		}
+		$this->exp = $amount;
+		$this->getAttributeManager()->getAttribute(AttributeManager::EXPERIENCE)->setValue($amount);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getExp(){
+		return $this->exp;
+	}
+
+	/**
+	 * @param $amount
+	 */
+	public function giveExp($amount){
+		if($amount > 0)
+			$this->setExp($this->exp + $amount);
+	}
+
+	/**
+	 * @param $amount
+	 */
+	public function removeExp($amount){
+		if($this->exp - $amount > 0) {
+			$this->setExp($this->exp - $amount);
+		}else{
+			$this->setExp(0);
+		}
 	}
 
 }
