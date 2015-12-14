@@ -2,22 +2,26 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ * __   __          _ _               __  __ ____  
+ * \ \ / /   _ _ __(_) | _____       |  \/  |  _ \ 
+ *  \ V / | | | '__| | |/ / _ \ _____| |\/| | |_) |
+ *   | || |_| | |  | |   < (_) |_____| |  | |  __/ 
+ *   |_| \__,_|_|  |_|_|\_\___/      |_|  |_|_|
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Yuriko-MP, a kawaii-powered PocketMine-MP based software
+ * for Minecraft: Pocket Edition
+ * Copyright 2015 ItalianDevs4PM.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * This work is licensed under the Creative Commons
+ * Attribution-NonCommercial-NoDerivatives 4.0
+ * International License.
+ * 
+ *
+ * @author AryToNeX, fycarman, luca28pet (ItalianDevs4PM)
+ * @link   http://github.com/ItalianDevs4PM
  *
  *
-*/
+ */
 
 namespace pocketmine\entity;
 
@@ -47,7 +51,7 @@ class AttributeManager{
     public function init(){
         self::addAttribute(self::MAX_HEALTH, "generic.health", 0, 20, 20, true);
         self::addAttribute(self::MAX_HUNGER, "player.hunger", 0, 20, 20, true);
-        self::addAttribute(self::EXPERIENCE, "player.experience", 0, 1, 0, true);
+        self::addAttribute(self::EXPERIENCE, "player.experience", 0, 24791, 0, true);
         self::addAttribute(self::EXPERIENCE_LEVEL, "player.level", 0, 24791, 0, true);
     }
 
