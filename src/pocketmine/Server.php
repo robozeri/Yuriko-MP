@@ -2,27 +2,27 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ * __   __          _ _               __  __ ____  
+ * \ \ / /   _ _ __(_) | _____       |  \/  |  _ \ 
+ *  \ V / | | | '__| | |/ / _ \ _____| |\/| | |_) |
+ *   | || |_| | |  | |   < (_) |_____| |  | |  __/ 
+ *   |_| \__,_|_|  |_|_|\_\___/      |_|  |_|_|
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Yuriko-MP, a kawaii-powered PocketMine-MP based software
+ * for Minecraft: Pocket Edition
+ * Copyright 2015 ItalianDevs4PM.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * This work is licensed under the Creative Commons
+ * Attribution-NonCommercial-NoDerivatives 4.0
+ * International License.
+ * 
+ *
+ * @author AryToNeX, fycarman, luca28pet (ItalianDevs4PM)
+ * @link   http://github.com/ItalianDevs4PM
  *
  *
-*/
-
-/**
- * PocketMine-MP is the Minecraft: PE multiplayer server software
- * Homepage: http://www.pocketmine.net/
  */
+
 namespace pocketmine;
 
 use pocketmine\block\Block;
@@ -36,6 +36,7 @@ use pocketmine\entity\Attribute;
 use pocketmine\entity\Boat;
 use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
+// TODO: use pocketmine\entity\ExperienceOrb;
 use pocketmine\entity\FallingSand;
 use pocketmine\entity\Human;
 use pocketmine\entity\Item as DroppedItem;
@@ -1486,7 +1487,7 @@ class Server{
 
 		$this->logger->info("Loading server properties...");
 		$this->properties = new Config($this->dataPath . "server.properties", Config::PROPERTIES, [
-			"motd" => "Minecraft: PE Server",
+			"motd" => "Yuriko-MP MCPE Server",
 			"server-port" => 19132,
 			"white-list" => false,
 			"announce-player-achievements" => true,
@@ -2574,6 +2575,7 @@ class Server{
 	private function registerEntities(){
 		Entity::registerEntity(Arrow::class);
 		Entity::registerEntity(DroppedItem::class);
+		// TODO: Entity::registerEntity(ExperienceOrb::class);
 		Entity::registerEntity(FallingSand::class);
 		Entity::registerEntity(PrimedTNT::class);
 		Entity::registerEntity(Snowball::class);
