@@ -152,7 +152,6 @@ class Item{
 	const BURNING_FURNACE = 62;
 	const LIT_FURNACE = 62;
 	const SIGN_POST = 63;
-	const DOOR_BLOCK = 64;
 	const OAK_DOOR_BLOCK = 64;
 	const LADDER = 65;
 	const RAIL = 66;

@@ -30,27 +30,27 @@ class WoodenDoor extends Item{
 			case 0:
 			default:
 				$this->block = Block::get(Block::OAK_DOOR_BLOCK);
-				parent::__construct(self::OAK_DOOR, $meta, $count, "Oak Door");
+				parent::__construct(self::WOODEN_DOOR, $meta, $count, "Oak Door");
 				break;
 			case 1:
 				$this->block = Block::get(Block::SPRUCE_DOOR_BLOCK);
-				parent::__construct(self::SPRUCE_DOOR, $meta, $count, "Spruce Door");
+				parent::__construct(self::WOODEN_DOOR, $meta, $count, "Spruce Door");
 				break;
 			case 2:
 				$this->block = Block::get(Block::BIRCH_DOOR_BLOCK);
-				parent::__construct(self::BIRCH_DOOR, $meta, $count, "Birch Door");
+				parent::__construct(self::WOODEN_DOOR, $meta, $count, "Birch Door");
 				break;
 			case 3:
 				$this->block = Block::get(Block::JUNGLE_DOOR_BLOCK);
-				parent::__construct(self::JUNGLE_DOOR, $meta, $count, "Jungle Door");
+				parent::__construct(self::WOODEN_DOOR, $meta, $count, "Jungle Door");
 				break;
 			case 4:
 				$this->block = Block::get(Block::ACACIA_DOOR_BLOCK);
-				parent::__construct(self::ACACIA_DOOR, $meta, $count, "Acacia Door");
+				parent::__construct(self::WOODEN_DOOR, $meta, $count, "Acacia Door");
 				break;
 			case 5:
 				$this->block = Block::get(Block::DARK_OAK_DOOR_BLOCK);
-				parent::__construct(self::DARK_OAK_DOOR, $meta, $count, "Dark Oak Door");
+				parent::__construct(self::WOODEN_DOOR, $meta, $count, "Dark Oak Door");
 				break;
 		}
 	}
