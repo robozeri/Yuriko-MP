@@ -8,7 +8,7 @@
  *   | || |_| | |  | |   < (_) |_____| |  | |  __/ 
  *   |_| \__,_|_|  |_|_|\_\___/      |_|  |_|_|
  *
- * Yuriko-MP, a kawaii-powered PocketMine-MP based software
+ * Yuriko-MP, a kawaii-powered PocketMine-based software
  * for Minecraft: Pocket Edition
  * Copyright 2015 ItalianDevs4PM.
  *
@@ -17,7 +17,7 @@
  * International License.
  * 
  *
- * @author AryToNeX, fycarman, luca28pet (ItalianDevs4PM)
+ * @author ItalianDevs4PM
  * @link   http://github.com/ItalianDevs4PM
  *
  *
@@ -76,7 +76,7 @@ class ExperienceOrb extends Entity{
 	}
 
 	public function spawnTo(Player $player) {
-		$pk = new SpawnExperienceOrbPacket(); //TODO
+		$pk = new SpawnExperienceOrbPacket();
 		$pk->eid = $this->getId();
 		$pk->x = $this->x;
 		$pk->y = $this->y;

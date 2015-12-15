@@ -8,7 +8,7 @@
  *   | || |_| | |  | |   < (_) |_____| |  | |  __/ 
  *   |_| \__,_|_|  |_|_|\_\___/      |_|  |_|_|
  *
- * Yuriko-MP, a kawaii-powered PocketMine-MP based software
+ * Yuriko-MP, a kawaii-powered PocketMine-based software
  * for Minecraft: Pocket Edition
  * Copyright 2015 ItalianDevs4PM.
  *
@@ -36,7 +36,7 @@ use pocketmine\entity\Attribute;
 use pocketmine\entity\Boat;
 use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
-// TODO: use pocketmine\entity\ExperienceOrb;
+use pocketmine\entity\ExperienceOrb;
 use pocketmine\entity\FallingSand;
 use pocketmine\entity\Human;
 use pocketmine\entity\Item as DroppedItem;
@@ -2575,7 +2575,7 @@ class Server{
 	private function registerEntities(){
 		Entity::registerEntity(Arrow::class);
 		Entity::registerEntity(DroppedItem::class);
-		// TODO: Entity::registerEntity(ExperienceOrb::class);
+		Entity::registerEntity(ExperienceOrb::class);
 		Entity::registerEntity(FallingSand::class);
 		Entity::registerEntity(PrimedTNT::class);
 		Entity::registerEntity(Snowball::class);
