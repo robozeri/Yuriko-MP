@@ -1,9 +1,13 @@
 # Yuriko-MP
 ## Formerly known as PMTF Project
 
-Unofficial PocketMine fork. More advanced than most forks. We are much better.
+Yuriko-MP, a kawaii-powered PocketMine-based software for Minecraft: Pocket Edition
+Copyright 2015 ItalianDevs4PM.
 
-Officially mantained from @AryToNeX, @fycarman and @luca28pet.
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+International License.
+
+Officially mantained from @AryToNeX, @fycarman, @luca28pet and @xionbig.
 
 ## What is Yuriko-MP?
 
