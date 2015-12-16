@@ -31,12 +31,12 @@ In particular, we have:
 * Fully working hunger
 * All the enchantments!
 * All the potion effects!
+* Golden Apples!
 
 We are working in:
 
 * Fix existing blocks!
 * Support for not implemented blocks!
-* Golden apples!
 * Potions!
 * Experience! (and with the experience we will put a fully working enchantment table)
 * Brewing! (Only brewing mechanic for now.. We need nether and blazes for full brewing implementation)
