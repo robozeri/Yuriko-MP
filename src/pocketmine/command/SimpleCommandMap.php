@@ -30,10 +30,12 @@ use pocketmine\command\defaults\DifficultyCommand;
 use pocketmine\command\defaults\DumpMemoryCommand;
 use pocketmine\command\defaults\EffectCommand;
 use pocketmine\command\defaults\EnchantCommand;
+use pocketmine\command\defaults\ExpCommand;
 use pocketmine\command\defaults\GamemodeCommand;
 use pocketmine\command\defaults\GarbageCollectorCommand;
 use pocketmine\command\defaults\GiveCommand;
 use pocketmine\command\defaults\HelpCommand;
+use pocketmine\command\defaults\InfoCommand;
 use pocketmine\command\defaults\KickCommand;
 use pocketmine\command\defaults\KillCommand;
 use pocketmine\command\defaults\ListCommand;
@@ -96,6 +98,7 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new SayCommand("say"));
 		$this->register("pocketmine", new MeCommand("me"));
 		$this->register("pocketmine", new ListCommand("list"));
+		$this->register("pocketmine", new InfoCommand("info"));
 		$this->register("pocketmine", new DifficultyCommand("difficulty"));
 		$this->register("pocketmine", new KickCommand("kick"));
 		$this->register("pocketmine", new OpCommand("op"));
@@ -107,6 +110,7 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new GiveCommand("give"));
 		$this->register("pocketmine", new EffectCommand("effect"));
 		$this->register("pocketmine", new EnchantCommand("enchant"));
+		$this->register("pocketmine", new ExpCommand("xp"));
 		$this->register("pocketmine", new ParticleCommand("particle"));
 		$this->register("pocketmine", new GamemodeCommand("gamemode"));
 		$this->register("pocketmine", new KillCommand("kill"));
