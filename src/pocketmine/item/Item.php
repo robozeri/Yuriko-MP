@@ -299,7 +299,8 @@ class Item{
 
 
 	//Normal Item IDs
-
+    const COOKED_RABBIT = 412; //
+	const RAW_RABBIT = 411; //
 	const IRON_SHOVEL = 256; //
 	const IRON_PICKAXE = 257; //
 	const IRON_AXE = 258; //
@@ -594,6 +595,8 @@ class Item{
 			self::$list[self::BEETROOT] = Beetroot::class;
 			self::$list[self::BEETROOT_SEEDS] = BeetrootSeeds::class;
 			self::$list[self::BEETROOT_SOUP] = BeetrootSoup::class;
+			self::$list[self::COOKED_RABBIT] = CookedRabbit::class;
+			self::$list[self::RAW_RABBIT] = RawRabbit::class;
 
 			for($i = 0; $i < 256; ++$i){
 				if(Block::$list[$i] !== null){
@@ -1011,8 +1014,8 @@ class Item{
 		// TODO: Poisonous potato
 		self::addCreativeItem(Item::get(Item::COOKIE, 0));
 		self::addCreativeItem(Item::get(Item::PUMPKIN_PIE, 0));
-		// TODO: Raw rabbit
-		// TODO: Cooked rabbit
+		self::addCreativeItem(Item::get(Item::RAW_RABBIT, 0));
+		self::addCreativeItem(Item::get(Item::COOKED_RABBIT, 0));
 		// TODO: Rabbit stew
 		// TODO: Magma cream
 		// TODO: Blaze rod
