@@ -2,29 +2,33 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ * __   __          _ _               __  __ ____  
+ * \ \ / /   _ _ __(_) | _____       |  \/  |  _ \ 
+ *  \ V / | | | '__| | |/ / _ \ _____| |\/| | |_) |
+ *   | || |_| | |  | |   < (_) |_____| |  | |  __/ 
+ *   |_| \__,_|_|  |_|_|\_\___/      |_|  |_|_|
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Yuriko-MP, a kawaii-powered PocketMine-based software
+ * for Minecraft: Pocket Edition
+ * Copyright 2015 ItalianDevs4PM.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * This work is licensed under the Creative Commons
+ * Attribution-NonCommercial-NoDerivatives 4.0
+ * International License.
+ * 
+ *
+ * @author ItalianDevs4PM
+ * @link   http://github.com/ItalianDevs4PM
  *
  *
-*/
+ */
 
 namespace pocketmine\permission;
 
 use pocketmine\Server;
 
 abstract class DefaultPermissions{
-	const ROOT = "pocketmine";
+	const ROOT = "pocketmine"; // TODO: Change this in "yuriko" but not now
 
 	/**
 	 * @param Permission $perm
@@ -44,7 +48,7 @@ abstract class DefaultPermissions{
 	}
 
 	public static function registerCorePermissions(){
-		$parent = self::registerPermission(new Permission(self::ROOT, "Allows using all PocketMine commands and utilities"));
+		$parent = self::registerPermission(new Permission(self::ROOT, "Allows using all Yuriko-MP commands and utilities"));
 
 		$broadcasts = self::registerPermission(new Permission(self::ROOT . ".broadcast", "Allows the user to receive all broadcast messages"), $parent);
 
@@ -53,7 +57,7 @@ abstract class DefaultPermissions{
 
 		$broadcasts->recalculatePermissibles();
 
-		$commands = self::registerPermission(new Permission(self::ROOT . ".command", "Allows using all PocketMine commands"), $parent);
+		$commands = self::registerPermission(new Permission(self::ROOT . ".command", "Allows using all Yuriko-MP commands"), $parent);
 
 		$whitelist = self::registerPermission(new Permission(self::ROOT . ".command.whitelist", "Allows the user to modify the server whitelist", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.whitelist.add", "Allows the user to add a player to the server whitelist"), $whitelist);
@@ -102,6 +106,7 @@ abstract class DefaultPermissions{
 		self::registerPermission(new Permission(self::ROOT . ".command.tell", "Allows the user to privately message another player", Permission::DEFAULT_TRUE), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.say", "Allows the user to talk as the console", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.give", "Allows the user to give items to players", Permission::DEFAULT_OP), $commands);
+		self::registerPermission(new Permission(self::ROOT . ".command.xp", "Allows the user to give experience to players", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.effect", "Allows the user to give/take potion effects", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.enchant", "Allows the user to enchant items", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.particle", "Allows the user to create particle effects", Permission::DEFAULT_OP), $commands);
