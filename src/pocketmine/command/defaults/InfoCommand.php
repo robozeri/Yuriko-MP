@@ -57,7 +57,7 @@ class InfoCommand extends VanillaCommand{
 			" LVL: " . $player->getExpLevel() . "\n" . 
 
 			"  X: " . $player->getX() . 
-			" Y: " $player->getY() . 
+			" Y: " . $player->getY() . 
 			" Z: " . $player->getZ() . 
 			"in: " . $player->getLevel()->getName();
 

@@ -102,8 +102,8 @@ class ExpCommand extends VanillaCommand{
 		return false;
 	}
 	
-	$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.player.notFound"));
-	Command::broadcastCommandMessage($sender, new TranslationContainer("%commands.give.success", [$xp->getName() . " (" . $xp->getId() . ":" . $xp->getDamage() . ")",(string) $xp->getCount(),$player->getName()]));
+	//$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.player.notFound"));
+	//Command::broadcastCommandMessage($sender, new TranslationContainer("%commands.give.success", [$xp->getName() . " (" . $xp->getId() . ":" . $xp->getDamage() . ")",(string) $xp->getCount(),$player->getName()]));
 	public function endsWith($haystack, $needle){
 		// search forward starting from end minus needle length characters
 		return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== FALSE);
