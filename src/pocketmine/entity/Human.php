@@ -58,14 +58,14 @@ class Human extends Creature implements ProjectileSource, InventoryHolder{
 	public $eyeHeight = 1.62;
 
 	protected $skin;
-	protected $isSlim = false;
+	protected $skinName;
 
 	public function getSkinData(){
 		return $this->skin;
 	}
 
-	public function isSkinSlim(){
-		return $this->isSlim;
+	public function getSkinName(){
+		return $this->skinName;
 	}
 
 	/**
@@ -84,11 +84,11 @@ class Human extends Creature implements ProjectileSource, InventoryHolder{
 
 	/**
 	 * @param string $str
-	 * @param bool   $isSlim
+	 * @param bool   $skinName
 	 */
-	public function setSkin($str, $isSlim = false){
+	public function setSkin($str, $skinName){
 		$this->skin = $str;
-		$this->isSlim = (bool) $isSlim;
+		$this->skinName = $skinName;
 	}
 
 	public function getInventory(){
@@ -112,7 +112,7 @@ class Human extends Creature implements ProjectileSource, InventoryHolder{
 			}
 
 			if(isset($this->namedtag->Skin) and $this->namedtag->Skin instanceof Compound){
-				$this->setSkin($this->namedtag->Skin["Data"], $this->namedtag->Skin["Slim"] > 0);
+				$this->setSkin($this->namedtag->Skin["Data"], $this->namedtag->Skin["Name"]);
 			}
 
 			$this->uuid = UUID::fromData($this->getId(), $this->getSkinData(), $this->getNameTag());
@@ -195,7 +195,7 @@ class Human extends Creature implements ProjectileSource, InventoryHolder{
 		if(strlen($this->getSkinData()) > 0){
 			$this->namedtag->Skin = new Compound("Skin", [
 				"Data" => new String("Data", $this->getSkinData()),
-				"Slim" => new Byte("Slim", $this->isSkinSlim() ? 1 : 0)
+				"Name" => new Byte("Name", $this->getSkinName())
 			]);
 		}
 	}
@@ -210,7 +210,7 @@ class Human extends Creature implements ProjectileSource, InventoryHolder{
 
 
 			if(!($this instanceof Player)){
-				$this->server->updatePlayerListData($this->getUniqueId(), $this->getId(), $this->getName(), $this->isSlim, $this->skin, [$player]);
+				$this->server->updatePlayerListData($this->getUniqueId(), $this->getId(), $this->getName(), $this->getSkinName(), $this->skin, [$player]);
 			}
 
 			$pk = new AddPlayerPacket();
