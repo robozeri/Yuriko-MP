@@ -782,6 +782,10 @@ class Block extends Position implements Metadatable{
 		}
 	}
 
+	public function getRandomExperience(Item $item){
+		return 0;
+	}
+
 	/**
 	 * Returns the seconds that this block takes to be broken using an specific Item
 	 *

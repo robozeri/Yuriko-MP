@@ -66,7 +66,7 @@ class ExperienceOrb extends Entity{
 		
 		if($collector !== null){
 		    $collector->giveExp($this->getAmount());
-			$this->close();
+			$this->kill();
         }
 
 		$this->timings->stopTiming();

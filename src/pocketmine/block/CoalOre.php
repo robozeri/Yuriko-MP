@@ -21,8 +21,13 @@
 
 namespace pocketmine\block;
 
+use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
+use pocketmine\nbt\tag\Compound;
+use pocketmine\nbt\tag\Double;
+use pocketmine\nbt\tag\Enum;
+use pocketmine\nbt\tag\Float;
 
 class CoalOre extends Solid{
 	protected $id = self::COAL_ORE;
@@ -41,6 +46,35 @@ class CoalOre extends Solid{
 
 	public function getName(){
 		return "Coal Ore";
+	}
+
+	public function onBreak(Item $item){
+		if($this->getRandomExperience($item) > 0){
+			Entity::createEntity("ExperienceOrb", $this->level->getChunk($this->x >> 4, $this->z >> 4), new Compound("", [
+				"Pos" => new Enum("Pos", [
+					new Double("", $this->x),
+					new Double("", $this->y),
+					new Double("", $this->z)
+				]),
+				"Motion" => new Enum("Motion", [
+					new Double("", 0),
+					new Double("", 0),
+					new Double("", 0)
+				]),
+				"Rotation" => new Enum("Rotation", [
+					new Float("", 0),
+					new Float("", 0)
+				]),
+			]));
+		}
+		return parent::onBreak($item);
+	}
+
+	public function getRandomExperience(Item $item){
+		if($item->isPickaxe() >= Tool::TIER_WOODEN){
+			return mt_rand(0, 2);
+		}
+		return 0;
 	}
 
 	public function getDrops(Item $item){
