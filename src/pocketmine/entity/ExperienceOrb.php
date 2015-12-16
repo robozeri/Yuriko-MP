@@ -25,10 +25,8 @@
 
 namespace pocketmine\entity;
 
-
 use pocketmine\level\format\FullChunk;
-use pocketmine\network\Network;
-use pocketmine\network\protocol\AddEntityPacket;
+use pocketmine\network\protocol\SpawnExperienceOrbPacket;
 use pocketmine\Player;
 
 class ExperienceOrb extends Entity{
