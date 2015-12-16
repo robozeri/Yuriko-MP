@@ -26,8 +26,4 @@ class BirchDoor extends Item{
     public function __construct($meta = 0, $count = 1){
         parent::__construct(self::ACACIA_DOOR_BLOCK, $meta, $count, "Acacia Door");
     }
-
-    public function getMaxStackSize(){
-        return 3;
-    }
 }

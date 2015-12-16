@@ -29,8 +29,4 @@ class DarkOakDoor extends Item{
         $this->block = Block::get(Item::DARK_OAK_DOOR_BLOCK);
         parent::__construct(self::DARK_OAK_DOOR_BLOCK, $meta, $count, "Dark Oak Door");
     }
-
-    public function getMaxStackSize(){
-        return 3;
-    }
 }

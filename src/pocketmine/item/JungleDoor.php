@@ -29,8 +29,4 @@ class JungleDoor extends Item{
         $this->block = Block::get(Item::JUNGLE_DOOR_BLOCK);
         parent::__construct(self::JUNGLE_DOOR_BLOCK, $meta, $count, "Jungle Door");
     }
-
-    public function getMaxStackSize(){
-        return 3;
-    }
 }

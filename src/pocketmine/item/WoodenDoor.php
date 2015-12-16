@@ -54,8 +54,4 @@ class WoodenDoor extends Item{
 				break;
 		}
 	}
-
-	public function getMaxStackSize(){
-		return 1;
-	}
 }

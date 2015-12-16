@@ -29,8 +29,4 @@ class SpruceDoor extends Item{
         $this->block = Block::get(Item::SPRUCE_DOOR_BLOCK);
         parent::__construct(self::SPRUCE_DOOR_BLOCK, $meta, $count, "Spruce Door");
     }
-
-    public function getMaxStackSize(){
-        return 3;
-    }
 }
