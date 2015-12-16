@@ -26,9 +26,8 @@
 namespace pocketmine\command\defaults;
 
 use pocketmine\command\CommandSender;
-use pocketmine\event\TranslationContainer;
 use pocketmine\Player;
-
+use pocketmine\utils\TextFormat;
 
 class InfoCommand extends VanillaCommand{
 
@@ -46,62 +45,37 @@ class InfoCommand extends VanillaCommand{
 			return true;
 		}
 
-		foreach($sender->getServer()->getOnlinePlayers() as $players){
-			$pn = $players->getName();
+		if(!isset($args[0]) and !($sender instanceof  Player)){
+			return false;
 		}
 
-		if($sender instanceof Player){
-			if($args[0] == null){
-				$player = $sender;
-
-				$msg = 
-					$player->getName() . "\n" . 
-					"GM: " . $player->getGamemode() . 
-					" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() . 
-					" LVL: " . $player->getExpLevel() . "\n" . 
-
-					"  X: " . $player->getX() . 
-					" Y: " . $player->getY() . 
-					" Z: " . $player->getZ() . 
-					"in: " . $player->getLevel()->getName();
-
-				$sender->sendMessage($msg);
-			}else{
-				if($args[0] == strtolower($pn)){
-					$player = $players;
-					$msg = 
-						$player->getName() . "\n" . 
-						"GM: " . $player->getGamemode() . 
-						" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() . 
-						" LVL: " . $player->getExpLevel() . "\n" . 
-
-						"  X: " . $player->getX() . 
-						" Y: " . $player->getY() . 
-						" Z: " . $player->getZ() . 
-						"in: " . $player->getLevel()->getName();
-
-					$sender->sendMessage($msg);
-				}
-			}
-		}else{
-			if($args[0] == strtolower($pn)){
-				$player = $players;
-				$msg = 
-					$player->getName() . "\n" . 
-					"GM: " . $player->getGamemode() . 
-					" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() . 
-					" LVL: " . $player->getExpLevels() . "\n" . 
-
-					"  X: " . $player->getX() . 
-				" Y: " . $player->getY() . 
-				" Z: " . $player->getZ() . 
-				" in: " . $player->getLevel()->getName();
-
-				$sender->sendMessage($msg);
-			}elseif($args[0] == null){
-				$sender->sendMessage("You must specify a player!");
-			}
+		if(!isset($args[0])){
+			$sender->sendMessage(
+				$sender->getName() . "\n" .
+				"GM: " . $sender->getGamemode() .
+				" HP: " . $sender->getHealth() . "/" . $sender->getMaxHealth() .
+				/*" LVL: " . $sender->getExpLevel() .*/ "\n" .
+				" X: " . $sender->getX() .
+				" Y: " . $sender->getY() .
+				" Z: " . $sender->getZ() .
+				" in: " . $sender->getLevel()->getName());
+			return true;
 		}
+
+		if(($player = $sender->getServer()->getPlayer($args[0])) !== null){
+			$sender->sendMessage(
+				$player->getName() . "\n" .
+				"GM: " . $player->getGamemode() .
+				" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() .
+				/*" LVL: " . $sender->getExpLevel() .*/ "\n" .
+				" X: " . $player->getX() .
+				" Y: " . $player->getY() .
+				" Z: " . $player->getZ() .
+				" in: " . $player->getLevel()->getName());
+			return true;
+		}
+
+		$sender->sendMessage(TextFormat::RED . "Can't find player " . $args[0]);
 
 		return true;
 	}
