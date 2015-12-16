@@ -28,7 +28,7 @@ namespace pocketmine\permission;
 use pocketmine\Server;
 
 abstract class DefaultPermissions{
-	const ROOT = "pocketmine"; // TODO: Change this in "yuriko" but not now
+	const ROOT = "pocketmine";
 
 	/**
 	 * @param Permission $perm
@@ -114,6 +114,7 @@ abstract class DefaultPermissions{
 		self::registerPermission(new Permission(self::ROOT . ".command.kick", "Allows the user to kick players", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.stop", "Allows the user to stop the server", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.list", "Allows the user to list all online players", Permission::DEFAULT_OP), $commands);
+		self::registerPermission(new Permission(self::ROOT . ".command.info", "Allows the user to view informations about players", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.help", "Allows the user to view the help menu", Permission::DEFAULT_TRUE), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.plugins", "Allows the user to view the list of plugins", Permission::DEFAULT_OP), $commands);
 		self::registerPermission(new Permission(self::ROOT . ".command.reload", "Allows the user to reload the server settings", Permission::DEFAULT_OP), $commands);
