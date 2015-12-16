@@ -46,34 +46,57 @@ class InfoCommand extends VanillaCommand{
 			return true;
 		}
 
-		foreach($this->getServer()->getOnlinePlayers() as $players){
+		foreach($sender->getServer()->getOnlinePlayers() as $players){
 			$pn = $players->getName();
 		}
-
-		$msg = 
-			$player->getName() . "\n" . 
-			"GM: " . $player->getGamemode() . 
-			" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() . 
-			" LVL: " . $player->getExpLevel() . "\n" . 
-
-			"  X: " . $player->getX() . 
-			" Y: " . $player->getY() . 
-			" Z: " . $player->getZ() . 
-			"in: " . $player->getLevel()->getName();
 
 		if($sender instanceof Player){
 			if($args[0] == null){
 				$player = $sender;
+
+				$msg = 
+					$player->getName() . "\n" . 
+					"GM: " . $player->getGamemode() . 
+					" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() . 
+					" LVL: " . $player->getExpLevel() . "\n" . 
+
+					"  X: " . $player->getX() . 
+					" Y: " . $player->getY() . 
+					" Z: " . $player->getZ() . 
+					"in: " . $player->getLevel()->getName();
+
 				$sender->sendMessage($msg);
 			}else{
-				if($args[0] == $pn){
+				if($args[0] == strtolower($pn)){
 					$player = $players;
+					$msg = 
+						$player->getName() . "\n" . 
+						"GM: " . $player->getGamemode() . 
+						" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() . 
+						" LVL: " . $player->getExpLevel() . "\n" . 
+
+						"  X: " . $player->getX() . 
+						" Y: " . $player->getY() . 
+						" Z: " . $player->getZ() . 
+						"in: " . $player->getLevel()->getName();
+
 					$sender->sendMessage($msg);
 				}
 			}
 		}else{
-			if($args[0] == $pn){
+			if($args[0] == strtolower($pn)){
 				$player = $players;
+				$msg = 
+					$player->getName() . "\n" . 
+					"GM: " . $player->getGamemode() . 
+					" HP: " . $player->getHealth() . "/" . $player->getMaxHealth() . 
+					" LVL: " . $player->getExpLevels() . "\n" . 
+
+					"  X: " . $player->getX() . 
+				" Y: " . $player->getY() . 
+				" Z: " . $player->getZ() . 
+				" in: " . $player->getLevel()->getName();
+
 				$sender->sendMessage($msg);
 			}elseif($args[0] == null){
 				$sender->sendMessage("You must specify a player!");
