@@ -179,10 +179,35 @@ class CraftingManager{
 			"PPP",
 			"PPP"
 		))->setIngredient("P", Item::get(Item::WOODEN_PLANK, null, 6)));
-		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::WOODEN_DOOR, 0, 1),
-			"PP",
-			"PP",
-			"PP"
+		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::OAK_DOOR, 0, 1),
+				"PP",
+				"PP",
+				"PP"
+		))->setIngredient("P", Item::get(Item::WOODEN_PLANK, null, 6)));
+		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::SPRUCE_DOOR, 0, 1),
+				"PP",
+				"PP",
+				"PP"
+		))->setIngredient("P", Item::get(Item::WOODEN_PLANK, null, 6)));
+		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::BIRCH_DOOR, 0, 1),
+				"PP",
+				"PP",
+				"PP"
+		))->setIngredient("P", Item::get(Item::WOODEN_PLANK, null, 6)));
+		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::JUNGLE_DOOR, 0, 1),
+				"PP",
+				"PP",
+				"PP"
+		))->setIngredient("P", Item::get(Item::WOODEN_PLANK, null, 6)));
+		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::ACACIA_DOOR, 0, 1),
+				"PP",
+				"PP",
+				"PP"
+		))->setIngredient("P", Item::get(Item::WOODEN_PLANK, null, 6)));
+		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::DARK_OAK_DOOR, 0, 1),
+				"PP",
+				"PP",
+				"PP"
 		))->setIngredient("P", Item::get(Item::WOODEN_PLANK, null, 6)));
 		$this->registerRecipe((new BigShapedRecipe(Item::get(Item::WOODEN_STAIRS, 0, 4),
 			"  P",
