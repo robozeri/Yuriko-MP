@@ -24,10 +24,6 @@ namespace pocketmine\item;
 class OakDoor extends Item{
 
     public function __construct($meta = 0, $count = 1){
-        parent::__construct(self::OAK_DOOR_BLOCK, $meta, $count, "Oak Door");
-    }
-
-    public function getMaxStackSize(){
-        return 3;
+        parent::__construct(self::OAK_DOOR, $meta, $count, "Oak Door");
     }
 }
