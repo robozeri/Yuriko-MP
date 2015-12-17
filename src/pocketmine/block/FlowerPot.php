@@ -102,7 +102,7 @@ class FlowerPot extends Transparent{
 			default:
 				$content = Item::AIR;
 		}
-		return [$content, $contentDamage, 1];
+		return Item::get($content, $contentDamage, 1);
 	}
 
 	public function onActivate(Item $item, Player $player = null){
@@ -154,7 +154,7 @@ class FlowerPot extends Transparent{
 					break;
 				case Item::TALL_GRASS:
 					$species = $item->getDamage();
-					if($species == 0x02){
+					if($species == 0x02) {
 						$meta = 11;
 					}
 					break;
