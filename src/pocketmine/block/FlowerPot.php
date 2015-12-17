@@ -102,7 +102,7 @@ class FlowerPot extends Transparent{
 			default:
 				$content = Item::AIR;
 		}
-		return Item::get($content, $contentDamage, 1);
+		return [$content, $contentDamage, 1];
 	}
 
 	public function onActivate(Item $item, Player $player = null){
