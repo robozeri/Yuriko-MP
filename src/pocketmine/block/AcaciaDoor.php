@@ -45,7 +45,7 @@ class AcaciaDoor extends Door{
 
     public function getDrops(Item $item){
         return [
-            [Item::ACACIA_DOOR_BLOCK, 0, 1],
+            [Item::ACACIA_DOOR, 0, 1],
         ];
     }
 }

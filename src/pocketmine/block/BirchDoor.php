@@ -49,7 +49,7 @@ class BirchDoor extends Door{
 
     public function getDrops(Item $item){
         return [
-            [Item::BIRCH_DOOR_BLOCK, 0, 1],
+            [Item::BIRCH_DOOR, 0, 1],
         ];
     }
 }
