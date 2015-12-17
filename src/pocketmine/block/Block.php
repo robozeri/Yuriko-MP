@@ -219,7 +219,7 @@ class Block extends Position implements Metadatable{
 	const TRAPPED_CHEST = 146;
 
 	const REDSTONE_BLOCK = 152;
-	const QUARTZ_ORE = 153;
+	const NETHER_QUARTZ_ORE = 153;
 	const QUARTZ_BLOCK = 155;
 	const QUARTZ_STAIRS = 156;
 	const DOUBLE_WOOD_SLAB = 157;
@@ -491,6 +491,7 @@ class Block extends Position implements Metadatable{
 			self::$list[self::BEETROOT_BLOCK] = Beetroot::class;
 			self::$list[self::STONECUTTER] = Stonecutter::class;
 			self::$list[self::GLOWING_OBSIDIAN] = GlowingObsidian::class;
+			self::$list[self::NETHER_QUARTZ_ORE] = NetherQuartzOre::class;
 
 			foreach(self::$list as $id => $class){
 				if($class !== null){
