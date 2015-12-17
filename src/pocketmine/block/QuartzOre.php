@@ -34,8 +34,8 @@ use pocketmine\nbt\tag\Enum;
 use pocketmine\nbt\tag\Float;
 use pocketmine\entity\Entity;
 
-class QuartzOre extends Solid{
-	protected $id = self::QUARTZ_ORE;
+class NetherQuartzOre extends Solid{
+	protected $id = self::NETHER_QUARTZ_ORE;
 
 	public function __construct(){
 
@@ -46,7 +46,7 @@ class QuartzOre extends Solid{
 	}
 
 	public function getName(){
-		return "Quartz Ore";
+		return " Nether Quartz Ore";
 	}
 
 	public function getToolType(){
@@ -85,7 +85,7 @@ class QuartzOre extends Solid{
 	public function getDrops(Item $item){
 		if($item->isPickaxe() >= Tool::TIER_WOODEN){
 			return [
-				[Item::QUARTZ, 0, 1],
+				[Item::QUARTZ, 0, 2],
 			];
 		}
 		return [];
