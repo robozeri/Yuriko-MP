@@ -21,8 +21,12 @@
 
 namespace pocketmine\item;
 
+use pocketmine\block\Block;
+
 class BirchDoor extends Item{
+
     public function __construct($meta = 0, $count = 1){
-        parent::__construct(self::BIRCH_DOOR, $meta, $count, "Acacia Door");
+        parent::__construct(self::BIRCH_DOOR, $meta, $count, "Birch Door");
+        $this->block = Block::get(Block::BIRCH_DOOR_BLOCK, $meta);
     }
 }

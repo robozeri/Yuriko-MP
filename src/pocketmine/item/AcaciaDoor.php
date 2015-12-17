@@ -21,9 +21,12 @@
 
 namespace pocketmine\item;
 
+use pocketmine\block\Block;
+
 class AcaciaDoor extends Item{
 
     public function __construct($meta = 0, $count = 1){
         parent::__construct(self::ACACIA_DOOR, $meta, $count, "Acacia Door");
+        $this->block = Block::get(Block::ACACIA_DOOR_BLOCK, $meta);
     }
 }

@@ -731,12 +731,12 @@ class Item{
 		self::addCreativeItem(Item::get(Item::LADDER, 0));
 		self::addCreativeItem(Item::get(Item::SPONGE, 0));
 		self::addCreativeItem(Item::get(Item::GLASS_PANE, 0));
-		self::addCreativeItem(Item::get(Item::OAK_DOOR, 0)); // Oak
-		self::addCreativeItem(Item::get(Item::SPRUCE_DOOR, 1)); // Spruce
-		self::addCreativeItem(Item::get(Item::BIRCH_DOOR, 2)); // Birch
-		self::addCreativeItem(Item::get(Item::JUNGLE_DOOR, 3)); // Jungle
-		self::addCreativeItem(Item::get(Item::ACACIA_DOOR, 4)); // Acacia
-		self::addCreativeItem(Item::get(Item::DARK_OAK_DOOR, 5)); // Dark oak
+		self::addCreativeItem(Item::get(Item::WOODEN_DOOR, 0)); // Oak
+		self::addCreativeItem(Item::get(Item::SPRUCE_DOOR, 0)); // Spruce
+		self::addCreativeItem(Item::get(Item::BIRCH_DOOR, 0)); // Birch
+		self::addCreativeItem(Item::get(Item::JUNGLE_DOOR, 0)); // Jungle
+		self::addCreativeItem(Item::get(Item::ACACIA_DOOR, 0)); // Acacia
+		self::addCreativeItem(Item::get(Item::DARK_OAK_DOOR, 0)); // Dark oak
 		self::addCreativeItem(Item::get(Item::IRON_DOOR, 0));
 		self::addCreativeItem(Item::get(Item::TRAPDOOR, 0));
 		self::addCreativeItem(Item::get(Item::IRON_TRAPDOOR, 0));

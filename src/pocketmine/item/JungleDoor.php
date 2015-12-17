@@ -27,5 +27,6 @@ class JungleDoor extends Item{
 
     public function __construct($meta = 0, $count = 1){
         parent::__construct(self::JUNGLE_DOOR, $meta, $count, "Jungle Door");
+        $this->block = Block::get(Block::JUNGLE_DOOR_BLOCK, $meta);
     }
 }
