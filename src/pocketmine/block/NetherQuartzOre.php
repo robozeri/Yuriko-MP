@@ -23,9 +23,8 @@
  *
  */
  
-namespace Block;
+namespace pocketmine\block;
  
-use pocketmine\block\Solid;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\nbt\tag\Compound;

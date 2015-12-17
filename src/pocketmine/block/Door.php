@@ -211,20 +211,24 @@ abstract class Door extends Transparent{
 				if($this->getSide(1) instanceof Door){
 					$this->getLevel()->setBlock($this->getSide(1), new Air(), false);
 				}
+
+				return Level::BLOCK_UPDATE_NORMAL;
 			}
-
-			$this->isPowered = $this->getRedstoneInput() > 0;
-
-			return Level::BLOCK_UPDATE_NORMAL;
 		}elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-			if(!$this->isOpen and !$this->isPowered){
+			$input = $this->getRedstoneInput();
+			$shouldSwitch = false;
+			if(!$this->isOpen and $input > 0){
+				$shouldSwitch = true;
 				$this->isPowered = true;
-				$this->switchOpen();
-			}elseif($this->isOpen and $this->isPowered){
+			}elseif($this->isOpen and $this->isPowered and $input === 0){
+				$shouldSwitch = false;
 				$this->isPowered = false;
-				$this->switchOpen();
 			}
-			return Level::BLOCK_UPDATE_REDSTONE;
+
+			if($shouldSwitch){
+				$this->switchOpen();
+				return Level::BLOCK_UPDATE_REDSTONE;
+			}
 		}
 
 		return false;
