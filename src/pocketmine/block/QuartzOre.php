@@ -23,8 +23,9 @@
  *
  */
  
- namespace Block;
+namespace Block;
  
+use pocketmine\block\Solid;
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\nbt\tag\Compound;
@@ -52,39 +53,39 @@ class QuartzOre extends Solid{
 		return Tool::TYPE_PICKAXE;
 	}
 
-public function onBreak(Item $item){
-	if($this->getRandomExperience($item) > 0){
-		Entity::createEntity("ExperienceOrb", $this->level->getChunk($this->x >> 4, $this->z >> 4), new Compound("", [
-                "Pos" => new Enum("Pos", [
-					new Double("", $this->x),
-					new Double("", $this->y),
-					new Double("", $this->z)
-				]),
-				"Motion" => new Enum("Motion", [
-					new Double("", 0),
-					new Double("", 0),
-					new Double("", 0)
-				]),
-				"Rotation" => new Enum("Rotation", [
-					new Float("", 0),
-					new Float("", 0)
-				]),
-			]));
+	public function onBreak(Item $item){
+		if($this->getRandomExperience($item) > 0){
+			Entity::createEntity("ExperienceOrb", $this->level->getChunk($this->x >> 4, $this->z >> 4), new Compound("", [
+					"Pos" => new Enum("Pos", [
+						new Double("", $this->x),
+						new Double("", $this->y),
+						new Double("", $this->z)
+					]),
+					"Motion" => new Enum("Motion", [
+						new Double("", 0),
+						new Double("", 0),
+						new Double("", 0)
+					]),
+					"Rotation" => new Enum("Rotation", [
+						new Float("", 0),
+						new Float("", 0)
+					]),
+			]))->spawnToAll();
 		}
 		return parent::onBreak($item);
 	}
 
 	public function getRandomExperience(Item $item){
-		if($item->isPickaxe() >= Tool::TIER_COBBLESTONE){
-			return mt_rand(0, 5);
+		if($item->isPickaxe() >= Tool::TIER_WOODEN){
+			return mt_rand(2, 5);
+		}
+		return 0;
 	}
-	return 0;
-}
 
 	public function getDrops(Item $item){
-		if($item->isPickaxe() >= Tool::TIER_COBBLESTONE){
+		if($item->isPickaxe() >= Tool::TIER_WOODEN){
 			return [
-				[Item::QUARTZ, 0, 5],
+				[Item::QUARTZ, 0, 1],
 			];
 		}
 		return [];

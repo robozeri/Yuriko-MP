@@ -219,7 +219,7 @@ class Block extends Position implements Metadatable{
 	const TRAPPED_CHEST = 146;
 
 	const REDSTONE_BLOCK = 152;
-
+	const QUARTZ_ORE = 153;
 	const QUARTZ_BLOCK = 155;
 	const QUARTZ_STAIRS = 156;
 	const DOUBLE_WOOD_SLAB = 157;
