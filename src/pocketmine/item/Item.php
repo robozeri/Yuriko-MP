@@ -246,7 +246,7 @@ class Item{
 	const TRAPPED_CHEST = 146;
 
 	const REDSTONE_BLOCK = 152;
-
+	const NETHER_QUARTZ_BLOCK = 153;
 	const QUARTZ_BLOCK = 155;
 	const QUARTZ_STAIRS = 156;
 	const DOUBLE_WOOD_SLAB = 157;
@@ -712,6 +712,7 @@ class Item{
 		self::addCreativeItem(Item::get(Item::PACKED_ICE, 0));
 		self::addCreativeItem(Item::get(Item::SNOW_BLOCK, 0));
 		self::addCreativeItem(Item::get(Item::END_STONE, 0));
+		self::addCreativeItem(Item::get(Item::NETHER_QUARTZ_ORE, 0));
 
 		//Decoration
 		self::addCreativeItem(Item::get(Item::COBBLESTONE_WALL, 0));
