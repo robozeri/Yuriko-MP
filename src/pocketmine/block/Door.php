@@ -211,17 +211,18 @@ abstract class Door extends Transparent{
 				if($this->getSide(1) instanceof Door){
 					$this->getLevel()->setBlock($this->getSide(1), new Air(), false);
 				}
-
-				return Level::BLOCK_UPDATE_NORMAL;
 			}
+
+			$this->isPowered = $this->getRedstoneInput() > 0;
+
+			return Level::BLOCK_UPDATE_NORMAL;
 		}elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-			$input = $this->getRedstoneInput();
-			if(!$this->isOpen and !$this->isPowered and $input > 0){
-				$this->switchOpen();
+			if(!$this->isOpen and !$this->isPowered){
 				$this->isPowered = true;
-			}elseif($this->isOpen and $this->isPowered and $input === 0){
 				$this->switchOpen();
+			}elseif($this->isOpen and $this->isPowered){
 				$this->isPowered = false;
+				$this->switchOpen();
 			}
 			return Level::BLOCK_UPDATE_REDSTONE;
 		}
@@ -288,7 +289,7 @@ abstract class Door extends Transparent{
 				}
 
 				$this->level->addSound(new DoorSound($this));
-				$this->isOpen = !$this->isOpen;
+				$this->isOpen = ($this->isOpen === true ? false : true);
 				return true;
 			}
 
@@ -301,13 +302,14 @@ abstract class Door extends Transparent{
 				unset($players[$player->getLoaderId()]);
 			}
 			$this->level->addSound(new DoorSound($this));
-			$this->isOpen = !$this->isOpen;
+			$this->isOpen = ($this->isOpen === true ? false : true);
 		}
 
 		return true;
 	}
 
 	public function switchOpen(){
+		$this->isOpen = ($this->isOpen === true ? false : true);
 		if(($this->getDamage() & 0x08) === 0x08){ //Top
 			$down = $this->getSide(0);
 			if($down->getId() === $this->getId()){
@@ -320,6 +322,5 @@ abstract class Door extends Transparent{
 			$this->getLevel()->setBlock($this, $this, true);
 			$this->level->addSound(new DoorSound($this));
 		}
-		$this->isOpen = !$this->isOpen;
 	}
 }
