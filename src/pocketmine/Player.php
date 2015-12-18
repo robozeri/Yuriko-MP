@@ -1636,6 +1636,14 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
             Item::CARROT => 3,
             Item::POTATO => 1,
             Item::BAKED_POTATO => 5,
+			Item::ENCHANTED_GOLDEN_APPLE => 4,
+			Item::ROTTEN_FESH => 2,
+			Item::SPIDER_EYE => 2,
+			Item::POISONUS_POTATO => 2,
+			Item::GOLDEN_CARROT => 6,
+			Item::RAW_RABBIT => 3,
+			Item::RABBIT_STEW => 10,
+			Item::COOKED_RABBIT => 5,
             Item::COOKIE => 2,
             Item::COOKED_FISH => [
                 0 => 5,
@@ -1677,11 +1685,21 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				}elseif($slot->getId() === Item::GOLDEN_APPLE and $slot->getDamage() === 0){
 					$this->addEffect(Effect::getEffect(Effect::ABSORPTION)->setDuration(120 * 20));
 					$this->addEffect(Effect::getEffect(Effect::REGENERATION)->setDuration(5 * 20)->setAmplifier(2));
-				}elseif($slot->getId() === Item::GOLDEN_APPLE and $slot->getDamage() === 1){
+				}elseif($slot->getId() === Item::ENCHANTED_GOLDEN_APPLE and $slot->getDamage() === 1){
 					$this->addEffect(Effect::getEffect(Effect::ABSORPTION)->setDuration(120 * 20));
-					$this->addEffect(Effect::getEffect(Effect::REGENERATION)->setDuration(30 * 20)->setAmplifier(5));
-					$this->addEffect(Effect::getEffect(Effect::FIRE_RESISTANCE)->setDuration(300 * 20));
-					$this->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTANCE)->setDuration(300 * 20));
+					$this->addEffect(Effect::getEffect(Effect::REGENERATION)->setDuration(30 * 20));
+					$this->addEffect(Effect::getEffect(Effect::FIRE_RESISTENCE)->setDuration(300 * 20));
+					$this->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTENCE)->setDuration(300 * 20));
+				}elseif($slot->getId() === Item::ROTTEN_FLESH and $slot->getDamage() === 0){
+					$this->addEffect(Effect::getEffect(Effect::HUNGER)->setDuration(30 * 20));
+				}elseif($slot->getId() === Item::SPIDER_EYE and $slot->getDamage() === 0){
+					$this->addEffect(Effect::getEffect(Effect::POISON)->setDuration(4 * 20));
+				}elseif($slot->getId() === Item::POISONUS_POTATO and $slot->getDamage() === 0){
+					$this->getEffect(Effect::getEffect(Effect::POISON)->setDuration(4 * 20));
+				}elseif($slot->getId() === Item::RABBIT_STEW and $slot->getDamage() === 0){
+					$this->inventory->addItem(Item::get(Item::BOWL, 0, 1));
+				}elseif($slot->getId() === Item::BEETROOT_SOUP and $slot->getDamage() === 0){
+					$this->inventory->addItem(Item::get(Item::BOWL, 0, 1));
 				}
 			}
 		}
