@@ -221,7 +221,7 @@ abstract class Door extends Transparent{
 				$shouldSwitch = true;
 				$this->isPowered = true;
 			}elseif($this->isOpen and $this->isPowered and $input === 0){
-				$shouldSwitch = false;
+				$shouldSwitch = true;
 				$this->isPowered = false;
 			}
 
