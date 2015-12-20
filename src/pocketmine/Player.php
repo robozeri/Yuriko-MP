@@ -610,7 +610,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function setDisplayName($name){
 		$this->displayName = $name;
 		if($this->spawned){
-			$this->server->updatePlayerListData($this->getUniqueId(), $this->getId(), $this->getDisplayName(), $this->isSkinSlim(), $this->getSkinData());
+			$this->server->updatePlayerListData($this->getUniqueId(), $this->getId(), $this->getDisplayName(), $this->getSkinName(), $this->getSkinData());
 		}
 	}
 
@@ -1631,15 +1631,14 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
             Item::COOKED_CHICKEN => 6,
             Item::RAW_CHICKEN => 2,
             Item::MELON_SLICE => 2,
-            Item::GOLDEN_APPLE => 4,
             Item::PUMPKIN_PIE => 8,
             Item::CARROT => 3,
             Item::POTATO => 1,
             Item::BAKED_POTATO => 5,
-			Item::ENCHANTED_GOLDEN_APPLE => 4,
-			Item::ROTTEN_FESH => 2,
+			Item::GOLDEN_APPLE => 4,
+			Item::ROTTEN_FLESH => 2,
 			Item::SPIDER_EYE => 2,
-			Item::POISONUS_POTATO => 2,
+			Item::POISONOUS_POTATO => 2,
 			Item::GOLDEN_CARROT => 6,
 			Item::RAW_RABBIT => 3,
 			Item::RABBIT_STEW => 10,
@@ -1668,7 +1667,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				$pk->eid = $this->getId();
 				$pk->event = EntityEventPacket::USE_ITEM;
 				$this->dataPacket($pk);
-				Server::broadcastPacket($this->getViewers(), $pk);
+				$this->server->broadcastPacket($this->getViewers(), $pk);
 				$amount = $items[$slot->getId()];
 				if(is_array($amount)){
 					$amount = isset($amount[$slot->getDamage()]) ? $amount[$slot->getDamage()] : 0;
@@ -1676,7 +1675,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				$this->setFood($this->getFood() + $amount);
 				--$slot->count;
 				$this->inventory->setItemInHand($slot);
-				if($slot->getId() === Item::MUSHROOM_STEW or $slot->getId() === Item::BEETROOT_SOUP){
+				if($slot->getId() === Item::MUSHROOM_STEW or $slot->getId() === Item::BEETROOT_SOUP or $slot->getId() === Item::RABBIT_STEW){
 					$this->inventory->addItem(Item::get(Item::BOWL, 0, 1));
 				}elseif($slot->getId() === Item::RAW_FISH and $slot->getDamage() === 3){ //Pufferfish
 					$this->addEffect(Effect::getEffect(Effect::HUNGER)->setAmplifier(2)->setDuration(15 * 20));
@@ -1685,19 +1684,17 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				}elseif($slot->getId() === Item::GOLDEN_APPLE and $slot->getDamage() === 0){
 					$this->addEffect(Effect::getEffect(Effect::ABSORPTION)->setDuration(120 * 20));
 					$this->addEffect(Effect::getEffect(Effect::REGENERATION)->setDuration(5 * 20)->setAmplifier(2));
-				}elseif($slot->getId() === Item::ENCHANTED_GOLDEN_APPLE and $slot->getDamage() === 1){
+				}elseif($slot->getId() === Item::GOLDEN_APPLE and $slot->getDamage() === 1){
 					$this->addEffect(Effect::getEffect(Effect::ABSORPTION)->setDuration(120 * 20));
 					$this->addEffect(Effect::getEffect(Effect::REGENERATION)->setDuration(30 * 20));
-					$this->addEffect(Effect::getEffect(Effect::FIRE_RESISTENCE)->setDuration(300 * 20));
-					$this->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTENCE)->setDuration(300 * 20));
+					$this->addEffect(Effect::getEffect(Effect::FIRE_RESISTANCE)->setDuration(300 * 20));
+					$this->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTANCE)->setDuration(300 * 20));
 				}elseif($slot->getId() === Item::ROTTEN_FLESH and $slot->getDamage() === 0){
 					$this->addEffect(Effect::getEffect(Effect::HUNGER)->setDuration(30 * 20));
 				}elseif($slot->getId() === Item::SPIDER_EYE and $slot->getDamage() === 0){
 					$this->addEffect(Effect::getEffect(Effect::POISON)->setDuration(4 * 20));
-				}elseif($slot->getId() === Item::POISONUS_POTATO and $slot->getDamage() === 0){
+				}elseif($slot->getId() === Item::POISONOUS_POTATO and $slot->getDamage() === 0){
 					$this->getEffect(Effect::getEffect(Effect::POISON)->setDuration(4 * 20));
-				}elseif($slot->getId() === Item::RABBIT_STEW and $slot->getDamage() === 0){
-					$this->inventory->addItem(Item::get(Item::BOWL, 0, 1));
 				}elseif($slot->getId() === Item::BEETROOT_SOUP and $slot->getDamage() === 0){
 					$this->inventory->addItem(Item::get(Item::BOWL, 0, 1));
 				}

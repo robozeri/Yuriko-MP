@@ -419,9 +419,11 @@ class Item{
 
 	const RAW_CHICKEN = 365;
 	const COOKED_CHICKEN = 366;
+	const ROTTEN_FLESH = 367;
 
 	const GOLD_NUGGET = 371;
 	const GOLDEN_NUGGET = 371;
+	const SPIDER_EYE = 375;
 
 	const SPAWN_EGG = 383;
 
@@ -434,12 +436,16 @@ class Item{
 	const POTATOES = 392;
 	const BAKED_POTATO = 393;
 	const BAKED_POTATOES = 393;
+	const POISONOUS_POTATO = 394;
+	const GOLDEN_CARROT = 396;
 
 	const PUMPKIN_PIE = 400;
 
 	const NETHER_BRICK = 405;
 	const QUARTZ = 406;
 	const NETHER_QUARTZ = 406;
+
+	const RABBIT_STEW = 413;
 
 	const SPRUCE_DOOR = 427;
 	const BIRCH_DOOR = 428;
