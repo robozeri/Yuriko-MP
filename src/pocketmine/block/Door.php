@@ -31,6 +31,7 @@ use pocketmine\Player;
 abstract class Door extends Transparent{
 	protected $isOpen = false;
 	protected $isPowered = false;
+	protected $recentActivate = false;
 
 	public function canBeActivated(){
 		return true;
@@ -215,19 +216,21 @@ abstract class Door extends Transparent{
 				return Level::BLOCK_UPDATE_NORMAL;
 			}
 		}elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-			$input = $this->getRedstoneInput();
-			$shouldSwitch = false;
-			if(!$this->isOpen and $input > 0){
-				$shouldSwitch = true;
-				$this->isPowered = true;
-			}elseif($this->isOpen and $this->isPowered and $input === 0){
-				$shouldSwitch = true;
-				$this->isPowered = false;
-			}
+			if(!$this->recentActivate){
+				$input = $this->getRedstoneInput();
+				$shouldSwitch = false;
+				if(!$this->isOpen and $input > 0){
+					$shouldSwitch = true;
+					$this->isPowered = true;
+				}elseif($this->isOpen and $this->isPowered and $input === 0){
+					$shouldSwitch = true;
+					$this->isPowered = false;
+				}
 
-			if($shouldSwitch){
-				$this->switchOpen();
-				return Level::BLOCK_UPDATE_REDSTONE;
+				if($shouldSwitch){
+					$this->switchOpen();
+					return Level::BLOCK_UPDATE_REDSTONE;
+				}
 			}
 		}
 
@@ -286,6 +289,7 @@ abstract class Door extends Transparent{
 			$down = $this->getSide(0);
 			if($down->getId() === $this->getId()){
 				$meta = $down->getDamage() ^ 0x04;
+				$this->recentActivate = ($this->recentActivate === true ? false : true);
 				$this->getLevel()->setBlock($down, Block::get($this->getId(), $meta), true);
 				$players = $this->getLevel()->getChunkPlayers($this->x >> 4, $this->z >> 4);
 				if($player instanceof Player){
@@ -300,6 +304,7 @@ abstract class Door extends Transparent{
 			return false;
 		}else{
 			$this->meta ^= 0x04;
+			$this->recentActivate = ($this->recentActivate === true ? false : true);
 			$this->getLevel()->setBlock($this, $this, true);
 			$players = $this->getLevel()->getChunkPlayers($this->x >> 4, $this->z >> 4);
 			if($player instanceof Player){
@@ -308,7 +313,6 @@ abstract class Door extends Transparent{
 			$this->level->addSound(new DoorSound($this));
 			$this->isOpen = ($this->isOpen === true ? false : true);
 		}
-
 		return true;
 	}
 
