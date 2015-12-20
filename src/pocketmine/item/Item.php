@@ -421,9 +421,15 @@ class Item{
 	const COOKED_CHICKEN = 366;
 	const ROTTEN_FLESH = 367;
 
+	const GHAST_TEAR = 370;
 	const GOLD_NUGGET = 371;
 	const GOLDEN_NUGGET = 371;
+	const NETHER_WART = 372;
+
 	const SPIDER_EYE = 375;
+	const FERMENTED_SPIDER_EYE = 375;
+	const BLAZE_POWDER = 377;
+	const MAGMA_CREAM = 378;
 
 	const SPAWN_EGG = 383;
 
