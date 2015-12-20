@@ -26,12 +26,14 @@
 namespace pocketmine\command\defaults;
 
 use pocketmine\command\CommandSender;
+use pocketmine\event\TranslationContainer;
+use pocketmine\item\Item;
+use pocketmine\item\ItemBlock;
+use pocketmine\math\Vector3;
 use pocketmine\Player;
 use pocketmine\block\Block;
-use pocketmine\utils\TextFormat;
 
-class SetblockCommand extends VanillaCommands{
-
+class SetBlockCommand extends VanillaCommand{
 
 	public function __construct($name){
 		parent::__construct(
@@ -48,14 +50,53 @@ class SetblockCommand extends VanillaCommands{
 		}
 
 		if(!($sender instanceof Player)){
-			$sender->sendMessage("Please use this command in-game");
+			$sender->sendMessage("Please run this command in-game");
+
+			return false;
 		}
 
-		if(!isset($args[0]) or !isset($args[1]) or !isset($args[2]) or !isset($args[3])){
-			$sender->sendMessage("Missing arguments");
+		if(count($args) !== 4){
+			$sender->sendMessage(new TranslationContainer("commands.generic.usage", [$this->usageMessage]));
+
+			return false;
 		}
 
-		// TODO: Setblock mechanics (need help)
+		$block = Item::fromString($args[3]);
+
+		if($block instanceof ItemBlock and $block->getBlock() instanceof Block){
+			$block = $block->getBlock();
+		}else{
+			$sender->sendMessage("Invalid Block ID");
+
+			return false;
+		}
+
+		for($i = 0; $i <= 2; $i++){
+			if($args[$i] === chr(126)){ //Tilde
+				if($i === 0){
+					$args[$i] = $sender->x;
+				}elseif($i === 1){
+					$args[$i] = $sender->y;
+				}elseif($i === 2){
+					$args[$i] = $sender->z;
+				}
+			}
+		}
+
+		if(!is_numeric($args[0]) or !is_numeric($args[1]) or !is_numeric($args[2])){
+			$sender->sendMessage("Please use numeric values for coordinates arguments");
+
+			return false;
+		}
+
+		if($sender->level->setBlock(new Vector3((int) $args[0], (int) $args[1], (int) $args[2]), $block)){
+			$sender->sendMessage("Block ".$block->getName()." placed at x=".$args[0].", y=".$args[1].", z=".$args[2]);
+
+			return true;
+		}
+
+		$sender->sendMessage("Failed placing block due to unknown error");
+
+		return false;
 	}
-			
 }
