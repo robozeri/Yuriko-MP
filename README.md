@@ -7,7 +7,7 @@ Copyright 2015 ItalianDevs4PM.
 This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
 International License.
 
-Officially mantained from @AryToNeX, @fycarman, @luca28pet and @xionbig.
+Officially mantained from @ItalianDevs4PM.
 
 ## What is Yuriko-MP?
 
