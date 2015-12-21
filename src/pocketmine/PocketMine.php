@@ -76,7 +76,7 @@ namespace pocketmine {
 	const API_VERSION = "1.13.1";
 	const CODENAME = "ヤンデレちゃん Yandere-Chan";
 	const MINECRAFT_VERSION = "v0.13.x alpha";
-	const MINECRAFT_VERSION_NETWORK = "0.13";
+	const MINECRAFT_VERSION_NETWORK = "0.13.1";
 
 	/*
 	 * Startup code. Do not look at it, it may harm you.
@@ -164,11 +164,13 @@ namespace pocketmine {
 		 * This is here so that people don't come to us complaining and fill up the issue tracker when they put
 		 * an incorrect timezone abbreviation in php.ini apparently.
 		 */
-		$default_timezone = date_default_timezone_get();
-		if(strpos($default_timezone, "/") === false){
-			$default_timezone = timezone_name_from_abbr($default_timezone);
+		$timezone = ini_get("date.timezone");
+		if(strpos($timezone, "/") === false){
+			$default_timezone = timezone_name_from_abbr($timezone);
 			ini_set("date.timezone", $default_timezone);
 			date_default_timezone_set($default_timezone);
+		}else{
+			date_default_timezone_set($timezone);
 		}
 	}
 
