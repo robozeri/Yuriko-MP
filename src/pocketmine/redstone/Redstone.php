@@ -68,7 +68,7 @@ class Redstone{
             }
         }
         while(!$sources->isEmpty()){
-            //self::active() TODO
+            self::activeByList($sources->extract(), $updateMap);
         }
 
         foreach($updateMap as $hash => $block){
