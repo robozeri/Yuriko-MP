@@ -22,20 +22,8 @@
 namespace pocketmine\block;
 
 abstract class Solid extends Block{
-	protected $redstoneOutput = 0;
 
 	public function isSolid(){
 		return true;
-	}
-
-	public function setRedstoneOutput($o){
-		if($this->redstoneOutput !== $o){
-			$this->redstoneOutput = $o;
-			$this->level->updateAround($this);
-		}
-	}
-
-	public function getRedstoneOutput(){
-		return $this->redstoneOutput;
 	}
 }
