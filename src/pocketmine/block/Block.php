@@ -288,6 +288,9 @@ class Block extends Position implements Metadatable{
 	protected $id;
 	protected $meta = 0;
 
+	protected $powerLevel = 0;
+	protected $powerSource = false;
+
 	/** @var AxisAlignedBB */
 	public $boundingBox = null;
 
@@ -1017,27 +1020,39 @@ class Block extends Position implements Metadatable{
 		}
 	}
 
-	/**
-	 * @return int 0-15 - standard redstone input from neighbour blocks
-	 */
-	public function getRedstoneInput(){
+	public function setPowerLevel($powerLevel){
+		$this->powerLevel = $powerLevel;
+	}
+
+	public function getPowerLevel(){
+		return $this->powerLevel;
+	}
+
+	public function getSideLevel($side){
+		return $this->getSide($side)->getPowerLevel();
+	}
+
+	public function isNeighbourPowered(){
+		return $this->getNeighbourPowerLevel() > 0;
+	}
+
+	public function getNeighbourPowerLevel(){
 		$power = [0];
 		for($s = 0; $s <= 5; $s++){
-			if(($o = $this->getSide($s)->getRedstoneOutput()) > $this->getRedstoneOutput()){
-				$power[] = $o;
-			}
+			$power[] = $this->getSide($s)->getPowerLevel();
 		}
-		return min(15, max($power));
+		return max($power);
 	}
 
-	/**
-	 * @return int 0-15
-	 */
-	public function getRedstoneOutput(){
-		return 0;
+	public function isPowered(){
+		return $this->powerLevel > 0;
 	}
 
-	public function hasRedstoneOutput(){
-		return $this->getRedstoneOutput() > 0;
+	public function isPowerSource(){
+		return $this->powerSource;
+	}
+
+	public function setPowerSource($bool){
+		$this->powerSource = $bool;
 	}
 }

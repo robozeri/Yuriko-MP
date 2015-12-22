@@ -3,8 +3,8 @@
 namespace pocketmine\block;
 
 use pocketmine\item\Item;
-use pocketmine\level\Level;
 use pocketmine\Player;
+use pocketmine\redstone\Redstone;
 
 class RedstoneDust extends Flowable{
     protected $id = self::REDSTONE_DUST;
@@ -13,49 +13,9 @@ class RedstoneDust extends Flowable{
         $this->meta = $meta;
     }
 
-    public function onUpdate($type){
-        if($type === Level::BLOCK_UPDATE_NORMAL){
-            if($this->getSide(0)->getId() === self::AIR){ //Replace with common break method
-                $this->getLevel()->useBreakOn($this);
-                return Level::BLOCK_UPDATE_NORMAL;
-            }
-        }elseif($type === Level::BLOCK_UPDATE_REDSTONE){
-
-            $prevOutput = $this->getRedstoneOutput();
-            $curOutput = max(0, $this->getRedstoneInput() - 1);
-
-            if($curOutput !== $prevOutput){
-                $this->setRedstoneOutput($curOutput);
-                $this->level->setBlock($this, $this, true, false);
-                $this->level->updateAround($this, true);
-
-                return Level::BLOCK_UPDATE_REDSTONE;
-            }
-        }
-        return false;
-    }
-
-    public function getRedstoneInput(){
-        $power = [0];
-        for($s = 0; $s <= 5; $s++){
-            $sideBlock = $this->getSide($s);
-            if(($o = $sideBlock->getRedstoneOutput()) > $this->getRedstoneOutput()){
-                $power[] = $o;
-            }
-            if($s === 0 or $s === 1){
-                for($t = 2; $t <= 5; $t++){
-                    $stepBlock = $sideBlock->getSide($t);
-                    if($stepBlock->getId() === $this->id and ($o = $stepBlock->getRedstoneOutput()) > $this->getRedstoneOutput()){
-                        $power[] = $o;
-                    }
-                }
-            }
-        }
-        return min(15, max($power));
-    }
-
-    public function getRedstoneOutput(){
-        return $this->meta;
+    public function setPowerLevel($power){
+        $this->powerLevel = $power;
+        $this->meta = $power;
     }
 
     public function setRedstoneOutput($power){
@@ -64,9 +24,19 @@ class RedstoneDust extends Flowable{
 
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
         if($face === 1 and !$this->getSide(0)->isTransparent()){ //Up
-            return parent::place($item, $block, $target, $face, $fx, $fy, $fz, $player);
+            $this->setPowerLevel($this->getNeighbourPowerLevel() - 1);
+            $block->level->setBlock($block, $this, true, true);
+            Redstone::active($this);
+            return true;
         }
         return false;
+    }
+
+    public function onBreak(Item $item){
+        $level = $this->getPowerLevel();
+        $this->level->setBlock($this, new Air(), true, false);
+        Redstone::deactive($this, $level);
+        return true;
     }
 
     public function getDrops(Item $item){

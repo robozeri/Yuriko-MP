@@ -127,4 +127,8 @@ class Position extends Vector3{
 		return $this;
 	}
 
+	public function locationHash(){
+		return floor($this->x).":".floor($this->y).":".floor($this->z).($this->level === null ? "" : strtolower($this->level->getFolderName()));
+	}
+
 }

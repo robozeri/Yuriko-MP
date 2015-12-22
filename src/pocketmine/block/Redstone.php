@@ -23,12 +23,15 @@ namespace pocketmine\block;
 
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
+use pocketmine\Player;
+use pocketmine\redstone\Redstone as RedstoneLogic;
 
 class Redstone extends Solid{
 	protected $id = self::REDSTONE_BLOCK;
 
 	public function __construct(){
-
+		$this->setPowerSource(true);
+		$this->setPowerLevel(15);
 	}
 
 	public function getHardness(){
@@ -43,6 +46,19 @@ class Redstone extends Solid{
 		return "Redstone Block";
 	}
 
+	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
+		$this->level->setBlock($block, $this, true, true);
+		RedstoneLogic::active($this);
+		return true;
+	}
+
+	public function onBreak(Item $item){
+		$level = $this->getPowerLevel();
+		$this->level->setBlock($this, new Air(), true, false);
+		RedstoneLogic::deactive($this, $level);
+		return true;
+	}
+
 	public function getDrops(Item $item){
 		if($item->isPickaxe() >= Tool::TIER_WOODEN){
 			return [
@@ -50,9 +66,5 @@ class Redstone extends Solid{
 			];
 		}
 		return [];
-	}
-
-	public function getRedstoneOutput(){
-		return 15;
 	}
 }
