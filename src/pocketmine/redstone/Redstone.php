@@ -22,9 +22,11 @@ class Redstone{
             $updating = $ex["data"];
             $power = $ex["priority"];
             /** @var Block $updating*/
-            $updating->setPowerLevel($power);
-            $updating->level->setBlock($updating, $updating, true);
-            self::addToQueue($queue, $updating);
+            if($power !== $updating->getPowerLevel()){
+                $updating->setPowerLevel($power);
+                $updating->level->setBlock($updating, $updating, true);
+                self::addToQueue($queue, $updating);
+            }
         }
     }
 

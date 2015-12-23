@@ -14,7 +14,7 @@ class RedstoneDust extends Flowable{
     }
 
     public function setPowerLevel($power){
-        $this->powerLevel = $power;
+        parent::setPowerLevel($power);
         $this->meta = $power;
         if($power > 0){
             $this->setPowerSource(true);
@@ -23,13 +23,9 @@ class RedstoneDust extends Flowable{
         }
     }
 
-    public function setRedstoneOutput($power){
-        $this->meta = $power;
-    }
-
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
         if($face === 1 and !$this->getSide(0)->isTransparent()){ //Up
-            $this->setPowerLevel(($neighbourPower = $this->getNeighbourPowerLevel()) > 0 ? $neighbourPower - 1 : 0);
+            $this->setPowerLevel(max(0, $this->getNeighbourPowerLevel() - 1));
             $block->level->setBlock($block, $this, true, true);
             Redstone::active($this);
             return true;
