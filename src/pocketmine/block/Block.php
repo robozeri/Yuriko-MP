@@ -1037,7 +1037,7 @@ class Block extends Position implements Metadatable{
 	}
 
 	public function getNeighbourPowerLevel(){
-		$power = [0];
+		$power = [];
 		for($s = 0; $s <= 5; $s++){
 			$power[] = $this->getSide($s)->getPowerLevel();
 		}
@@ -1054,5 +1054,16 @@ class Block extends Position implements Metadatable{
 
 	public function setPowerSource($bool){
 		$this->powerSource = $bool;
+	}
+
+	public function getPowerSources(){
+		$sources = [];
+		for($s = 0; $s <= 5; $s++){
+			$sideBlock = $this->getSide($s);
+			if($sideBlock->isPowerSource()){
+				$sources[] = $sideBlock;
+			}
+		}
+		return $sources;
 	}
 }
