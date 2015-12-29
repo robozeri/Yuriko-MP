@@ -28,16 +28,16 @@ namespace pocketmine\item;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 use pocketmine\item\Item;
 
-class SwiftnessPotion extends Item{
+class PotionSwiftness extends Item{
 
 $player = $e->getPlayer();
 
 	public function __construct($meta = 0, $count = 1){
-		parent::__construct(self::SWIFTNESS_POTION, $meta, $count, "Swiftness Potion");
+		parent::__construct(self::POTION_SWIFTNESS, $meta, $count, "Potion Of Swiftness");
 	}
     
-    public function OnItemConsume(PlayerItemConsumeEvent $e){
-        if($player->getInventory()->getItemOnHand(Item::SWIFTNESS_POTION)){
+    public function OnItemConsume(PlayerItemConsume $e){
+        if($player->getInventory()->getItemOnHand(Item::POTION_SWIFTNESS)){
             $player->addEffect(Effect::getEffect(Effect::SWIFTNESS)->setDuration(180 * 20));
         }
     }
