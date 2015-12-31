@@ -7,12 +7,11 @@ use pocketmine\block\Block;
 class Redstone{
 
     public static function active(Block $source){
-        $queue = new \SplPriorityQueue();
-        $queue->setExtractFlags(\SplPriorityQueue::EXTR_BOTH);
-        $queue->insert($source, $source->getPowerLevel());
         if(!$source->isPowerSource()){
             return;
         }
+        $queue = new \SplPriorityQueue();
+        $queue->setExtractFlags(\SplPriorityQueue::EXTR_BOTH);
         self::addToQueue($queue, $source);
         while(!$queue->isEmpty()){
             $ex = $queue->extract();
@@ -25,10 +24,24 @@ class Redstone{
         }
     }
 
+    public static function addToQueue(\SplPriorityQueue $queue, Block $location){
+        $updateLevel = $location->getPowerLevel() - 1;
+        if($updateLevel <= 0){
+            return;
+        }
+        for($s = 2; $s <= 5; $s++){
+            $sideBlock = $location->getSide($s);
+            if($sideBlock->getId() === Block::REDSTONE_DUST){
+                if($sideBlock->getPowerLevel() !== $updateLevel){
+                    $queue->insert($sideBlock, $updateLevel);
+                }
+            }
+        }
+    }
+
     public static function deactive(Block $source, $updateLevel){
         $queue = new \SplPriorityQueue();
         $queue->setExtractFlags(\SplPriorityQueue::EXTR_BOTH);
-        $queue->insert($source, $source->getPowerLevel());
         if(!$source->isPowerSource()){
             return;
         }
@@ -41,19 +54,6 @@ class Redstone{
             $updating->setPowerLevel(0);
             $updating->level->setBlock($updating, $updating, true);
             self::addToDeactiveQueue($queue, $updating, $power);
-        }
-    }
-
-    public static function addToQueue(\SplPriorityQueue $queue, Block $location){
-        $updateLevel = $location->getPowerLevel() - 1;
-        if($updateLevel <= 0){
-            return;
-        }
-        for($s = 0; $s <= 5; $s++){
-            $sideBlock = $location->getSide($s);
-            if($sideBlock->getPowerLevel() < $updateLevel){
-                $queue->insert($sideBlock, $updateLevel);
-            }
         }
     }
 

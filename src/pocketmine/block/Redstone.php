@@ -47,14 +47,14 @@ class Redstone extends Solid{
 	}
 
 	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
-		$this->level->setBlock($block, $this, true, true);
+		$this->level->setBlock($block, $this, true);
 		RedstoneLogic::active($this);
 		return true;
 	}
 
 	public function onBreak(Item $item){
 		$level = $this->getPowerLevel();
-		$this->level->setBlock($this, new Air(), true, false);
+		$this->level->setBlock($this, new Air(), true);
 		RedstoneLogic::deactive($this, $level);
 		return true;
 	}

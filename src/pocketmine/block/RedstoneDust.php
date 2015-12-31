@@ -26,7 +26,7 @@ class RedstoneDust extends Flowable{
     public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
         if($face === 1 and !$this->getSide(0)->isTransparent()){ //Up
             $this->setPowerLevel(max(0, $this->getNeighbourPowerLevel() - 1));
-            $block->level->setBlock($block, $this, true, true);
+            $block->level->setBlock($block, $this, true);
             Redstone::active($this);
             return true;
         }
@@ -35,7 +35,7 @@ class RedstoneDust extends Flowable{
 
     public function onBreak(Item $item){
         $level = $this->getPowerLevel();
-        $this->level->setBlock($this, new Air(), true, false);
+        $this->level->setBlock($this, new Air(), true);
         Redstone::deactive($this, $level);
         return true;
     }
