@@ -293,7 +293,13 @@ class Item{
 
 
 	//Normal Item IDs
+	const GLISTERING_MELON = 382; //
+	const RABBIT_STEW = 413; //
+	const BOTTLE_OF_ENCHANTING = 384; //
+	const GLASS_BOTTLE = 374; //
+	const RABBIT_FOOT = 414; //
     const COOKED_RABBIT = 412; //
+	const RABBIT_HIDE = 415; //
 	const RAW_RABBIT = 411; //
 	const IRON_SHOVEL = 256; //
 	const IRON_PICKAXE = 257; //
@@ -609,6 +615,23 @@ class Item{
 			self::$list[self::BEETROOT_SOUP] = BeetrootSoup::class;
 			self::$list[self::COOKED_RABBIT] = CookedRabbit::class;
 			self::$list[self::RAW_RABBIT] = RawRabbit::class;
+			self::$list[self::RABBIT_STEW] = RabbitStew::class;
+			self::$list[self::GLASS_BOTTLE] = GlassBottle::class;
+			self::$list[self::MAGMA_CREAM] = MagmaCream::class;
+			self::$list[self::GLISTERING_MELON] = GlisteringMelon::class;
+			self::$list[self::POISONUS_POTATO] = PoisonusPotato::class;
+			self::$list[self::BOTTLE_OF_ENCHANTING] = BottleOfEnchanting::class;
+			self::$list[self::GOLDEN_CARROT] = GoldenCarrot::class;
+			self::$list[self::RABBIT_HIDE] = RabbitHide::class;
+			self::$list[self::RABBIT_FOOT] = RabbitFoot::class;
+			self::$list[self::GHAST_TEAR] = GhastTear::class;
+			self::$list[self::FERMENTED_SPIDER_EYE] = FermentedSpiderEye::class;
+			self::$list[self::BLAZE_POWDER] = BlazePowder::class;
+			self::$list[self::BLAZE_ROD] = BlazeRod::class;
+			self::$list[self::ROTTEN_FLESH] = RottenFlesh::class;
+			self::$list[self::GOLDEN_APPLE] = GoldenApple::class;
+			self::$list[self::ENCHANTED_GOLDEN_APPLE] = EnchantedGoldenApple::class;
+			self::$list[self::WATER_BOTTLE] = WaterBottle::class;
 
 			for($i = 0; $i < 256; ++$i){
 				if(Block::$list[$i] !== null){
@@ -872,8 +895,8 @@ class Item{
 		//Tools
 		// TODO: self::addCreativeItem(Item::get(Item::RAILS, 0));
 		// TODO: self::addCreativeItem(Item::get(Item::POWERED_RAILS, 0));
-		// TODO: Detector rail
-		// TODO: Activator rail
+		// TODO: self::addCreativeItem(Item::get(Item::DETECTOR_RAILS, 0));
+		// TODO: self::addCreativeItem(Item::get(Item::ACTIVATOR_RAILS, 0));
 		self::addCreativeItem(Item::get(Item::TORCH, 0));
 		self::addCreativeItem(Item::get(Item::BUCKET, 0));
 		self::addCreativeItem(Item::get(Item::BUCKET, 1));
@@ -988,7 +1011,7 @@ class Item{
 		self::addCreativeItem(Item::get(Item::FEATHER, 0));
 		self::addCreativeItem(Item::get(Item::FLINT, 0));
 		self::addCreativeItem(Item::get(Item::LEATHER, 0));
-		// TODO: Rabbit hide
+		self::addCreativeItem(Item::get(Item::RABBIT_HIDE, 0));
 		self::addCreativeItem(Item::get(Item::CLAY, 0));
 		self::addCreativeItem(Item::get(Item::SUGAR, 0));
 		self::addCreativeItem(Item::get(Item::NETHER_QUARTZ, 0));
@@ -1004,14 +1027,14 @@ class Item{
 		self::addCreativeItem(Item::get(Item::BEETROOT_SEEDS, 0));
 		self::addCreativeItem(Item::get(Item::EGG, 0));
 		self::addCreativeItem(Item::get(Item::APPLE, 0));
-		// TODO: Golden apple enchanted
+		self::addCreativeItem(Item::get(Item::ENCHANTED_GOLDEN_APPLE, 0));
 		self::addCreativeItem(Item::get(Item::RAW_FISH, 0));
 		self::addCreativeItem(Item::get(Item::RAW_FISH, 1)); // TODO: Raw salmon
 		self::addCreativeItem(Item::get(Item::RAW_FISH, 2)); // TODO: Clownfish
 		self::addCreativeItem(Item::get(Item::RAW_FISH, 3)); // TODO: Pufferfish
 		self::addCreativeItem(Item::get(Item::COOKED_FISH, 0));
 		self::addCreativeItem(Item::get(Item::COOKED_FISH, 1)); //salmon
-		// TODO: Rotten flesh
+		self::addCreativeItem(Item::get(Item::ROTTEN_FLESH, 0));
 		// TODO: Mushroom stew
 		self::addCreativeItem(Item::get(Item::BREAD, 0));
 		self::addCreativeItem(Item::get(Item::RAW_PORKCHOP, 0));
@@ -1024,28 +1047,28 @@ class Item{
 		self::addCreativeItem(Item::get(Item::CARROT, 0));
 		self::addCreativeItem(Item::get(Item::POTATO, 0));
 		self::addCreativeItem(Item::get(Item::BAKED_POTATO, 0));
-		// TODO: Poisonous potato
+		self::addCreativeItem(Item::get(Item::POISONUS_POTATO, 0));
 		self::addCreativeItem(Item::get(Item::COOKIE, 0));
 		self::addCreativeItem(Item::get(Item::PUMPKIN_PIE, 0));
 		self::addCreativeItem(Item::get(Item::RAW_RABBIT, 0));
 		self::addCreativeItem(Item::get(Item::COOKED_RABBIT, 0));
-		// TODO: Rabbit stew
-		// TODO: Magma cream
-		// TODO: Blaze rod
+		self::addCreativeItem(Item::get(Item::RABBIT_STEW, 0));
+		self::addCreativeItem(Item::get(Item::MAGMA_CREAM, 0));
+		self::addCreativeItem(Item::get(Item::BLAZE_ROD, 0));
 		self::addCreativeItem(Item::get(Item::GOLD_NUGGET, 0));
-		// TODO: Golden carrot
-		// TODO: Glistering melon
-		// TODO: Rabbit's foot
-		// TODO: Ghast tear
+		self::addCreativeItem(Item::get(Item::GOLDEN_CARROT, 0));
+		self::addCreativeItem(Item::get(Item::GLISTERING_MELON, 0));
+		self::addCreativeItem(Item::get(Item::RABBIT_FOOT, 0));
+		self::addCreativeItem(Item::get(Item::GHAST_TEAR, 0));
 		self::addCreativeItem(Item::get(Item::SLIMEBALL, 0));
-		// TODO: Blaze powder
-		// TODO: Nether wart
+		self::addCreativeItem(Item::get(Item::BLAZE_POWDER, 0));
+		self::addCreativeItem(Item::get(Item::NETHER_WART, 0));
 		self::addCreativeItem(Item::get(Item::GUNPOWDER, 0));
 		self::addCreativeItem(Item::get(Item::GLOWSTONE_DUST, 0));
-		// TODO: Spider eye
-		// TODO: Fermented spider eye
-		// TODO: Bottle o' enchanting
-		// TODO: Enchanted books
+		self::addCreativeItem(Item::get(Item::SPIDER_EYE, 0));
+		self::addCreativeItem(Item::get(Item::FERMENTED_SPIDER_EYE, 0));
+		self::addCreativeItem(Item::get(Item::BOTTLE_OF_ENCHANTING, 0));
+		//TODO: add enchanting books
 		self::addCreativeItem(Item::get(Item::DYE, 0));
 		self::addCreativeItem(Item::get(Item::DYE, 7));
 		self::addCreativeItem(Item::get(Item::DYE, 6));
@@ -1062,8 +1085,8 @@ class Item{
 		self::addCreativeItem(Item::get(Item::DYE, 10));
 		self::addCreativeItem(Item::get(Item::DYE, 9));
 		self::addCreativeItem(Item::get(Item::DYE, 8));
-		// TODO: Glass bottle
-		// TODO: Water bottle
+		self::addCreativeItem(Item::get(Item::GLASS_BOTTLE, 0));
+		self::addCreativeItem(Item::get(Item::WATER_BOTTLE, 0));
 		// TODO: Potions
 	}
 
