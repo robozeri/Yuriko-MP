@@ -618,7 +618,7 @@ class Item{
 			self::$list[self::BEETROOT_SOUP] = BeetrootSoup::class;
 			self::$list[self::COOKED_RABBIT] = CookedRabbit::class;
 			self::$list[self::RAW_RABBIT] = RawRabbit::class;
-			self::$list[self::RABBIT_STEW] = RabbitStew::class;
+		//	self::$list[self::RABBIT_STEW] = RabbitStew::class;
 			self::$list[self::GLASS_BOTTLE] = GlassBottle::class;
 			self::$list[self::MAGMA_CREAM] = MagmaCream::class;
 			self::$list[self::GLISTERING_MELON] = GlisteringMelon::class;
