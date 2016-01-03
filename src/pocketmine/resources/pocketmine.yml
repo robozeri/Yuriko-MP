@@ -1,4 +1,4 @@
-# Main configuration file for PocketMine-MP
+# Main configuration file for Yuriko-MP
 # These settings are the ones that cannot be included in server.properties
 # Some of these settings are safe, others can break your server if modified incorrectly
 # New settings/defaults won't appear automatically on this file when upgrading.
@@ -11,11 +11,11 @@ settings:
  force-language: false
  shutdown-message: "Server closed"
  #Allow listing plugins via Query
- query-plugins: true
+ query-plugins: false
  #Show a console message when a plugin uses deprecated API methods
  deprecated-verbose: true
  #Enable plugin and core profiling by default
- enable-profiling: false
+ enable-profiling: true
  #Will only add results when tick measurement is below or equal to given value (default 20)
  profile-report-trigger: 20
  #Number of AsyncTask workers.
@@ -87,7 +87,7 @@ debug:
  #If > 1, it will show debug messages in the console
  level: 1
  #Enables /status, /gc
- commands: false
+ commands: true
 
 level-settings:
  #The default format that levels will use when created
@@ -141,20 +141,20 @@ spawn-limits:
   ambient: 15
 
 auto-report:
- #Send crash reports for processing
- enabled: true
+ # Send crash reports for processing
+ enabled: false
  send-code: true
  send-settings: true
  send-phpinfo: false
- host: crash.pocketmine.net
+ host: crash.devs4pm.eu # Default PocketMine site for now
 
 anonymous-statistics:
- #Sends anonymous statistics for data aggregation, plugin usage tracking
- enabled: true
- host: stats.pocketmine.net
+ # Sends anonymous statistics for data aggregation, plugin usage tracking
+ enabled: false
+ host: stats.devs4pm.eu
 
 auto-updater:
- enabled: true
+ enabled: false # We're working for this :)
  on-update:
   warn-console: true
   warn-ops: true
@@ -162,7 +162,7 @@ auto-updater:
  preferred-channel: stable
  #If using a development version, it will suggest changing the channel
  suggest-channels: true
- host: www.pocketmine.net
+ host: update.devs4pm.eu
 
 aliases:
  #Examples:
