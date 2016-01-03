@@ -1,14 +1,12 @@
 @echo off
 TITLE Yuriko-MP server software for Minecraft: Pocket Edition
 cd /d %~dp0
-
 if exist bin\php\php.exe (
 	set PHPRC=""
 	set PHP_BINARY=bin\php\php.exe
 ) else (
 	set PHP_BINARY=php
 )
-
 if exist Yuriko-MP.phar (
 	set POCKETMINE_FILE=Yuriko-MP.phar
 ) else (
@@ -20,7 +18,6 @@ if exist Yuriko-MP.phar (
 		exit 1
 	)
 )
-
 REM if exist bin\php\php_wxwidgets.dll (
 REM 	%PHP_BINARY% %POCKETMINE_FILE% --enable-gui %*
 REM ) else (
