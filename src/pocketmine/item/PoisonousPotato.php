@@ -25,7 +25,7 @@
  
 namespace pocketmine\item;
 
-class PoisonusPotato extends Item{
+class PoisonousPotato extends Item{
 
 	public function __construct($meta = 0, $count = 1){
 		parent::__construct(self::POISONOUS_POTATO, $meta, $count, "Poisonus Potato");

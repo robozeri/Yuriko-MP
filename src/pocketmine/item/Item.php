@@ -298,7 +298,7 @@ class Item{
 	const BOTTLE_OF_ENCHANTING = 384; //
 	const GLASS_BOTTLE = 374; //
 	const RABBIT_FOOT = 414; //
-    const COOKED_RABBIT = 412; //
+	const COOKED_RABBIT = 412; //
 	const RABBIT_HIDE = 415; //
 	const RAW_RABBIT = 411; //
 	const IRON_SHOVEL = 256; //
@@ -376,6 +376,7 @@ class Item{
 	const COOKED_PORKCHOP = 320;
 	const PAINTING = 321;
 	const GOLDEN_APPLE = 322;
+	const ENCHANTED_GOLDEN_APPLE = 322;
 	const SIGN = 323;
 	const WOODEN_DOOR = 324;
 	const BUCKET = 325;
@@ -427,10 +428,13 @@ class Item{
 	const COOKED_CHICKEN = 366;
 	const ROTTEN_FLESH = 367;
 
+	const BLAZE_ROD = 369;
 	const GHAST_TEAR = 370;
 	const GOLD_NUGGET = 371;
 	const GOLDEN_NUGGET = 371;
 	const NETHER_WART = 372;
+	const WATER_BOTTLE = 373;	
+	const POTION = 373;
 
 	const SPIDER_EYE = 375;
 	const FERMENTED_SPIDER_EYE = 375;
@@ -457,7 +461,7 @@ class Item{
 	const QUARTZ = 406;
 	const NETHER_QUARTZ = 406;
 
-	const RABBIT_STEW = 413;
+	// const RABBIT_STEW = 413; It already exists on line 297
 
 	const SPRUCE_DOOR = 427;
 	const BIRCH_DOOR = 428;
@@ -619,7 +623,7 @@ class Item{
 			self::$list[self::GLASS_BOTTLE] = GlassBottle::class;
 			self::$list[self::MAGMA_CREAM] = MagmaCream::class;
 			self::$list[self::GLISTERING_MELON] = GlisteringMelon::class;
-			self::$list[self::POISONUS_POTATO] = PoisonusPotato::class;
+			self::$list[self::POISONOUS_POTATO] = PoisonousPotato::class;
 			self::$list[self::BOTTLE_OF_ENCHANTING] = BottleOfEnchanting::class;
 			self::$list[self::GOLDEN_CARROT] = GoldenCarrot::class;
 			self::$list[self::RABBIT_HIDE] = RabbitHide::class;
@@ -1047,7 +1051,7 @@ class Item{
 		self::addCreativeItem(Item::get(Item::CARROT, 0));
 		self::addCreativeItem(Item::get(Item::POTATO, 0));
 		self::addCreativeItem(Item::get(Item::BAKED_POTATO, 0));
-		self::addCreativeItem(Item::get(Item::POISONUS_POTATO, 0));
+		self::addCreativeItem(Item::get(Item::POISONOUS_POTATO, 0));
 		self::addCreativeItem(Item::get(Item::COOKIE, 0));
 		self::addCreativeItem(Item::get(Item::PUMPKIN_PIE, 0));
 		self::addCreativeItem(Item::get(Item::RAW_RABBIT, 0));
