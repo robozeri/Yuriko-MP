@@ -294,7 +294,6 @@ class Item{
 
 	//Normal Item IDs
 	const GLISTERING_MELON = 382; //
-	const RABBIT_STEW = 413; //
 	const BOTTLE_OF_ENCHANTING = 384; //
 	const GLASS_BOTTLE = 374; //
 	const RABBIT_FOOT = 414; //
