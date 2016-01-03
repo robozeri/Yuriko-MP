@@ -1589,7 +1589,7 @@ class Server{
 			$this->getCodename(),
 			$this->getApiVersion()
 		]));
-		$this->logger->info("Yuriko-MP is licensed under Creative Commons 4.0 International Attribute-NoCommercial-NoDerivatives License");
+		$this->logger->info("Yuriko-MP is licensed under Creative Commons 4.0 International Attribution-NoCommercial-NoDerivatives License");
 		$this->logger->info("§aYuriko-MP§e is an unofficial PM build brought to you by §b@ItalianDevs4PM§e!");
 		$this->logger->info("§eIf you find any bug please contact us on GitHub!");
 		$this->logger->info("§bEnjoy Yuriko-MP!§d ^.^");
