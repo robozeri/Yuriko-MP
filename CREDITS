@@ -1,9 +1,10 @@
 Here we say thanks to these projects.
 These projects contributed to make better Yuriko-MP.
 
-Hunger, Attribute.php and AttributeManager.php are mostly from Katana project.
+Hunger is from Katana.
+
+Experience is from ImagicalMine.
 
 Boats are from Boats plugin by onebone.
 
-Experience API is originally from ImagicalMine.
-
+SpellParticle is from Nukkit Project.

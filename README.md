@@ -2,16 +2,15 @@
 ## Formerly known as PMTF Project
 
 Yuriko-MP, a kawaii-powered PocketMine-based software for Minecraft: Pocket Edition
-Copyright 2015 ItalianDevs4PM.
+Copyright 2016 ItalianDevs4PM.
 
-This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
-International License.
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
 Officially mantained from @ItalianDevs4PM.
 
 ## What is Yuriko-MP?
 
-Yuriko-MP is *the most powerful and full-featured* PocketMine-MP fork that you can find on internet!
+Yuriko-MP wants to be *the most powerful and full-featured* PocketMine-MP fork that you can find on internet!
 
 It is different from other forks because we are mostly concentrated in bug fixing and we want to implement fully working features which don't crash your server every 5 minutes.
 
@@ -19,35 +18,30 @@ It is different from other forks because we are mostly concentrated in bug fixin
 
 In what this fork is more powerful that PocketMine-MP and other forks?
 
-* Compatible with MC:PE 0.13.0 and above (we must try this with 0.14.0 :D )
+* Compatible with MC:PE 0.13.1
 * It has many many fixes that official PocketMine-MP does not have.
 * It has a few original implementations
-* IT IS CONSTANTLY DEVELOPED!
+* It is constantly developed!
 
-In particular, we have:
+## Why Creative Commons and not LGPL like other forks?
 
-* hasPermission() on null **fixed**
-* Working 0.13.0 skins (with transparency)
-* Fully working hunger
-* All the enchantments!
-* All the potion effects!
-* Golden Apples!
+### Attribution
 
-We are working in:
+We want credits for this software, and with CC license we are sure that we will be credited. We are crediting other projects for their precious slices of code.
 
-* Fix existing blocks!
-* Support for not implemented blocks!
-* Potions!
-* Experience! (and with the experience we will put a fully working enchantment table)
-* Brewing! (Only brewing mechanic for now.. We need nether and blazes for full brewing implementation)
-* Redstone elements! (and we are not sure about them, so... :D )
-* PHP7 support! (Not now, but later.)
-* Many other features!
+### NoCommercial
 
-# LATEST STABLE BUILD: No stable build for now, sorry
-## If you want development builds, please see "Downloads" section.
+Just to be clear, we want to develop a free software but LGPL allows to redistribute or to sell software, and we don't want this. People shall not pay for Yuriko-MP, not now nor in the future.
 
-# Codenames:
+### NoDerivatives
 
-* 0.13.x -> Yandere-Chan
-* 0.14.x -> Senpai (Candidate)
+We don't want forks of the fork, so if you have a fix or a implementation you can fork it and submit a pull request; in this mode we can keep only one fork with all implementations/fixes. One fork, better programming.
+Anyway, some servers can have different necessities than others, so you can modify Yuriko-MP but only for personal use.
+
+If you want to modify Yuriko-MP for personal use:
+
+* You shall not modify Yuriko-MP's name.
+* You shall not modify attribution to ItalianDevs4PM.
+* You shall not modify the version of Yuriko-MP.
+* You must modify the codename in order to advise who does /version command that it's a modified version of Yuriko-MP.
+* You must keep in mind that pull requests are accepted. :P
