@@ -10,7 +10,7 @@
  *
  * Yuriko-MP, a kawaii-powered PocketMine-based software
  * for Minecraft: Pocket Edition
- * Copyright 2015 ItalianDevs4PM.
+ * Copyright 2016 ItalianDevs4PM.
  *
  * This work is licensed under the Creative Commons
  * Attribution-NonCommercial-NoDerivatives 4.0
@@ -70,7 +70,7 @@ class AttributeManager{
      */
     public function addAttribute($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend = false){
         if($minValue > $maxValue or $defaultValue > $maxValue or $defaultValue < $minValue){
-            throw new \InvalidArgumentException("Invalid ranges: min value: $minValue, max value: $maxValue, $defaultValue: $defaultValue");
+            throw new \InvalidArgumentException("Invalid ranges: minValue: $minValue, maxValue: $maxValue, defaultValue: $defaultValue");
         }
         return $this->attributes[(int) $id] = new Attribute($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend, $this->player);
     }

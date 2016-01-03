@@ -10,7 +10,7 @@
  *
  * Yuriko-MP, a kawaii-powered PocketMine-based software
  * for Minecraft: Pocket Edition
- * Copyright 2015 ItalianDevs4PM.
+ * Copyright 2016 ItalianDevs4PM.
  *
  * This work is licensed under the Creative Commons
  * Attribution-NonCommercial-NoDerivatives 4.0
